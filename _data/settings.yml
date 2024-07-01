@@ -3,7 +3,7 @@
 # Site Settings
 title: Azmat Mungur - Thoughts & Insights
 logo: "/images/logo.png"
-description: Norlin – A Beautiful Dark Blog Theme for Jekyll.
+description: A blog to share thoughts and insights to the community.
 
 #-------------------------------
 # Navigation Settings
@@ -22,14 +22,14 @@ menu-settings:
 # Author Settings
 author:
   name: Azmat Mungur
-  avatar: "/images/profile.png"
+  avatar: "/images/profile.jpg"
 
 #-------------------------------
 # Hero Settings
 hero:
   title: Azmat Mungur
   description: Performance Engineer & Developer.
-  image: "/images/511.jpg"
+  image: "/images/419.jpg"
 
 #-------------------------------
 # Contact Settings
