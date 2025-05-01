@@ -1,98 +1,151 @@
 ---
 #-------------------------------
 # Site Settings
-title: Azmat Mungur - Thoughts & Insights
-logo: "/images/logo.png"
-description: A blog to share thoughts and insights to the community.
+title: azmat.devx
+description: Nomod is a multipurpose Jekyll blog theme
+logo: # You can add own logo. For example "/images/logo.png".
+logo_dark:
+color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
 #-------------------------------
 # Navigation Settings
-menu-settings:
-  menu-items:
+menu_settings:
+  menu_items:
     - title: "Home"
       url: "/"
-    - title: "About Me"
+    - title: "Latest"
+      url: "/latest/"
+    - title: "Authors"
+      url: "/authors/"
+    - title: "Resources"
+      submenu:
+        - url: "/videos/"
+          title: "Videos"
+        - url: "/featured/"
+          title: "Featured"
+        - url: "/elements/"
+          title: "Elements"
+        - url: "/tags/"
+          title: "Topics"
+    - title: "About"
       url: "/about/"
-    # - title: "Contact Me"
-    #   url: "/contact/"
-    # - title: "Style Guide"
-    #   url: "/styleguide/"
 
-#-------------------------------
-# Author Settings
-author:
-  name: Azmat Mungur
-  avatar: "/images/profile.jpg"
+# Call to action button
+cta_button:
+  enable: true
+  cta_button_link: "/contact/"
+  cta_button_text: Get in touch
 
 #-------------------------------
 # Hero Settings
 hero:
-  title: Azmat Mungur
-  description: Performance Engineer & Developer.
-  image: "/images/419.jpg"
+  enable: true
+  hero_title: Stories, Journeys, and Ideas for the Creatively Curious
+  hero_description: Join us on a journey where every post brings a fresh perspective. This blog is for those who are driven by curiosity and a desire to learn.
+
+hero_authors:
+  enable: true
+  hero_authors_description: Meet our talented team
 
 #-------------------------------
-# Contact Settings
-contact:
-  email: your@email.com # Add your email for contact form
-  description: Norlin comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
-
-# NOTE
-# Norlin theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
+# Blog Section Settings
+blog:
+  enable: true
+  blog_title: Latest
 
 #-------------------------------
-# Footer section
+# Recommended Section Settings
+recommended:
+  enable: true
+  recommended_title: Recommended
+  recommended_tag: "Lifestyle"
+
+#-------------------------------
+# About Section Settings
+about:
+  enable: true
+  about_title: Hello, I’m Azmat
+  about_subtitle: I’m a thinker and storyteller with a passion for exploring the intersection of creativity and technology
+  about_description: |
+    Azmat's mission is rooted in the belief that creativity is a catalyst for connection and change. Through her blog, she seeks to bridge the gap between design, technology, and lifestyle, offering a space where ideas can flourish and innovation can thrive.
+
+    It’s a journey through the thoughts and experiences that shape her world. Giana’s work is driven by a desire to challenge the ordinary and to push the boundaries of what’s possible. She sees every project as an opportunity to learn, grow, and inspire others to do the same. This blog is more than just a collection of posts.
+  about_image: "/images/profile.jpg"
+  about_image_alt: Daryl Mercer
+  about_button_text: Meet our team
+  about_button_link: "/about/"
+
+#-------------------------------
+# Authors Section Settings
+authors:
+  enable: true
+  authors_title: Top authors
+
+#-------------------------------
+# Newsletter Settings
+mailchimp:
+  enable: true
+  mailchimp_title: Stay Inspired Weekly. Your Friendly Dose of Tips & Insights!
+  mailchimp_description: Every Sunday, I deliver actionable tips for enhancing productivity, practical life advice, and top-notch insights gathered from various sources, right to your email inbox.
+  mailchimp_identifier: gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp # Add your MailChimp form identifier. For example - gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp
+  mailchimp_input_text: Your email address
+  mailchimp_button_text: Subscribe
+
+#-------------------------------
+# Footer Settings
+footer_description: Join us on a journey where every post brings a fresh perspective. This blog is for those who are driven by curiosity and a desire to learn.
+
+# Social Links
 social:
+  - {
+      icon: "fa-brands fa-facebook-f",
+      name: "Facebook",
+      link: "https://facebook.com",
+    }
   - {
       icon: "fa-brands fa-x-twitter",
       name: "Twitter",
       link: "https://twitter.com",
     }
   - {
-      icon: "fa-brands fa-github",
-      name: "Github",
-      link: "https://github.com/azmatcodes",
+      icon: "fa-brands fa-tiktok",
+      name: "Tiktok",
+      link: "https://www.tiktok.com",
     }
-  # - {
-  #     icon: "fa-brands fa-facebook-f",
-  #     name: "Facebook",
-  #     link: "https://facebook.com",
-  #   }
-  # - {
-  #     icon: "fa-brands fa-dribbble",
-  #     name: "Dribbble",
-  #     link: "https://dribbble.com",
-  #   }
   - {
       icon: "fa-brands fa-instagram",
       name: "Instagram",
       link: "https://instagram.com",
     }
-  # - {
-  #     icon: "fa-brands fa-pinterest",
-  #     name: "Pinterest",
-  #     link: "https://pinterest.com",
-  #   }
   - {
-      icon: "fa-brands fa-youtube",
-      name: "Youtube",
-      link: "https://youtube.com",
+      icon: "fa-brands fa-mastodon",
+      name: "Mastodon",
+      link: "https://mastodon.social",
     }
-  # - { icon: "fa-brands fa-vimeo-v", name: "Vimeo", link: "https://vimeo.com/" }
+  - {
+      icon: "fa-brands fa-dribbble",
+      name: "Dribbble",
+      link: "https://www.dribbble.com",
+    }
 
-# Example of adding a new link to the footer - {icon: "fa-brands fa-mastodon", name: "Mastodon", link: "https://mastodon.social/"}
+# Example of adding a new link to the footer - {icon: "fa-brands fa-youtube", name: "Youtube", link: https://youtube.com"}
 # Other icons can be found at https://fontawesome.com/icons
 
 #-------------------------------
+# Contact Settings
+contact:
+  form_id: your@email.com # Add your form_id
+  title: Contact Us
+  description: Nomod comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free.
+  button_text: Send now
+
+# NOTE
+# Nomod theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
+
+#-------------------------------
 # Comment Section (Disqus)
-# disqus-identifier: anvodstudio-demo # Add your shortname for Disqus Comment. For example anvodstudio-demo
+disqus_identifier: anvod-studio-test # Add your shortname for Disqus Comment. For example anvod-studio-test
 
 #-------------------------------
 # Google Analytics
-google-analytics: # Add your identifier. For example UA-99631805-1.
-
-#-------------------------------
-# Newsletter
-mailchimp: enable # To enable the mailchimp form, use the value 'enable'. To disable the form, leave the field blank.
-mailchimp-identifier: # Add your MailChimp form identifier. For example - gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp
-mailchimp-button-text: Join
+google_analytics: # Add your GA Tracking Id

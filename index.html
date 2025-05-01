@@ -3,18 +3,14 @@ layout: default
 image: '/images/01.jpg'
 ---
 
-{% include hero.html %}
+{% include section-hero.html %}
 
-{% include featured-posts.html %}
+{% include section-featured-posts.html %}
 
-<div class="container">
-  <div class="row grid">
-    {% if site.posts.size > 0 %}
-      {% for post in paginator.posts %}
-        {% include article-content.html %}
-      {% endfor %}
-    {% endif %}
-  </div>
-</div>
+{% include section-posts.html %}
 
-{% include pagination.html %}
+{% include section-recommended.html %}
+
+{% include section-about.html %}
+
+{% include section-authors.html %}

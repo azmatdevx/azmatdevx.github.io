@@ -5,20 +5,15 @@
       <div class="col col-12">
         <div class="search__box">
           <div class="search__group">
-            <div class="search__close">
-              <i class="fa-solid fa-xmark"></i>
-            </div>
+            <i class="search__close fa-solid fa-xmark"></i>
             <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
-            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search...">
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Search for the blog">
           </div>
+          <div class="search-results-list" id="js-results-container"></div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container">
-    <div class="row search-results-list" id="js-results-container"></div>
-  </div>
-
+  <div class="search__overlay"></div>
 </div>
 <!-- end search -->
