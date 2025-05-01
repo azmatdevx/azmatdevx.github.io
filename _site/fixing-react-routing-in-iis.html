@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Azmat Mungur - Thoughts & Insights</title>
-  <meta name='description' content='A blog to share thoughts and insights to the community.'>
+  <title>Fixing React Routing in IIS</title>
+  <meta name='description' content='Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies...'>
 
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/fixing-react-routing-in-iis">
   <link rel="alternate" type="application/rss+xml" title="Azmat Mungur - Thoughts &amp; Insights" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Azmat Mungur - Thoughts & Insights">
-  <meta name="twitter:description" content="A blog to share thoughts and insights to the community.">
-  <meta name="twitter:image:src" content="http://localhost:4000/images/01.jpg">
+  <meta name="twitter:title" content="Fixing React Routing in IIS – Azmat Mungur - Thoughts & Insights">
+  <meta name="twitter:description" content="Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies...">
+  <meta name="twitter:image:src" content="http://localhost:4000/images/110.jpg">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Azmat Mungur - Thoughts & Insights">
-  <meta property="og:description" content="A blog to share thoughts and insights to the community.">
-  <meta property="og:image" content="http://localhost:4000/images/01.jpg">
+  <meta property="og:title" content="Fixing React Routing in IIS – Azmat Mungur - Thoughts & Insights">
+  <meta property="og:description" content="Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies...">
+  <meta property="og:image" content="http://localhost:4000/images/110.jpg">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@
   
 
 <!-- begin header -->
-<header class="header header--top">
+<header class="header ">
   <div class="container">
     <div class="row">
       <div class="header__inner col col-12">
@@ -154,169 +154,260 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    <!-- begin hero -->
+    <div class="post-head">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col col-6 col-t-12">
+        <div class="image-box">
+          <img
+            class="post-image lazy"
+            data-src="/images/110.jpg"
+            alt="Fixing React Routing in IIS"
+          />
+        </div>
+      </div>
+      
 
-<section class="hero">
-  <div class="hero__inner">
-    <div class="hero__image">
-      <img class="lazy" data-src="/images/419.jpg" alt="Azmat Mungur">
-    </div>
-    <div class="hero__content">
-      <img class="hero__author-image lazy" data-src="/images/profile.jpg" alt="Azmat Mungur's Picture"></a>
-      
-        <h1 class="hero__title">Azmat Mungur</h1>
-      
-      
-        <p class="hero__desc">Performance Engineer & Developer.</p>
-      
+      <div class="col col-6 col-t-12">
+        <div class="post-head__box">
+          <div class="post__meta">
+            <span class="post__minutes">
+                1 min read 
+              <time
+                class="post__date"
+                datetime="2025-05-02T01:00:00+04:00"
+                >May
+                2, 2025</time
+              >
+            </span>
+          </div>
+
+          <h2 class="post__title">Fixing React Routing in IIS</h2>
+
+          <div class="post__bottom">
+            <!-- <div class="post__author">
+              <a href="/about/" aria-label="Azmat Mungur"><img class="post__author-image"
+                  src="/images/profile.jpg" alt="Azmat Mungur's Picture"></a>
+            </div> -->
+
+            <div class="post__bottom-meta">
+              <!-- <a href="/about/" class="post__author-link">Azmat Mungur</a> -->
+              
+              <!-- <span>in</span> -->
+              <span class="post-tags">
+                
+                <a
+                  href="/tags/?tag=work"
+                  class="post__tag"
+                  >Work</a
+                >
+                
+              </span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- begin hero -->
+<!-- begin post -->
+<div class="container">
+  <article class="post animate">
+    <div class="post__content"><p>When deploying a React application on <strong>IIS</strong>, client-side routing using <strong>React Router</strong> may not work as expected. If you navigate directly to a route (e.g., <code class="language-plaintext highlighter-rouge">/viewpage</code>), IIS will attempt to locate a physical file or directory, resulting in a <strong>404 Not Found</strong> error.
+To resolve this, you need to configure IIS to <strong>rewrite all requests</strong> to <code class="language-plaintext highlighter-rouge">index.html</code>, allowing React Router to handle routing.</p>
 
+<h3 id="solution-configure-webconfig-for-iis">Solution: Configure <code class="language-plaintext highlighter-rouge">web.config</code> for IIS</h3>
+
+<p>Create a <code class="language-plaintext highlighter-rouge">web.config</code> file in the <strong>root directory</strong> of your deployed React app (where <code class="language-plaintext highlighter-rouge">index.html</code> is located) and add the following configuration:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;system.webServer&gt;</span>
+    <span class="nt">&lt;rewrite&gt;</span>
+      <span class="nt">&lt;rules&gt;</span>
+        <span class="c">&lt;!-- Redirect all routes to index.html except for actual files and directories --&gt;</span>
+        <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">"React SPA Routing"</span> <span class="na">stopProcessing=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">".*"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;conditions</span> <span class="na">logicalGrouping=</span><span class="s">"MatchAll"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{REQUEST_FILENAME}"</span> <span class="na">matchType=</span><span class="s">"IsFile"</span> <span class="na">negate=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{REQUEST_FILENAME}"</span> <span class="na">matchType=</span><span class="s">"IsDirectory"</span> <span class="na">negate=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/conditions&gt;</span>
+          <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"Rewrite"</span> <span class="na">url=</span><span class="s">"index.html"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/rule&gt;</span>
+      <span class="nt">&lt;/rules&gt;</span>
+    <span class="nt">&lt;/rewrite&gt;</span>
+  <span class="nt">&lt;/system.webServer&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">!</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="steps-to-apply-the-fix"><strong>Steps to Apply the Fix</strong></h4>
+
+<ol>
+  <li>
+    <p><strong>Ensure the IIS URL Rewrite Module is installed</strong></p>
+
+    <ul>
+      <li>If not installed, download it from Microsoft’s official site.</li>
+    </ul>
+  </li>
+  <li><strong>Place the <code class="language-plaintext highlighter-rouge">web.config</code> file in the root of your React build folder</strong> (next to <code class="language-plaintext highlighter-rouge">index.html</code>).</li>
+  <li>
+    <p><strong>Restart IIS</strong></p>
+
+    <ul>
+      <li>Open IIS Manager</li>
+      <li>Restart the <strong>application pool</strong> or the entire <strong>website</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Clear the browser cache and test the routes</strong></p>
+
+    <ul>
+      <li>Try accessing both <code class="language-plaintext highlighter-rouge">/</code> and <code class="language-plaintext highlighter-rouge">/viewpage</code> directly in the browser.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>After applying this configuration, IIS will serve <code class="language-plaintext highlighter-rouge">index.html</code> for all unmatched routes, and React Router will correctly handle navigation.</p>
+</div>
+
+    <div class="post__share">
+      <div class="share__list">
+        <a
+          class="share__link share__facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/fixing-react-routing-in-iis"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          title="Share on Facebook"
+          rel="nofollow"
+          ><i class="fa-brands fa-square-facebook"></i
+        ></a>
+
+        <a
+          class="share__link share__twitter"
+          href="https://twitter.com/intent/tweet?text=Fixing%20React%20Routing%20in%20IIS&url=http://localhost:4000/fixing-react-routing-in-iis"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          title="Share on Twitter"
+          rel="nofollow"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+
+        <!-- <a
+          class="share__link share__pinterest"
+          href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/fixing-react-routing-in-iis&amp;media=http://localhost:4000/images/110.jpg&amp;description=Fixing%20React%20Routing%20in%20IIS"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+          title="Share on Pinterest"
+          rel="nofollow"
+          ><i class="fa-brands fa-pinterest"></i
+        ></a> -->
+      </div>
+    </div>
+
+    <div class="post__navigation">
+      
+      <a class="prev" href="/that-which-does-not-kill-us-makes-us-stronger">
+        <img
+          class="post__nav-image lazy"
+          data-src="/images/110.jpg"
+          alt="That which does not kill us makes us stronger"
+        />
+        <div class="post__nav-box">
+          <div class="post__nav post__nav__prev">
+            <i class="fa-solid fa-arrow-left"></i> Prev Post
+          </div>
+          <h4 class="post__nav__title">That which does not kill us makes us stronger</h4>
+        </div>
+      </a>
+       
+    </div>
+  </article>
+</div>
+<!-- end post -->
+
+   
+
+<div class="container">
+  <div class="related-posts is-related">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <h3 class="related-title">You may also like</h3>
+          <div class="row grid">
+                     
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+                
+                <a class="article__image" href="/that-which-does-not-kill-us-makes-us-stronger">
+                  <img
+                    class="lazy"
+                    data-src="/images/110.jpg"
+                    alt="That which does not kill us makes us stronger"
+                  />
+                </a>
+                
+
+                <div class="article__content">
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                        2 min read 
+                      <time
+                        class="article__date"
+                        datetime="2023-11-15T16:01:35+04:00"
+                        >Nov 15, 2023</time
+                      >
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">That which does not kill us makes us stronger</h2>
+
+                  <p class="article__excerpt">Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies...</p>
+
+                  <div class="article__bottom">
+                    <!-- 
+                    <div class="article__author">
+                      <a href="/about/" aria-label="Azmat Mungur"><img class="article__author-image lazy" data-src="/images/profile.jpg" alt="Azmat Mungur's Picture"></a>
+                    </div>
+                     -->
+
+                    <div class="article__bottom-meta">
+                      <!-- 
+                        <a href="/about/" class="article__author-link">Azmat Mungur</a>
+                       -->
+                      
+                      <!-- <span>in</span> -->
+                      <span class="article-tags">
+                        
+                        <a
+                          href="/tags/?tag=work"
+                          class="article__tag"
+                          >Work</a
+                        >
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+               
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
  
 
-
-<div class="container">
-  <div class="row grid">
-    
-      
-        <div
-  class="article col col-6 col-t-12 grid__post animate article--big"
->
-  <div class="article__inner">
-    
-    <a class="article__image" href="/fixing-react-routing-in-iis">
-      <img
-        class="lazy"
-        data-src="/images/110.jpg"
-        alt="Fixing React Routing in IIS"
-      />
-    </a>
-    
-
-    <div class="article__content">
-      <div class="article__meta">
-        <span class="article__minutes">
-            1 min read 
-          <time
-            class="article__date"
-            datetime="2025-05-02T01:00:00+04:00"
-            >May 2,
-            2025</time
-          >
-        </span>
-      </div>
-
-      <h2 class="article__title">Fixing React Routing in IIS</h2>
-
-      <p class="article__excerpt">Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies...</p>
-
-      <div class="article__bottom">
-        <!-- 
-        <div class="article__author">
-          <a href="/about/" aria-label="Azmat Mungur"><img class="article__author-image lazy" data-src="/images/profile.jpg" alt="Azmat Mungur's Picture"></a>
-        </div>
-         -->
-
-        <div class="article__bottom-meta">
-          <!-- 
-            <a href="/about/" class="article__author-link">Azmat Mungur</a>
-           -->
-          
-          <!-- <span>in</span> -->
-          <span class="article-tags">
-            
-            <a
-              href="/tags/?tag=work"
-              class="article__tag"
-              >Work</a
-            >
-            
-          </span>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-      
-        <div
-  class="article col col-6 col-t-12 grid__post animate article--big"
->
-  <div class="article__inner">
-    
-    <a class="article__image" href="/that-which-does-not-kill-us-makes-us-stronger">
-      <img
-        class="lazy"
-        data-src="/images/110.jpg"
-        alt="That which does not kill us makes us stronger"
-      />
-    </a>
-    
-
-    <div class="article__content">
-      <div class="article__meta">
-        <span class="article__minutes">
-            2 min read 
-          <time
-            class="article__date"
-            datetime="2023-11-15T16:01:35+04:00"
-            >Nov 15,
-            2023</time
-          >
-        </span>
-      </div>
-
-      <h2 class="article__title">That which does not kill us makes us stronger</h2>
-
-      <p class="article__excerpt">Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies...</p>
-
-      <div class="article__bottom">
-        <!-- 
-        <div class="article__author">
-          <a href="/about/" aria-label="Azmat Mungur"><img class="article__author-image lazy" data-src="/images/profile.jpg" alt="Azmat Mungur's Picture"></a>
-        </div>
-         -->
-
-        <div class="article__bottom-meta">
-          <!-- 
-            <a href="/about/" class="article__author-link">Azmat Mungur</a>
-           -->
-          
-          <!-- <span>in</span> -->
-          <span class="article-tags">
-            
-            <a
-              href="/tags/?tag=work"
-              class="article__tag"
-              >Work</a
-            >
-            
-          </span>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-      
-    
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col col-12 load-more">
-      
-      
-      
-    </div>
-  </div>
-</div>
   </main>
   <!-- end content -->
 
@@ -496,7 +587,7 @@
   var base_url = "",
     pagination_next_url = base_url + "/page2",
     pagination_next_page_number = "",
-    pagination_available_pages_number = "1";
+    pagination_available_pages_number = "";
 </script>
 </body>
 
