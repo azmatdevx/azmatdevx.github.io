@@ -6,11 +6,11 @@ location: Mauritius
 website:
 facebook:
 twitter:
-instagram: https://www.instagram.com
+instagram:
 pinterest:
-mastodon: https://mastodon.social
+mastodon:
 youtube:
 tiktok:
 ---
 
-I’m a performance engineer
+I am a performance engineer evolving into an AI-performance engineer, using AI agents and agentic AI to augment the discipline of performance engineering. I write about software performance, cloud systems, debugging, and the practical lessons that come from shipping real projects.

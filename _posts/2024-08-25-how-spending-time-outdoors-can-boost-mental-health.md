@@ -3,6 +3,7 @@ layout: post
 title: How Spending Time Outdoors Can Boost Mental Health
 description: Research shows that exposure to nature can reduce stress, improve mood, and enhance mental clarity. The sights, sounds, and smells of the natural environment have a calming effect on the mind, promoting a sense of peace.
 date: 2024-08-25 15:01:35 +0300
+published: false
 author: richard
 image: '/images/14.jpg'
 tags: [Lifestyle]

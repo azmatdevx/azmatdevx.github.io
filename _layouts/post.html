@@ -66,7 +66,7 @@ layout: default
 
     {% if page.image %}
     <div class="post__image">
-      <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
     </div>
     {% endif %}
     {% endif %}

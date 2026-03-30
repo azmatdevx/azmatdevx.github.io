@@ -3,6 +3,7 @@ layout: post
 title: How to Travel on a Budget and Enjoy Every Moment
 description: Travel doesn’t have to be expensive to be enjoyable. This article provides tips on how to make the most of your trips without breaking the bank, ensuring that you can explore the world and create unforgettable memories on a budget.
 date: 2024-08-18 15:01:35 +0300
+published: false
 author: carla
 image: '/images/02.jpg'
 video_embed: https://www.youtube.com/embed/JsoUDxfx-Yw?si=_JbYlsqfyOiI6zFO

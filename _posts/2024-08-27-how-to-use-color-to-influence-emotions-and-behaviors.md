@@ -3,6 +3,7 @@ layout: post
 title: How to Use Color to Influence Emotions and Behaviors
 description: Color is one of the most influential elements in design, with the power to evoke emotions, create moods, and influence behavior. Understanding color psychology allows designers to make informed decisions about the colors.
 date: 2024-08-27 15:01:35 +0300
+published: false
 author: carla
 image: '/images/13.jpg'
 image_caption: Music and a little bit of coding

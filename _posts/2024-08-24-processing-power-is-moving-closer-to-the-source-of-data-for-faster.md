@@ -3,6 +3,7 @@ layout: post
 title: Processing Power Is Moving Closer to the Source of Data for Faster
 description: This shift allows for faster data processing, reduced latency, and improved efficiency, making it ideal for applications requiring real-time decision-making, such as autonomous vehicles, smart cities, and industrial automation.
 date: 2024-08-24 15:01:35 +0300
+published: false
 author: daniel
 image: '/images/15.jpg'
 tags: [Technology]

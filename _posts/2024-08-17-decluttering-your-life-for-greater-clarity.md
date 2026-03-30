@@ -3,6 +3,7 @@ layout: post
 title: Decluttering Your Life for Greater Clarity
 description: This article delves into the philosophy of minimalism, offering practical steps to declutter both your physical space and your mind for a more meaningful life.
 date: 2024-08-17 15:01:35 +0300
+published: false
 author: abram
 image: '/images/03.jpg'
 video_embed:

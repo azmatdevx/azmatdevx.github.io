@@ -130,6 +130,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   /* =======================
+  // Random Post Image
+  ======================= */
+  const randomPostImage = document.querySelector(".post__image img[data-random-images]");
+
+  if (randomPostImage) {
+    try {
+      const imagePool = JSON.parse(randomPostImage.dataset.randomImages);
+
+      if (Array.isArray(imagePool) && imagePool.length > 0) {
+        const selectedImage = imagePool[Math.floor(Math.random() * imagePool.length)];
+        randomPostImage.setAttribute("data-src", selectedImage);
+      }
+    } catch (error) {
+      console.error("Unable to parse random image pool.", error);
+    }
+  }
+
+
+  /* =======================
   // LazyLoad Images
   ======================= */
   var lazyLoadInstance = new LazyLoad({

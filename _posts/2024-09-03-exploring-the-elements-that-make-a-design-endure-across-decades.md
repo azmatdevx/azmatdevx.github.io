@@ -3,6 +3,7 @@ layout: post
 title: Exploring the Elements That Make a Design Endure Across Decades
 description: Timeless design is a concept that transcends trends, remaining relevant and admired long after its creation. Whether it’s a classic piece of furniture, a building, or a graphic, timeless design is characterized by universal appeal.
 date: 2024-09-03 15:01:35 +0300
+published: false
 author: admin
 image: '/images/11.jpg'
 tags: [Design]

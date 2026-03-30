@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Featured</title>
-  <meta name='description' content='In this section, you'll find the most notable and current highlights from our blog. We've curated the most interesting and important articles that deserve yo...'>
+  <title>OOM Is a Symptom, Not the Problem</title>
+  <meta name='description' content='A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.'>
 
-  <link rel="canonical" href="http://localhost:4000/featured/">
+  <link rel="canonical" href="http://localhost:4000/oom-is-a-symptom-not-the-problem">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Featured – azmat.devx">
-  <meta name="twitter:description" content="In this section, you&apos;ll find the most notable and current highlights from our blog. We&apos;ve curated the most interesting and important articles that deserve your attention.">
-  <meta name="twitter:image:src" content="http://localhost:4000/images/01.jpg">
+  <meta name="twitter:title" content="OOM Is a Symptom, Not the Problem – azmat.devx">
+  <meta name="twitter:description" content="A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.">
+  <meta name="twitter:image:src" content="http://localhost:4000/images/18.jpg">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Featured – azmat.devx">
-  <meta property="og:description" content="In this section, you&apos;ll find the most notable and current highlights from our blog. We&apos;ve curated the most interesting and important articles that deserve your attention.">
-  <meta property="og:image" content="http://localhost:4000/images/01.jpg">
+  <meta property="og:title" content="OOM Is a Symptom, Not the Problem – azmat.devx">
+  <meta property="og:description" content="A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.">
+  <meta property="og:image" content="http://localhost:4000/images/18.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,59 +160,442 @@
 
     <!-- begin content -->
     <main class="content" aria-label="Content">
-      <!-- begin hero -->
-<section class="hero">
-  <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="hero__inner">
-          
-          <h1 class="hero__title">Featured</h1>
-          
-          
-          <p class="hero__description">In this section, you'll find the most notable and current highlights from our blog. We've curated the most interesting and important articles that deserve your attention.</p>
-          
+      <div class="container">
+  <div class="post__head">
+    <div class="post__info">
+
+      <div class="post__head__inner">
+        
+        <div class="post__tags">
+        
+          <a href="/tags#Performance Testing" class="post__tag">Performance Testing</a>
+        
+          <a href="/tags#JVM" class="post__tag">JVM</a>
+        
+          <a href="/tags#Debugging" class="post__tag">Debugging</a>
+        
+        </div>
+        
+        <div class="post__date">•
+          <time datetime="2026-03-30T20:00:00+04:00">Mar 30, 2026</time>
+        </div>
+        <div class="post__minutes">•
+          <span>
+            
+            
+              4 min read
+            
+          </span>
         </div>
       </div>
+
+      <h1 class="post__title">OOM Is a Symptom, Not the Problem</h1>
+
+      
+      <div class="post__description">A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.</div>
+      
+
+      <div class="post__meta">
+        <div class="post__author">
+          
+          
+          <a href="/azmat" class="post__author__image">
+            <img class="lazy" data-src="/images/profile.jpg" alt="Azmat Mungur">
+          </a>
+          <div class="post__author__bottom">
+            <span>Written by</span>
+            <a class="post__author__name" href="/azmat">Azmat Mungur</a>
+          </div>
+          
+        </div>
+
+        <div class="post__share">
+          <div class="post__share">
+  <ul class="share__list list-reset">
+    <li class="share__item">
+      <a class="share__link share__twitter"
+        href="https://twitter.com/intent/tweet?text=OOM%20Is%20a%20Symptom,%20Not%20the%20Problem&url=http://localhost:4000/oom-is-a-symptom-not-the-problem"
+        onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+        title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"></i></a>
+    </li>
+    <li class="share__item">
+      <a class="share__link share__facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/oom-is-a-symptom-not-the-problem"
+        onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+        title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook-f"></i></a>
+    </li>
+    <li class="share__item">
+      <a class="share__link share__pinterest"
+        href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/oom-is-a-symptom-not-the-problem&amp;media=http://localhost:4000/images/18.jpg&amp;description=OOM%20Is%20a%20Symptom,%20Not%20the%20Problem"
+        onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+        title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"></i></a>
+    </li>
+    <li class="share__item">
+      <a class="share__link share__linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/oom-is-a-symptom-not-the-problem&title=OOM%20Is%20a%20Symptom,%20Not%20the%20Problem&summary=A%20structured%20approach%20to%20heap%20analysis%20in%20performance%20testing,%20with%20a%20focus%20on%20distinguishing%20capacity%20limits%20from%20true%20memory%20retention%20issues.&source="
+        onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+        title="Share on LinkedIn" rel="nofollow"><i class="fa-brands fa-linkedin"></i></a>
+    </li>
+  </ul>
+</div>
+        </div>
+      </div>
+
+    </div>
+
+    
+
+    
+    <div class="post__image">
+      <img class="lazy" data-src="/images/18.jpg" alt="OOM Is a Symptom, Not the Problem" data-random-images='[&quot;/images/18.jpg&quot;,&quot;/images/17.jpg&quot;,&quot;/images/16.jpg&quot;,&quot;/images/15.jpg&quot;,&quot;/images/14.jpg&quot;,&quot;/images/13.jpg&quot;]'>
+    </div>
+    
+    
+
+    
+  </div>
+
+  <!-- begin post -->
+  <article class="post">
+    <div class="post__content">
+      
+      <div class="post__toc">
+        <h2 class="post__toc__title">Table of Contents</h2>
+        <ol class="post__toc__list"><li><a href="#session-outcomes">Session Outcomes</a></li><li><a href="#what-usually-happens-when-oom-hits">What Usually Happens When OOM Hits?</a><ol><li><a href="#the-reactive-loop">The Reactive Loop</a></li></ol></li><li><a href="#the-cost-of-reactive-reruns">The Cost of Reactive Reruns</a></li><li><a href="#symptom-vs-root-cause">Symptom vs Root Cause</a><ol><li><a href="#what-we-see">What We See</a></li><li><a href="#what-it-actually-means">What It Actually Means</a></li></ol></li><li><a href="#recognizing-a-retention-pattern">Recognizing a Retention Pattern</a></li><li><a href="#a-repeatable-oom-investigation-framework">A Repeatable OOM Investigation Framework</a></li><li><a href="#applying-the-framework">Applying the Framework</a><ol><li><a href="#step-1-inspect-logs">Step 1: Inspect Logs</a></li><li><a href="#step-2-analyze-the-heap-dump-in-eclipse-mat">Step 2: Analyze the Heap Dump in Eclipse MAT</a></li><li><a href="#step-3-identify-the-root-cause">Step 3: Identify the Root Cause</a></li><li><a href="#step-4-reproduce-in-a-controlled-way">Step 4: Reproduce in a Controlled Way</a></li></ol></li><li><a href="#the-new-standard">The New Standard</a></li><li><a href="#final-thought">Final Thought</a></li></ol>
+      </div>
+      
+
+      <h2 id="session-outcomes">Session Outcomes</h2>
+
+<p>By the end of this session, you should be able to:</p>
+
+<ul>
+  <li>distinguish between capacity issues and memory retention issues</li>
+  <li>recognize memory retention patterns under load</li>
+  <li>analyze a heap dump using Eclipse MAT</li>
+  <li>identify dominant retained objects using the Dominator Tree</li>
+  <li>validate memory fixes through structured reproduction</li>
+</ul>
+
+<blockquote>
+  <p>OOM is not the problem. It is evidence.</p>
+</blockquote>
+
+<h2 id="what-usually-happens-when-oom-hits">What Usually Happens When OOM Hits?</h2>
+
+<p>When performance tests fail with <code class="language-plaintext highlighter-rouge">OutOfMemoryError</code>, the reaction is usually predictable:</p>
+
+<ol>
+  <li>test execution fails</li>
+  <li>JMeter throws OOM</li>
+  <li>a heap dump is generated</li>
+  <li>the rerun starts immediately</li>
+  <li>more agents get added</li>
+  <li>the failure returns</li>
+</ol>
+
+<p>This is understandable under delivery pressure, but it treats capacity instead of cause.</p>
+
+<h3 id="the-reactive-loop">The Reactive Loop</h3>
+
+<p>The pattern usually looks like this:</p>
+
+<ol>
+  <li>OOM occurs</li>
+  <li>someone checks logs quickly</li>
+  <li>the test is rerun</li>
+  <li>more agents are provisioned</li>
+  <li>OOM happens again</li>
+  <li>the loop restarts</li>
+</ol>
+
+<p>The system feels active, but the diagnosis is still missing.</p>
+
+<h2 id="the-cost-of-reactive-reruns">The Cost of Reactive Reruns</h2>
+
+<p>Consider a simple scenario:</p>
+
+<ul>
+  <li>2 performance test executions</li>
+  <li>each rerun 3 times</li>
+  <li>additional test agents provisioned</li>
+  <li>4 engineers pulled into analysis discussions</li>
+</ul>
+
+<p>The impact adds up fast:</p>
+
+<ul>
+  <li>6 total reruns</li>
+  <li>roughly 1.5 hours per execution, or about 9 hours of execution time</li>
+  <li>4 engineers at about 2 hours each, or about 8 engineering hours</li>
+  <li>extra infrastructure cost from more agents and compute</li>
+</ul>
+
+<p>Operationally, that means:</p>
+
+<ul>
+  <li>a longer performance test cycle</li>
+  <li>delayed root cause identification</li>
+  <li>higher delivery risk</li>
+  <li>lower predictability when deadlines tighten</li>
+</ul>
+
+<p>That is easily 17 or more hours spent without getting materially closer to the root cause.</p>
+
+<blockquote>
+  <p>The real cost was not compute. It was delayed insight.</p>
+</blockquote>
+
+<h2 id="symptom-vs-root-cause">Symptom vs Root Cause</h2>
+
+<h3 id="what-we-see">What We See</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">OutOfMemoryError</code></li>
+  <li>JVM crash</li>
+  <li>slowness under load</li>
+</ul>
+
+<h3 id="what-it-actually-means">What It Actually Means</h3>
+
+<ul>
+  <li>objects are being retained</li>
+  <li>the garbage collector cannot reclaim enough memory</li>
+  <li>the heap keeps growing across GC cycles</li>
+</ul>
+
+<p>OOM is a JVM safety mechanism, not a random failure mode.</p>
+
+<blockquote>
+  <p>Scaling increases capacity. It does not eliminate memory retention.</p>
+</blockquote>
+
+<h2 id="recognizing-a-retention-pattern">Recognizing a Retention Pattern</h2>
+
+<p>Under sustained load, retention often shows up as:</p>
+
+<ul>
+  <li>heap usage not dropping after GC cycles</li>
+  <li>memory trending upward across iterations</li>
+  <li>a Dominator Tree showing large retained subtrees</li>
+</ul>
+
+<p>One distinction matters here:</p>
+
+<ul>
+  <li><strong>Shallow heap</strong> is the memory consumed by the object itself</li>
+  <li><strong>Retained heap</strong> is the total memory that would be freed if that object were collected</li>
+</ul>
+
+<p>Retained heap is what exposes the real impact.</p>
+
+<h2 id="a-repeatable-oom-investigation-framework">A Repeatable OOM Investigation Framework</h2>
+
+<p>When OOM occurs, the response should be structured:</p>
+
+<ol>
+  <li>stop blind reruns</li>
+  <li>preserve logs and the heap dump</li>
+  <li>check the memory growth trend</li>
+  <li>analyze the heap in Eclipse MAT</li>
+  <li>identify the dominant retained objects</li>
+  <li>reproduce and validate in a controlled way</li>
+</ol>
+
+<p>The decision flow is simple:</p>
+
+<ol>
+  <li>observe the OOM</li>
+  <li>stop the rerun loop</li>
+  <li>preserve the evidence</li>
+  <li>inspect the memory trend</li>
+  <li>analyze the dump in Eclipse MAT</li>
+  <li>identify what retains memory</li>
+  <li>reproduce and validate</li>
+  <li>if the fix is confirmed, deploy and monitor</li>
+  <li>if not, return to the memory trend and continue the investigation</li>
+</ol>
+
+<p>This turns chaos into a repeatable investigation.</p>
+
+<h2 id="applying-the-framework">Applying the Framework</h2>
+
+<h3 id="step-1-inspect-logs">Step 1: Inspect Logs</h3>
+
+<ul>
+  <li>confirm the memory exhaustion pattern</li>
+  <li>identify repeated allocation behavior</li>
+</ul>
+
+<h3 id="step-2-analyze-the-heap-dump-in-eclipse-mat">Step 2: Analyze the Heap Dump in Eclipse MAT</h3>
+
+<ul>
+  <li>run the Leak Suspects Report</li>
+  <li>inspect the Dominator Tree</li>
+  <li>sort by Retained Heap</li>
+</ul>
+
+<h3 id="step-3-identify-the-root-cause">Step 3: Identify the Root Cause</h3>
+
+<p>Look for:</p>
+
+<ul>
+  <li>the dominant retained object</li>
+  <li>the reference chain preventing GC</li>
+  <li>accumulation that only becomes obvious under load</li>
+</ul>
+
+<h3 id="step-4-reproduce-in-a-controlled-way">Step 4: Reproduce in a Controlled Way</h3>
+
+<ul>
+  <li>single local execution</li>
+  <li>script-based validation</li>
+  <li>manual execution in the application</li>
+  <li>browser DevTools inspection where relevant</li>
+</ul>
+
+<p>The result is a much smaller feedback loop. In the original flow, diagnosis was reduced to a single controlled run instead of repeated blind reruns.</p>
+
+<h2 id="the-new-standard">The New Standard</h2>
+
+<p>Before rerunning a failed performance test, ask:</p>
+
+<ul>
+  <li>have we reviewed the logs?</li>
+  <li>have we analyzed the heap dump?</li>
+  <li>is this capacity or retention?</li>
+  <li>can we reproduce it locally?</li>
+  <li>have we validated the fix?</li>
+</ul>
+
+<blockquote>
+  <p>Diagnose first. Scale later.</p>
+</blockquote>
+
+<h2 id="final-thought">Final Thought</h2>
+
+<p><code class="language-plaintext highlighter-rouge">OutOfMemoryError</code> is not random. It is a signal that something is retaining memory incorrectly.</p>
+
+<p>We do not react our way out of failures. We diagnose our way to clarity.</p>
+
+    </div>
+  </article>
+  <!-- end post -->
+</div>
+
+
+
+<div class="container">
+  <div class="card-author">
+    <div class="card-author__media">
+      
+      <a class="card-author__image" href="/azmat">
+        <img class="lazy" data-src="/images/profile.jpg" alt="Azmat Mungur">
+      </a>
+      
+    </div>
+
+    <div class="card-author__content">
+      <div class="card-author__role">Written by</div>
+        
+        <h3 class="card-author__name"><a href="/azmat" class="card-author__link">Azmat Mungur</a></h3>
+        
+        
+        <p class="card-author__description">I am a performance engineer evolving into an AI-performance engineer, using AI agents and agentic AI to augment the discipline of performance engineering. I write about software performance, cloud systems, debugging, and the practical lessons that come from shipping real projects.
+</p>
+        
     </div>
   </div>
-</section>
-<!-- end hero -->
+</div>
 
-<!-- begin featured-page -->
-<section class="section featured-page animate">
+
+
+
+
+
+
+
+
+
+<!-- begin related posts -->
+<section class="section related-posts is-related">
   <div class="container">
-    <div class="section__inner">
-      <div class="row">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <div class="col col-12">
-          <div class="article article--big">
+    <div class="row">
+
+      <div class="col col-12">
+        <div class="section__inner">
+
+          <div class="section__info">
+            <div class="section__head">
+              <h2 class="section__title">Related</h2>
+              
+              
+                
+                  <a href="/tags#Performance Testing" class="section__link">See all<span> Performance Testing</span></a>
+                
+              
+                
+              
+                
+              
+            
+            </div>
+          </div>
+
+          <div class="row">
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+
+            <div class="col col-4 col-d-6 col-t-12">
+              <div class="article">
   <div class="article__inner">
 
     <div class="article__head">
       
 
       
-      <a href="/the-week-i-finally-measured-where-my-site-was-slow" class="article__image" aria-hidden="true" tabindex="-1">
-        <img class="lazy" data-src="/images/04.jpg" alt="The Week I Finally Measured Where My Site Was Slow">
+      <a href="/what-a-debugging-session-taught-me-about-noise" class="article__image" aria-hidden="true" tabindex="-1">
+        <img class="lazy" data-src="/images/10.jpg" alt="What a Debugging Session Taught Me About Noise">
       </a>
       
     </div>
@@ -223,20 +606,20 @@
         
         <div class="article__tags">
         
-          <a href="/tags#Performance" class="article__tag">Performance</a>
+          <a href="/tags#Debugging" class="article__tag">Debugging</a>
         
           <a href="/tags#Personal Tech" class="article__tag">Personal Tech</a>
         
         </div>
         
-        <span class="article__date">•<time datetime="2025-01-08T09:00:00+04:00">Jan 08, 2025</time></span>
+        <span class="article__date">•<time datetime="2025-02-11T08:15:00+04:00">Feb 11, 2025</time></span>
       </div>
 
       <h2 class="article__title">
-        <a href="/the-week-i-finally-measured-where-my-site-was-slow">The Week I Finally Measured Where My Site Was Slow</a>
+        <a href="/what-a-debugging-session-taught-me-about-noise">What a Debugging Session Taught Me About Noise</a>
       </h2>
 
-      <p class="article__excerpt">I stopped guessing, profiled the obvious bottlenecks, and learned that most of my performance work had been aimed at the wrong layer.</p>
+      <p class="article__excerpt">I went hunting for a deep systems issue and found a simpler explanation hiding behind too much telemetry and not enough judgment.</p>
 
       <div class="article__info">
         
@@ -254,15 +637,35 @@
     </div>
   </div>
 </div>
+            </div>
+
+            
+            
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+          </div>
+
         </div>
-        
-        
-        
       </div>
     </div>
   </div>
 </section>
-<!-- end featured-page -->
+<!-- end related posts -->
+
     </main>
     <!-- end content -->
 

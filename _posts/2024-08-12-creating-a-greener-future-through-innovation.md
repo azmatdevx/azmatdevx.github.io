@@ -3,6 +3,7 @@ layout: post
 title: Creating a Greener Future Through Innovation
 description: As environmental concerns grow, sustainable design is becoming increasingly important. This article examines the principles of  design, the materials and methods used.
 date: 2024-08-12 15:01:35 +0300
+published: false
 author: richard
 image: '/images/06.jpg'
 video_embed: https://www.youtube.com/embed/TumrA0XsX0A?si=CpIToREi6CEh1KFu

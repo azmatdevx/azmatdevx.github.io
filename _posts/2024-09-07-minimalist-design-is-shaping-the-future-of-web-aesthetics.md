@@ -3,6 +3,7 @@ layout: post
 title: Minimalist Design is Shaping the Future of Web Aesthetics
 description: Designers must also consider touch interactions, as mobile users rely on gestures like swiping and tapping to navigate websites and apps. By creating intuitive and responsive designs, businesses can provide a consistent and enjoyable experience.
 date: 2024-09-07 15:01:35 +0300
+published: false
 author: richard
 image: '/images/08.jpg'
 video_embed: https://www.youtube.com/embed/DbpMfyYKY3M

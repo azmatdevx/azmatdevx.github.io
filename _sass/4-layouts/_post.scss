@@ -1,7 +1,7 @@
 /* Post + Page */
 .post__head,
 .page__head {
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto 32px;
 
   @media (max-width: $desktop) {
@@ -282,7 +282,7 @@
 
 .post,
 .page {
-  max-width: 720px;
+  max-width: 840px;
   font-family: $heading-font-family;
   font-size: 20px;
   color: var(--text-color);
@@ -456,7 +456,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
   padding: 48px 0;
 
@@ -541,7 +541,7 @@
 
 /* Disqus */
 .show-comments {
-  max-width: 720px;
+  max-width: 840px;
   padding: 48px 0;
   margin: 0 auto;
   text-align: center;
@@ -565,7 +565,7 @@
 }
 
 .post__comments {
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
 
   &.is-open {
