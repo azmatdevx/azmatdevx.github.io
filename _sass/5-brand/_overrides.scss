@@ -146,18 +146,6 @@ pre {
   @media (max-width: $mobile) { padding: 0 20px; }
 }
 
-/* Animate class (used on sections) */
-.animate {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .4s ease, transform .4s ease;
-
-  &.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* HR brand */
 hr {
   border: none;
