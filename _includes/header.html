@@ -1,61 +1,47 @@
 <!-- begin header -->
 <header class="header" id="top">
-  <div class="container-big">
-    <div class="row">
-      <div class="header__inner col col-12">
+  <div class="header__inner">
 
-        <div class="logo">
-          <a class="logo__link" href="{{ site.baseurl }}/">
-          {% if site.data.settings.logo or site.data.settings.logo_dark %}
-            <img class="logo__image" src="{{ site.baseurl }}{{ site.data.settings.logo }}" alt="{{ site.data.settings.title }}">
-            <img class="logo__image__dark" src="{{ site.baseurl }}{{ site.data.settings.logo_dark }}" alt="{{ site.data.settings.title }}">
-          {% else %}
-            {{ site.data.settings.title }}
-          {% endif %}
-          </a>
-        </div>
-
-        <div class="hamburger">
-          <div></div>
-        </div>
-
-        <nav class="main-nav" aria-label="Main menu">
-          <div class="main-nav__box">
-            <ul class="nav__list list-reset">
-
-              {% for item in site.data.settings.menu_settings.menu_items %}
-              {% if item.submenu %}
-              <li class="nav__item dropdown">
-                <a href="#" class="nav__link dropdown-toggle" tabindex="0">{{ item.title }} <i class="fa-solid fa-chevron-down arrow-down"></i></a>
-                <div class="dropdown-menu">
-                {% for submenu-item in item.submenu %}
-                  <a href="{{ submenu-item.url }}" class="nav__link{% if page.url == submenu-item.url %} active-link{% endif %}">{{submenu-item.title}}</a>
-                {% endfor %}
-                </div>
-              </li>
-              {% else %}
-              <li class="nav__item">
-                <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
-              </li>
-              {% endif %}
-              {% endfor %}
-
-            </ul>
-          </div>
-
-          <div class="nav-button">
-            <div class="search-button">
-              <i class="search-button__icon fa-solid fa-magnifying-glass"></i>
-              <span class="search-button__text">Search</span>
-            </div>
-            {% if site.data.settings.cta_button.enable == true %}
-            <a href="{% if site.data.settings.cta_button.cta_button_link %}{{ site.data.settings.cta_button.cta_button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.cta_button.cta_button_text }}</a>
-            {% endif %}
-          </div>
-        </nav>
-
+    <a class="header__brand" href="{{ site.baseurl }}/">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+        <rect width="52" height="52" rx="13" fill="#0C1018"/>
+        <rect x="20" y="6"  width="12" height="12" rx="3.5" fill="#6DECCA"/>
+        <rect x="12" y="22" width="9"  height="9"  rx="2.5" fill="#28906A"/>
+        <rect x="31" y="22" width="9"  height="9"  rx="2.5" fill="#28906A"/>
+        <rect x="7"  y="37" width="9"  height="9"  rx="2.5" fill="#1A6B48"/>
+        <rect x="36" y="37" width="9"  height="9"  rx="2.5" fill="#1A6B48"/>
+        <rect x="16" y="28" width="6"  height="6"  rx="2"   fill="#3DB38A"/>
+        <rect x="30" y="28" width="6"  height="6"  rx="2"   fill="#3DB38A"/>
+      </svg>
+      <div class="header__wordmark">
+        <span class="header__wordmark-name">Azmat Mungur</span>
+        <span class="header__wordmark-sub">Performance · Software · AI Engineering</span>
       </div>
-    </div>
+    </a>
+
+    <nav class="main-nav" aria-label="Main menu">
+      <ul class="nav__list list-reset">
+        {% for item in site.data.settings.menu_settings.menu_items %}
+        <li class="nav__item">
+          <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="nav__actions">
+        <button class="search-button" aria-label="Search">
+          <i class="search-button__icon fa-solid fa-magnifying-glass"></i>
+        </button>
+        {% if site.data.settings.cta_button.enable == true %}
+        <a href="{% if site.data.settings.cta_button.cta_button_link %}{{ site.data.settings.cta_button.cta_button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.cta_button.cta_button_text }}</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <div></div>
+    </button>
+
   </div>
 </header>
 <!-- end header -->

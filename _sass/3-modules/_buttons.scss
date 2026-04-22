@@ -1,28 +1,43 @@
-/* Buttons */
+/* ── Buttons ── */
 .button {
   display: inline-flex;
   align-items: center;
-  padding: 8px 16px;
-  font-family: $base-font-family;
-  font-size: 16px;
-  line-height: 1.6;
+  gap: 6px;
+  padding: 8px 20px;
+  font-family: var(--mono);
+  font-size: 10px;
   font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   text-decoration: none;
-  border-radius: 60px;
+  border-radius: 6px;
   border: none;
   outline: none;
-  color: var(--button-color);
-  background: var(--button-background-color);
-  transition: $global-transition;
+  color: var(--v-950);
+  background: var(--g-400);
+  transition: background .15s;
   will-change: transform;
   cursor: pointer;
 
   &:hover {
-    color: var(--button-color);
-    background: var(--button-background-hover);
+    color: var(--v-950);
+    background: var(--g-300);
+  }
+
+  &--outline {
+    color: var(--g-400);
+    background: transparent;
+    border: 1px solid var(--g-700);
+
+    &:hover {
+      color: var(--g-300);
+      background: transparent;
+      border-color: var(--g-500);
+    }
   }
 
   &--big {
-    padding: 14px 24px;
+    padding: 12px 28px;
+    font-size: 11px;
   }
 }
