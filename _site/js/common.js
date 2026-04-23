@@ -84,47 +84,64 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
 
-  const searchResultTemplate = '<a href="{url}" class="hero-result__item"><time class="hero-result__date">{date}</time><div class="hero-result__title">{title}</div><div class="hero-result__excerpt">{content}</div></a>';
-  const noResultsText = '<div class="hero-result__empty">No results found</div>';
+  // =====================
+  // Shared Inline Search
+  // =====================
+  let searchData = null;
 
-  // =====================
-  // Hero Inline Search
-  // =====================
-  if (document.getElementById("hero-search-input") && document.getElementById("hero-results-container")) {
-    SimpleJekyllSearch({
-      searchInput: document.getElementById("hero-search-input"),
-      resultsContainer: document.getElementById("hero-results-container"),
-      json: "/search.json",
-      searchResultTemplate,
-      noResultsText,
-      limit: 6
+  function searchPosts(query, limit) {
+    if (!query || !searchData) return [];
+    const q = query.toLowerCase().trim();
+    return searchData
+      .filter(p => (p.title + " " + p.content + " " + (p.tags || "")).toLowerCase().includes(q))
+      .slice(0, limit);
+  }
+
+  function renderResults(posts, container, query) {
+    if (!posts.length) {
+      container.innerHTML = '<div class="hero-result__empty">No results found</div>';
+      return;
+    }
+    container.innerHTML = posts.map(p =>
+      `<a href="${p.url}" class="hero-result__item">
+        <time class="hero-result__date">${p.date}</time>
+        <div class="hero-result__title">${p.title}</div>
+        <div class="hero-result__excerpt">${(p.content || "").substring(0, 100)}…</div>
+      </a>`
+    ).join("");
+  }
+
+  function bindSearch(inputEl, containerEl, limit, onToggle) {
+    if (!inputEl || !containerEl) return;
+    inputEl.addEventListener("input", () => {
+      const q = inputEl.value.trim();
+      if (!q) { containerEl.innerHTML = ""; if (onToggle) onToggle(false); return; }
+      const results = searchPosts(q, limit);
+      renderResults(results, containerEl, q);
+      if (onToggle) onToggle(results.length > 0 || q.length > 0);
     });
   }
 
-  // =====================
-  // Navbar Inline Search
-  // =====================
-  const navSearchInput = document.getElementById("nav-search-input");
-  const navResultsContainer = document.getElementById("nav-results-container");
-
-  if (navSearchInput && navResultsContainer) {
-    SimpleJekyllSearch({
-      searchInput: navSearchInput,
-      resultsContainer: navResultsContainer,
-      json: "/search.json",
-      searchResultTemplate,
-      noResultsText,
-      limit: 5
-    });
-
-    navSearchInput.addEventListener("input", () => {
-      if (navResultsContainer.innerHTML.trim()) {
-        navResultsContainer.classList.add("is-open");
-      } else {
-        navResultsContainer.classList.remove("is-open");
-      }
-    });
-  }
+  fetch("/search.json")
+    .then(r => r.json())
+    .then(data => {
+      searchData = data;
+      bindSearch(
+        document.getElementById("hero-search-input"),
+        document.getElementById("hero-results-container"),
+        6
+      );
+      bindSearch(
+        document.getElementById("nav-search-input"),
+        document.getElementById("nav-results-container"),
+        5,
+        (open) => {
+          const c = document.getElementById("nav-results-container");
+          if (c) c.classList.toggle("is-open", open);
+        }
+      );
+    })
+    .catch(() => {});
 
 
   /* =======================
