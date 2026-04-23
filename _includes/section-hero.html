@@ -12,11 +12,11 @@
       <p class="hero__description">{{ site.data.settings.hero.hero_description }}</p>
       {% endif %}
       <div class="hero__actions">
-        <button class="hero__search" aria-label="Search posts">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <span>Search the journal</span>
-          <span class="hero__search-kbd"><kbd>⌘K</kbd></span>
-        </button>
+        <div class="hero__search-wrap">
+          <i class="fa-solid fa-magnifying-glass hero__search-icon"></i>
+          <input type="text" id="hero-search-input" class="hero__search-input" placeholder="Search the journal…" autocomplete="off" aria-label="Search posts">
+          <div class="hero__search-results" id="hero-results-container"></div>
+        </div>
         <a href="/about/" class="hero__cta">About me <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>

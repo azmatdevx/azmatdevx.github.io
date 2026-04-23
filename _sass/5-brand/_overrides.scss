@@ -48,8 +48,13 @@
 }
 
 .article__excerpt {
-  color: var(--text-alt-color) !important;
+  color: var(--p-800) !important;
   font-weight: 400 !important;
+}
+
+:root[dark] .article__excerpt,
+.dark-mode .article__excerpt {
+  color: var(--v-100) !important;
 }
 
 .article__date time {

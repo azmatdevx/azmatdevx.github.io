@@ -26,15 +26,19 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Theme: default light, restore from localStorage if user previously chose dark -->
+  <!-- Theme: default dark, restore from localStorage if user previously chose light -->
   <script>
     (function() {
       try {
-        if (localStorage.getItem("theme") === "dark") {
+        var stored = localStorage.getItem("theme");
+        if (stored !== "light") {
           document.documentElement.setAttribute("dark", "");
           document.documentElement.classList.add("dark-mode");
         }
-      } catch(e) {}
+      } catch(e) {
+        document.documentElement.setAttribute("dark", "");
+        document.documentElement.classList.add("dark-mode");
+      }
     })();
   </script>
 
