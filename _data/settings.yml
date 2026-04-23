@@ -30,7 +30,7 @@ cta_button:
 # Hero Settings
 hero:
   enable: true
-  hero_title: Personal notes from the engineering bench
+  hero_title: Field notes from the engineering bench
   hero_description: I write about performance tuning, shipping side projects, debugging production issues, and the practical lessons that only show up after real work hits real systems.
 
 hero_authors:

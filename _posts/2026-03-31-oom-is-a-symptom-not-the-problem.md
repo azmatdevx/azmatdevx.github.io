@@ -4,14 +4,14 @@ title: OOM Is a Symptom, Not the Problem
 description: A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.
 date: 2026-03-30 20:00:00 +0400
 author: azmat
-image: '/images/18.jpg'
-random_images:
-  - '/images/18.jpg'
-  - '/images/17.jpg'
-  - '/images/16.jpg'
-  - '/images/15.jpg'
-  - '/images/14.jpg'
-  - '/images/13.jpg'
+image: '/images/oom.png'
+# random_images:
+#   - '/images/18.jpg'
+#   - '/images/17.jpg'
+#   - '/images/16.jpg'
+#   - '/images/15.jpg'
+#   - '/images/14.jpg'
+#   - '/images/13.jpg'
 tags: [Performance Testing, JVM, Debugging]
 featured: false
 toc: true

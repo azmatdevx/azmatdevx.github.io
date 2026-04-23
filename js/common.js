@@ -2,38 +2,18 @@ document.addEventListener("DOMContentLoaded", function() {
   'use strict';
 
   const html = document.querySelector('html'),
-    globalWrap = document.querySelector('.global-wrap'),
-    body = document.querySelector('body'),
     menuToggle = document.querySelector(".hamburger"),
     menuList = document.querySelector(".main-nav"),
-    searchOpenButton = document.querySelectorAll(".search-button, .hero__search"),
-    searchCloseIcon = document.querySelector(".search__close"),
-    searchOverlay = document.querySelector(".search__overlay"),
-    searchInput = document.querySelector(".search__text"),
-    search = document.querySelector(".search"),
     toggleTheme = document.querySelector(".toggle-theme"),
     btnScrollToTop = document.querySelector(".top");
 
 
   /* =======================================================
-  // Menu + Search + Theme Switcher
+  // Menu + Theme Switcher
   ======================================================= */
   menuToggle.addEventListener("click", () => {
     menu();
   });
-
-  searchOpenButton.forEach(button => {
-    button.addEventListener("click", searchOpen);
-  });
-
-  searchCloseIcon.addEventListener("click", () => {
-    searchClose();
-  });
-
-  searchOverlay.addEventListener("click", () => {
-    searchClose();
-  });
-
 
   // Menu
   function menu() {
@@ -41,28 +21,21 @@ document.addEventListener("DOMContentLoaded", function() {
     menuList.classList.toggle("is-visible");
   }
 
+  // Close search results when clicking outside
+  document.addEventListener("click", (e) => {
+    const heroWrap = document.querySelector(".hero__search-wrap");
+    if (heroWrap && !heroWrap.contains(e.target)) {
+      const results = document.getElementById("hero-results-container");
+      if (results) results.innerHTML = "";
+    }
 
-  // Search
-  function searchOpen() {
-    search.classList.add("is-visible");
-    body.classList.add("search-is-visible");
-    globalWrap.classList.add("is-active");
-    menuToggle.classList.remove("is-open");
-    menuList.classList.remove("is-visible");
-    setTimeout(function () {
-      searchInput.focus();
-    }, 250);
-  }
-
-  function searchClose() {
-    search.classList.remove("is-visible");
-    body.classList.remove("search-is-visible");
-    globalWrap.classList.remove("is-active");
-  }
-
-  document.addEventListener('keydown', function(e){
-    if (e.key == 'Escape') {
-      searchClose();
+    const navWrap = document.querySelector(".nav__search-wrap");
+    if (navWrap && !navWrap.contains(e.target)) {
+      const results = document.getElementById("nav-results-container");
+      if (results) {
+        results.innerHTML = "";
+        results.classList.remove("is-open");
+      }
     }
   });
 
@@ -77,11 +50,11 @@ document.addEventListener("DOMContentLoaded", function() {
   function darkMode() {
     if (html.classList.contains('dark-mode')) {
       html.classList.remove('dark-mode');
-      localStorage.removeItem("theme");
+      localStorage.setItem("theme", "light");
       document.documentElement.removeAttribute("dark");
     } else {
       html.classList.add('dark-mode');
-      localStorage.setItem("theme", "dark");
+      localStorage.removeItem("theme");
       document.documentElement.setAttribute("dark", "");
     }
   };
@@ -111,16 +84,47 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
 
+  const searchResultTemplate = '<a href="{url}" class="hero-result__item"><time class="hero-result__date">{date}</time><div class="hero-result__title">{title}</div><div class="hero-result__excerpt">{content}</div></a>';
+  const noResultsText = '<div class="hero-result__empty">No results found</div>';
+
   // =====================
-  // Simple Jekyll Search
+  // Hero Inline Search
   // =====================
-  SimpleJekyllSearch({
-    searchInput: document.getElementById("js-search-input"),
-    resultsContainer: document.getElementById("js-results-container"),
-    json: "/search.json",
-    searchResultTemplate: '<div class="search-results__item"><a href="{url}" class="search-results__image" style="background-image: url({image})"></a> <a href="{url}" class="search-results__link"><time class="search-results-date" datetime="{date}">{date}</time><div class="search-results-title">{title}</div><div class="search-results-description">{content}</div></a></div>',
-    noResultsText: '<div class="no-results">No results found...</div>'
-  });
+  if (document.getElementById("hero-search-input") && document.getElementById("hero-results-container")) {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById("hero-search-input"),
+      resultsContainer: document.getElementById("hero-results-container"),
+      json: "/search.json",
+      searchResultTemplate,
+      noResultsText,
+      limit: 6
+    });
+  }
+
+  // =====================
+  // Navbar Inline Search
+  // =====================
+  const navSearchInput = document.getElementById("nav-search-input");
+  const navResultsContainer = document.getElementById("nav-results-container");
+
+  if (navSearchInput && navResultsContainer) {
+    SimpleJekyllSearch({
+      searchInput: navSearchInput,
+      resultsContainer: navResultsContainer,
+      json: "/search.json",
+      searchResultTemplate,
+      noResultsText,
+      limit: 5
+    });
+
+    navSearchInput.addEventListener("input", () => {
+      if (navResultsContainer.innerHTML.trim()) {
+        navResultsContainer.classList.add("is-open");
+      } else {
+        navResultsContainer.classList.remove("is-open");
+      }
+    });
+  }
 
 
   /* =======================

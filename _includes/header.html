@@ -30,9 +30,11 @@
 
     <!-- Right: Actions (search, theme toggle, CTA, hamburger) -->
     <div class="nav__actions">
-      <button class="search-button" aria-label="Search">
-        <i class="search-button__icon fa-solid fa-magnifying-glass"></i>
-      </button>
+      <div class="nav__search-wrap">
+        <i class="fa-solid fa-magnifying-glass nav__search-icon"></i>
+        <input type="text" id="nav-search-input" class="nav__search-input" placeholder="Search the journal..." autocomplete="off" aria-label="Search posts">
+        <div class="nav__search-results" id="nav-results-container"></div>
+      </div>
       <button class="toggle-theme nav__theme-toggle" aria-label="Toggle dark mode">
         <i class="fa-solid fa-moon theme-icon--dark"></i>
         <i class="fa-solid fa-sun theme-icon--light"></i>
@@ -49,4 +51,3 @@
 </header>
 <!-- end header -->
 
-{% include search.html %}
