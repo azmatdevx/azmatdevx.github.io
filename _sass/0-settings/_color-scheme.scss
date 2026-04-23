@@ -41,13 +41,78 @@
   --rust:       #C4441E;
   --rust-light: #FAF0EC;
 
-  /* ── SEMANTIC MAPPINGS ── */
+  /* ── SEMANTIC MAPPINGS — LIGHT MODE (default) ── */
+  --primary-color:     var(--g-500);
+  --secondary-color:   var(--g-900);
+  --accent-color:      var(--g-400);
+
+  --background-color:       var(--p-50);
+  --background-alt-color:   var(--p-100);
+  --background-alt-color-2: var(--p-200);
+
+  --text-color:     var(--p-800);
+  --text-alt-color: var(--p-600);
+
+  --heading-font-color: var(--p-950);
+
+  --link-color:       var(--g-600);
+  --link-color-hover: var(--g-500);
+
+  --button-color:                #ffffff;
+  --button-background-color:     var(--g-500);
+  --button-background-hover:     var(--g-400);
+
+  --border-color:     var(--p-300);
+  --border-alt-color: var(--p-200);
+
+  --th-color: var(--p-200);
+  --tr-color: var(--p-100);
+
+  --callout-note:      rgba(61,179,138,0.08);
+  --callout-tip:       rgba(26,107,72,0.1);
+  --callout-important: rgba(61,179,138,0.06);
+  --callout-warning:   rgba(196,68,30,0.08);
+  --callout-caution:   rgba(196,68,30,0.1);
+
+  --syntax-highlighting-background: var(--p-100);
+
+  /* ── BRAND TOKENS ── */
+  --mono:  'Geist Mono', 'Courier New', monospace;
+  --sans:  'Geist', system-ui, -apple-system, sans-serif;
+
+  --nav-height: 60px;
+  --brand-green:      var(--g-600);
+  --brand-green-hi:   var(--g-400);
+  --brand-green-apex: var(--g-300);
+
+  /* Nav-specific tokens (light defaults) */
+  --nav-bg:         rgba(248, 247, 242, 0.92);
+  --nav-border:     var(--p-300);
+  --nav-text:       var(--p-700);
+  --nav-text-hover: var(--g-600);
+  --nav-active:     var(--g-600);
+
+  /* Hero overlay (light) */
+  --hero-overlay: rgba(248, 247, 242, 0.55);
+
+  /* Code/pre background */
+  --code-bg:     rgba(26, 107, 72, 0.06);
+  --code-border: rgba(26, 107, 72, 0.12);
+  --code-color:  var(--g-700);
+  --pre-bg:      var(--p-100);
+  --pre-border:  var(--p-300);
+  --pre-color:   var(--p-900);
+}
+
+/* ── DARK MODE OVERRIDES ── */
+:root[dark],
+.dark-mode {
   --primary-color:     var(--g-400);
   --secondary-color:   var(--g-50);
   --accent-color:      var(--g-300);
 
-  --background-color:     var(--v-950);
-  --background-alt-color: var(--v-900);
+  --background-color:       var(--v-950);
+  --background-alt-color:   var(--v-900);
   --background-alt-color-2: var(--v-800);
 
   --text-color:     var(--v-100);
@@ -68,23 +133,23 @@
   --th-color: var(--v-800);
   --tr-color: var(--v-900);
 
-  --callout-note:      rgba(61,179,138,0.08);
-  --callout-tip:       rgba(26,107,72,0.1);
-  --callout-important: rgba(61,179,138,0.06);
-  --callout-warning:   rgba(196,68,30,0.08);
-  --callout-caution:   rgba(196,68,30,0.1);
-
   --syntax-highlighting-background: var(--v-900);
 
-  /* ── BRAND TOKENS ── */
-  --mono:  'DM Mono', 'Courier New', monospace;
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans:  'DM Sans', system-ui, sans-serif;
+  /* Nav-specific tokens (dark) */
+  --nav-bg:         rgba(6, 8, 16, 0.92);
+  --nav-border:     var(--v-700);
+  --nav-text:       var(--v-300);
+  --nav-text-hover: var(--g-400);
+  --nav-active:     var(--g-400);
 
-  --nav-height: 56px;
-  --brand-green: var(--g-600);
-  --brand-green-hi: var(--g-300);
-  --brand-green-apex: var(--g-300);
+  /* Hero overlay (dark) */
+  --hero-overlay: rgba(6, 8, 16, 0.6);
+
+  /* Code/pre */
+  --code-bg:     rgba(61, 179, 138, 0.06);
+  --code-border: rgba(61, 179, 138, 0.12);
+  --code-color:  var(--g-300);
+  --pre-bg:      var(--v-900);
+  --pre-border:  var(--v-700);
+  --pre-color:   var(--v-100);
 }
-
-/* Always-dark: no light mode overrides needed */

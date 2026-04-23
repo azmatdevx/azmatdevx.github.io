@@ -2,8 +2,9 @@
 <header class="header" id="top">
   <div class="header__inner">
 
+    <!-- Left: Brand -->
     <a class="header__brand" href="{{ site.baseurl }}/">
-      <svg width="36" height="36" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+      <svg width="32" height="32" viewBox="0 0 52 52" fill="none" aria-hidden="true">
         <rect width="52" height="52" rx="13" fill="#0C1018"/>
         <rect x="20" y="6"  width="12" height="12" rx="3.5" fill="#6DECCA"/>
         <rect x="12" y="22" width="9"  height="9"  rx="2.5" fill="#28906A"/>
@@ -13,13 +14,11 @@
         <rect x="16" y="28" width="6"  height="6"  rx="2"   fill="#3DB38A"/>
         <rect x="30" y="28" width="6"  height="6"  rx="2"   fill="#3DB38A"/>
       </svg>
-      <div class="header__wordmark">
-        <span class="header__wordmark-name">Azmat Mungur</span>
-        <span class="header__wordmark-sub">Performance · Software · AI Engineering</span>
-      </div>
+      <span class="header__wordmark-name">Azmat Mungur</span>
     </a>
 
-    <nav class="main-nav" aria-label="Main menu">
+    <!-- Center: Nav list (desktop only, collapses to dropdown on mobile) -->
+    <nav class="main-nav" id="main-nav" aria-label="Main menu">
       <ul class="nav__list list-reset">
         {% for item in site.data.settings.menu_settings.menu_items %}
         <li class="nav__item">
@@ -27,20 +26,24 @@
         </li>
         {% endfor %}
       </ul>
-
-      <div class="nav__actions">
-        <button class="search-button" aria-label="Search">
-          <i class="search-button__icon fa-solid fa-magnifying-glass"></i>
-        </button>
-        {% if site.data.settings.cta_button.enable == true %}
-        <a href="{% if site.data.settings.cta_button.cta_button_link %}{{ site.data.settings.cta_button.cta_button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.cta_button.cta_button_text }}</a>
-        {% endif %}
-      </div>
     </nav>
 
-    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <div></div>
-    </button>
+    <!-- Right: Actions (search, theme toggle, CTA, hamburger) -->
+    <div class="nav__actions">
+      <button class="search-button" aria-label="Search">
+        <i class="search-button__icon fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="toggle-theme nav__theme-toggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon theme-icon--dark"></i>
+        <i class="fa-solid fa-sun theme-icon--light"></i>
+      </button>
+      {% if site.data.settings.cta_button.enable == true %}
+      <a href="{% if site.data.settings.cta_button.cta_button_link %}{{ site.data.settings.cta_button.cta_button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.cta_button.cta_button_text }}</a>
+      {% endif %}
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <div></div>
+      </button>
+    </div>
 
   </div>
 </header>

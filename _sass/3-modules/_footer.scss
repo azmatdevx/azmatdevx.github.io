@@ -1,29 +1,33 @@
 /* ── Footer ── */
 .footer {
   margin-top: 80px;
-  border-top: 1px solid var(--v-800);
-  background: #030408;
+  border-top: 1px solid var(--border-color);
+  background: var(--background-alt-color);
 
   .footer__inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 48px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 56px 32px 40px;
+    padding: 56px 32px 48px;
 
-    @media (max-width: $tablet) {
-      flex-direction: column;
+    @media (max-width: $desktop) {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
       gap: 32px;
-      padding: 40px 24px 32px;
+      padding: 40px 20px 32px;
     }
   }
 }
 
 /* Brand block */
 .footer__brand {
-  max-width: 320px;
+  min-width: 0;
 }
 
 .footer__brand-link {
@@ -31,7 +35,7 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .footer__wordmark {
@@ -42,67 +46,70 @@
 }
 
 .footer__wordmark-name {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--p-50);
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-font-color);
   letter-spacing: -0.02em;
 }
 
 .footer__wordmark-sub {
   font-family: var(--mono);
-  font-size: 8px;
-  color: var(--g-500);
-  letter-spacing: 0.08em;
+  font-size: 9px;
+  color: var(--g-600);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+
+  :root[dark] &, .dark-mode & { color: var(--g-500); }
 }
 
 .footer__desc {
+  font-family: var(--sans);
   font-size: 13px;
-  color: var(--v-300);
+  color: var(--text-alt-color);
   line-height: 1.65;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 0;
+  max-width: 280px;
 }
 
 /* Nav columns */
-.footer__nav {
-  display: flex;
-  gap: 48px;
-  flex-shrink: 0;
-
-  @media (max-width: $mobile) { gap: 32px; }
-}
-
 .footer__nav-col {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 0;
 }
 
 .footer__nav-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--v-400);
-  letter-spacing: 0.12em;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--heading-font-color);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .footer__nav-link {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--v-300);
-  letter-spacing: 0.04em;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-alt-color);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 8px;
   transition: color .15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-  &:hover { color: var(--g-400); }
+  &:hover { color: var(--g-600); }
 
-  i { font-size: 12px; }
+  :root[dark] &:hover, .dark-mode &:hover { color: var(--g-400); }
+
+  i { font-size: 13px; flex-shrink: 0; }
 }
 
 /* Bottom bar */
@@ -110,25 +117,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px 32px;
-  border-top: 1px solid var(--v-800);
+  border-top: 1px solid var(--border-color);
 
-  @media (max-width: $tablet) { padding: 16px 24px; }
+  @media (max-width: $mobile) { padding: 16px 20px; }
 }
 
 .footer__copy {
   font-family: var(--mono);
-  font-size: 10px;
-  color: var(--v-500);
-  letter-spacing: 0.06em;
+  font-size: 11px;
+  color: var(--text-alt-color);
+  letter-spacing: 0.04em;
 }
 
 .footer__top {
   font-family: var(--mono);
-  font-size: 9px;
-  color: var(--v-400);
+  font-size: 10px;
+  color: var(--text-alt-color);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: none;
@@ -140,5 +147,7 @@
   transition: color .15s;
   padding: 0;
 
-  &:hover { color: var(--g-400); }
+  &:hover { color: var(--g-600); }
+
+  :root[dark] &:hover, .dark-mode &:hover { color: var(--g-400); }
 }

@@ -2,9 +2,10 @@
 <footer class="footer">
   <div class="footer__inner">
 
+    <!-- Col 1: Brand -->
     <div class="footer__brand">
       <a href="{{ site.baseurl }}/" class="footer__brand-link">
-        <svg width="40" height="40" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 52 52" fill="none" aria-hidden="true">
           <rect width="52" height="52" rx="13" fill="#0C1018"/>
           <rect x="20" y="6"  width="12" height="12" rx="3.5" fill="#6DECCA"/>
           <rect x="12" y="22" width="9"  height="9"  rx="2.5" fill="#28906A"/>
@@ -16,7 +17,7 @@
         </svg>
         <div class="footer__wordmark">
           <span class="footer__wordmark-name">Azmat Mungur</span>
-          <span class="footer__wordmark-sub">Performance · Software · AI Engineering</span>
+          <span class="footer__wordmark-sub">Performance · Software · AI</span>
         </div>
       </a>
       {% if site.data.settings.footer_description %}
@@ -24,27 +25,36 @@
       {% endif %}
     </div>
 
-    <div class="footer__nav">
-      {% if site.data.settings.menu_settings.menu_items %}
-      <div class="footer__nav-col">
-        <span class="footer__nav-label">Pages</span>
-        {% for item in site.data.settings.menu_settings.menu_items %}
-        <a class="footer__nav-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      {% if site.data.settings.social %}
-      <div class="footer__nav-col">
-        <span class="footer__nav-label">Links</span>
-        {% for social in site.data.settings.social %}
-        <a class="footer__nav-link" href="{{ social.link }}" target="_blank" rel="noopener" aria-label="{{ social.name }}">
-          <i class="{{ social.icon }}"></i> {{ social.name }}
-        </a>
-        {% endfor %}
-      </div>
-      {% endif %}
+    <!-- Col 2: Navigation -->
+    {% if site.data.settings.menu_settings.menu_items %}
+    <div class="footer__nav-col">
+      <span class="footer__nav-label">Navigation</span>
+      {% for item in site.data.settings.menu_settings.menu_items %}
+      <a class="footer__nav-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {% endfor %}
     </div>
+    {% endif %}
+
+    <!-- Col 3: Topics -->
+    <div class="footer__nav-col">
+      <span class="footer__nav-label">Topics</span>
+      {% assign sorted_tags = site.tags | sort %}
+      {% for tag in sorted_tags limit:6 %}
+      <a class="footer__nav-link" href="/tags/#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
+      {% endfor %}
+    </div>
+
+    <!-- Col 4: Connect -->
+    {% if site.data.settings.social %}
+    <div class="footer__nav-col">
+      <span class="footer__nav-label">Connect</span>
+      {% for social in site.data.settings.social %}
+      <a class="footer__nav-link" href="{{ social.link }}" target="_blank" rel="noopener" aria-label="{{ social.name }}">
+        <i class="{{ social.icon }}"></i>{{ social.name }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
 
   </div>
 

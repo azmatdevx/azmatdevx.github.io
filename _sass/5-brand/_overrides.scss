@@ -1,47 +1,164 @@
 /* ── Brand Overrides ── */
 
+/* ── Logo: light vs dark mode ── */
+/* Light mode: paper-toned badge */
+.header__brand svg rect:first-child,
+.footer__brand-link svg rect:first-child {
+  fill: var(--p-200);
+}
+/* Light mode: brighten the mint top rect so it's visible on light bg */
+.header__brand svg rect:nth-child(2),
+.footer__brand-link svg rect:nth-child(2) {
+  fill: var(--g-500);
+}
+/* Dark mode: restore original dark badge */
+:root[dark] .header__brand svg rect:first-child,
+:root[dark] .footer__brand-link svg rect:first-child,
+.dark-mode  .header__brand svg rect:first-child,
+.dark-mode  .footer__brand-link svg rect:first-child {
+  fill: #0C1018;
+}
+:root[dark] .header__brand svg rect:nth-child(2),
+:root[dark] .footer__brand-link svg rect:nth-child(2),
+.dark-mode  .header__brand svg rect:nth-child(2),
+.dark-mode  .footer__brand-link svg rect:nth-child(2) {
+  fill: #6DECCA;
+}
+
+/* ── Article cards: light-mode color fixes ── */
+.article__image {
+  background: var(--background-alt-color-2) !important;
+  border-color: var(--border-color) !important;
+}
+
+.article__title {
+  font-family: var(--sans) !important;
+  font-weight: 600 !important;
+
+  a {
+    color: var(--heading-font-color) !important;
+
+    &:hover { color: var(--g-600) !important; }
+  }
+}
+
+:root[dark] .article__title a,
+.dark-mode  .article__title a {
+  &:hover { color: var(--g-300) !important; }
+}
+
+.article__excerpt {
+  color: var(--text-alt-color) !important;
+  font-weight: 400 !important;
+}
+
+.article__date time {
+  color: var(--text-alt-color) !important;
+}
+
+.article__author__image {
+  background: var(--background-alt-color-2) !important;
+  border-color: var(--border-color) !important;
+}
+
+.article__info__bottom {
+  span { color: var(--text-alt-color) !important; }
+
+  .article__author__name {
+    color: var(--text-color) !important;
+    &:hover { color: var(--g-600) !important; }
+  }
+}
+
+:root[dark] .article__info__bottom .article__author__name,
+.dark-mode  .article__info__bottom .article__author__name {
+  color: var(--v-200) !important;
+  &:hover { color: var(--g-400) !important; }
+}
+
+/* ── Section headers ── */
+.section__info {
+  border-bottom-color: var(--border-color) !important;
+}
+
+.section__title {
+  font-family: var(--sans) !important;
+  font-weight: 700 !important;
+  color: var(--g-600) !important;
+
+  em { color: var(--g-500); }
+
+  a {
+    color: inherit !important;
+    &:hover { color: var(--g-500) !important; }
+  }
+}
+
+:root[dark] .section__title,
+.dark-mode  .section__title {
+  color: var(--g-400) !important;
+
+  em { color: var(--g-300); }
+
+  a:hover { color: var(--g-300) !important; }
+}
+
+/* Article tag colors — light mode contrast */
+.article__tag {
+  color: var(--g-700) !important;
+  :root[dark] &, .dark-mode & { color: var(--g-400) !important; }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--v-900); }
-::-webkit-scrollbar-thumb { background: var(--v-600); border-radius: 2px; }
+::-webkit-scrollbar-track { background: var(--background-alt-color); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
 
 /* Selection */
 ::selection {
-  background: rgba(61, 179, 138, 0.2);
-  color: var(--g-100);
+  background: rgba(40, 144, 106, 0.18);
+  color: var(--heading-font-color);
 }
 
 /* Links in prose */
 .post__content a:not([class]),
 .page__content a:not([class]) {
-  color: var(--g-400);
+  color: var(--g-600);
   text-decoration: underline;
-  text-decoration-color: rgba(61, 179, 138, 0.3);
+  text-decoration-color: rgba(40, 144, 106, 0.3);
   text-underline-offset: 2px;
   transition: color .15s;
 
+  &:hover { color: var(--g-500); }
+}
+
+:root[dark] .post__content a:not([class]),
+:root[dark] .page__content a:not([class]),
+.dark-mode  .post__content a:not([class]),
+.dark-mode  .page__content a:not([class]) {
+  color: var(--g-400);
   &:hover { color: var(--g-300); }
 }
 
 /* Blockquote brand treatment */
 blockquote {
-  border-left: 3px solid var(--g-600);
-  background: rgba(10, 46, 28, 0.2);
+  border-left: 3px solid var(--g-500);
+  background: rgba(40, 144, 106, 0.05);
   border-radius: 0 8px 8px 0;
   padding: 20px 24px;
   margin: 32px 0;
   text-align: left;
-  font-size: 16px;
-  color: var(--v-200);
+  font-size: 17px;
+  color: var(--text-color);
 }
 
 /* Code inline */
 code:not(pre code) {
   font-family: var(--mono);
   font-size: 0.85em;
-  color: var(--g-300);
-  background: rgba(61, 179, 138, 0.06);
-  border: 1px solid rgba(61, 179, 138, 0.12);
+  color: var(--code-color);
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
   border-radius: 4px;
   padding: 1px 6px;
 }
@@ -50,23 +167,23 @@ code:not(pre code) {
 pre {
   font-family: var(--mono);
   font-size: 13px;
-  background: var(--v-900) !important;
-  border: 1px solid var(--v-700);
-  border-radius: 8px;
+  background: var(--pre-bg) !important;
+  border: 1px solid var(--pre-border);
+  border-radius: 10px;
   padding: 20px 24px;
   overflow-x: auto;
-  color: var(--v-100);
+  color: var(--pre-color);
   line-height: 1.65;
 }
 
 /* Post title */
 .post__title,
 .page__title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 44px;
-  font-weight: 400;
-  color: var(--p-50);
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--heading-font-color);
+  letter-spacing: -0.03em;
   line-height: 1.1;
 
   @media (max-width: $tablet) { font-size: 32px; }
@@ -76,9 +193,9 @@ pre {
 .post__description,
 .page__description {
   font-family: var(--sans);
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--v-200);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-alt-color);
   line-height: 1.65;
 }
 
@@ -88,11 +205,20 @@ pre {
   font-size: 9px !important;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--g-600) !important;
+  background: rgba(40, 144, 106, 0.07) !important;
+  border: 1px solid rgba(40, 144, 106, 0.15) !important;
+  border-radius: 5px !important;
+  padding: 4px 10px !important;
+
+  &:hover { background: rgba(40, 144, 106, 0.12) !important; }
+}
+
+:root[dark] .post__tag,
+.dark-mode  .post__tag {
   color: var(--g-400) !important;
   background: rgba(61, 179, 138, 0.08) !important;
-  border: 1px solid rgba(61, 179, 138, 0.15) !important;
-  border-radius: 4px !important;
-  padding: 4px 10px !important;
+  border-color: rgba(61, 179, 138, 0.15) !important;
 
   &:hover { background: rgba(61, 179, 138, 0.14) !important; }
 }
@@ -102,24 +228,30 @@ pre {
   width: 36px !important;
   height: 36px !important;
   border-radius: 8px !important;
-  background: var(--v-800) !important;
-  border: 1px solid var(--v-700);
-  color: var(--v-300) !important;
+  background: var(--background-alt-color) !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-alt-color) !important;
   font-size: 14px !important;
   transition: border-color .15s, color .15s !important;
 
   &:hover {
-    background: var(--v-800) !important;
-    border-color: var(--g-700) !important;
-    color: var(--g-400) !important;
+    background: var(--background-alt-color) !important;
+    border-color: var(--g-500) !important;
+    color: var(--g-600) !important;
   }
 }
 
 /* Author card */
 .post__author__name {
-  color: var(--g-400) !important;
+  color: var(--g-600) !important;
   text-decoration: none !important;
 
+  &:hover { color: var(--g-500) !important; }
+}
+
+:root[dark] .post__author__name,
+.dark-mode  .post__author__name {
+  color: var(--g-400) !important;
   &:hover { color: var(--g-300) !important; }
 }
 
@@ -133,13 +265,13 @@ pre {
 /* Tag pills on tags page */
 .tag__name {
   font-family: var(--mono);
-  color: var(--p-50);
+  color: var(--heading-font-color);
 }
 
 /* Container max-width alignment */
 .container,
 .container-big {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
 
@@ -150,7 +282,7 @@ pre {
 hr {
   border: none;
   height: 1px;
-  background: var(--v-800);
+  background: var(--border-color);
   margin: 48px 0;
 }
 
@@ -160,24 +292,29 @@ table th {
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--g-500);
-  background: var(--v-800);
-  border-color: var(--v-700) !important;
+  color: var(--g-600);
+  background: var(--th-color);
+  border-color: var(--border-color) !important;
 }
 
 table tr {
-  background: var(--v-900);
-  border-color: var(--v-800) !important;
+  background: var(--tr-color);
+  border-color: var(--border-alt-color) !important;
 }
 
 table tr:nth-child(even) {
-  background: var(--v-800);
+  background: var(--background-alt-color-2);
 }
 
-/* Section subscribe (hidden by default, style if shown) */
+:root[dark] table th,
+.dark-mode  table th {
+  color: var(--g-500);
+}
+
+/* Section subscribe */
 .section-subscribe {
-  background: var(--v-900);
-  border: 1px solid var(--v-700);
+  background: var(--background-alt-color);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 40px;
 }
@@ -187,15 +324,15 @@ table tr:nth-child(even) {
 .page {
   font-family: var(--sans);
   font-size: 17px;
-  font-weight: 300;
-  color: var(--v-100);
-  line-height: 1.8;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.85;
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--serif);
-    font-weight: 400;
-    color: var(--p-50);
-    letter-spacing: -0.02em;
+    font-family: var(--sans);
+    font-weight: 700;
+    color: var(--heading-font-color);
+    letter-spacing: -0.025em;
     margin-top: 2em;
     margin-bottom: 0.5em;
   }
@@ -213,15 +350,15 @@ table tr:nth-child(even) {
 .post__image,
 .page__image {
   border-radius: 10px !important;
-  border: 1px solid var(--v-700);
+  border: 1px solid var(--border-color);
 }
 
 /* ── ToC brand ── */
 .post__toc,
 .page__toc {
-  background: var(--v-900) !important;
-  border: 1px solid var(--v-700);
-  border-left: 3px solid var(--g-600);
+  background: var(--background-alt-color) !important;
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--g-500);
   border-radius: 0 8px 8px 0 !important;
 
   .post__toc__title,
@@ -230,8 +367,8 @@ table tr:nth-child(even) {
     font-size: 9px !important;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--g-500) !important;
-    border-bottom-color: var(--v-700) !important;
+    color: var(--g-600) !important;
+    border-bottom-color: var(--border-color) !important;
     margin-bottom: 16px !important;
     padding-bottom: 12px !important;
   }
@@ -240,23 +377,37 @@ table tr:nth-child(even) {
   .page__toc__list {
     font-family: var(--mono) !important;
     font-size: 12px !important;
-    color: var(--v-300) !important;
+    color: var(--text-alt-color) !important;
 
     li { margin-bottom: 10px !important; }
 
     a {
-      color: var(--v-300);
+      color: var(--text-alt-color);
       text-decoration: none;
       transition: color .15s;
-      &:hover { color: var(--g-400); }
+      &:hover { color: var(--g-600); }
     }
   }
 }
 
+:root[dark] .post__toc__title,
+:root[dark] .page__toc__title,
+.dark-mode  .post__toc__title,
+.dark-mode  .page__toc__title {
+  color: var(--g-500) !important;
+}
+
+:root[dark] .post__toc__list a:hover,
+:root[dark] .page__toc__list a:hover,
+.dark-mode  .post__toc__list a:hover,
+.dark-mode  .page__toc__list a:hover {
+  color: var(--g-400);
+}
+
 /* ── Author card ── */
 .card-author {
-  background: var(--v-900);
-  border: 1px solid var(--v-700);
+  background: var(--background-alt-color);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 24px 28px !important;
   margin-top: 40px;
@@ -264,8 +415,8 @@ table tr:nth-child(even) {
   &::before { display: none !important; }
 
   .card-author__image {
-    border: 1px solid var(--v-700) !important;
-    background: var(--v-800) !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--background-alt-color-2) !important;
   }
 
   .card-author__role {
@@ -273,26 +424,32 @@ table tr:nth-child(even) {
     font-size: 9px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--g-500) !important;
+    color: var(--g-600) !important;
   }
 
   .card-author__name {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: 20px;
-    color: var(--p-50);
+    font-weight: 600;
+    color: var(--heading-font-color);
   }
 
   .card-author__link {
-    color: var(--p-50) !important;
+    color: var(--heading-font-color) !important;
     text-decoration: none !important;
     transition: color .15s;
-    &:hover { color: var(--g-300) !important; }
+    &:hover { color: var(--g-600) !important; }
   }
 
   .card-author__description {
     font-family: var(--sans);
     font-size: 14px;
-    color: var(--v-300);
-    font-weight: 300;
+    color: var(--text-alt-color);
+    font-weight: 400;
   }
+}
+
+:root[dark] .card-author__role,
+.dark-mode  .card-author__role {
+  color: var(--g-500) !important;
 }

@@ -1,9 +1,10 @@
 {% if site.data.settings.hero.enable == true %}
 <!-- begin hero -->
 <section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__inner">
-      <div class="hero__eyebrow">Field notes from the engineering bench</div>
       {% if site.data.settings.hero.hero_title %}
       <h1 class="hero__title">{{ site.data.settings.hero.hero_title }}</h1>
       {% endif %}
@@ -14,6 +15,7 @@
         <button class="hero__search" aria-label="Search posts">
           <i class="fa-solid fa-magnifying-glass"></i>
           <span>Search the journal</span>
+          <span class="hero__search-kbd"><kbd>⌘K</kbd></span>
         </button>
         <a href="/about/" class="hero__cta">About me <i class="fa-solid fa-arrow-right"></i></a>
       </div>
