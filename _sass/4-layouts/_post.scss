@@ -3,13 +3,16 @@
 .page__head {
   max-width: 840px;
   margin: 0 auto 32px;
+  padding-top: 52px;
 
   @media (max-width: $desktop) {
     margin: 0 auto 32px;
+    padding-top: 40px;
   }
 
   @media (max-width: $mobile) {
     margin: 0 auto 32px;
+    padding-top: 32px;
   }
 }
 
@@ -17,7 +20,6 @@
 .page__info {
   padding-bottom: 32px;
   margin-bottom: 32px;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .post__head__inner {

@@ -3,10 +3,10 @@
     <channel>
         <title>azmat.devx</title>
         <description>Personal notes on software, performance, infrastructure, and the messy reality of building things.</description>
-        <link>http://localhost:4000/</link>
-        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 31 Mar 2026 01:10:44 +0400</pubDate>
-        <lastBuildDate>Tue, 31 Mar 2026 01:10:44 +0400</lastBuildDate>
+        <link>https://nomod.netlify.app/</link>
+        <atom:link href="https://nomod.netlify.app/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Thu, 23 Apr 2026 12:35:50 +0400</pubDate>
+        <lastBuildDate>Thu, 23 Apr 2026 12:35:50 +0400</lastBuildDate>
         <generator>Jekyll v4.4.1</generator>
         
             <item>
@@ -225,8 +225,8 @@
 &lt;p&gt;We do not react our way out of failures. We diagnose our way to clarity.&lt;/p&gt;
 </description>
                 <pubDate>Mon, 30 Mar 2026 20:00:00 +0400</pubDate>
-                <link>http://localhost:4000/oom-is-a-symptom-not-the-problem</link>
-                <guid isPermaLink="true">http://localhost:4000/oom-is-a-symptom-not-the-problem</guid>
+                <link>https://nomod.netlify.app/oom-is-a-symptom-not-the-problem</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/oom-is-a-symptom-not-the-problem</guid>
                 
                 <category>Performance Testing</category>
                 
@@ -269,8 +269,8 @@
 &lt;p&gt;Writing decisions down creates a small amount of accountability. More importantly, it shortens the time required to re-enter a project after a gap. That alone makes the habit worthwhile.&lt;/p&gt;
 </description>
                 <pubDate>Fri, 28 Mar 2025 20:00:00 +0400</pubDate>
-                <link>http://localhost:4000/the-architecture-decisions-i-write-down-now</link>
-                <guid isPermaLink="true">http://localhost:4000/the-architecture-decisions-i-write-down-now</guid>
+                <link>https://nomod.netlify.app/the-architecture-decisions-i-write-down-now</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/the-architecture-decisions-i-write-down-now</guid>
                 
                 <category>Architecture</category>
                 
@@ -307,8 +307,8 @@
 &lt;p&gt;That is the version of productivity advice I trust now: less optimization theater, more friction removal.&lt;/p&gt;
 </description>
                 <pubDate>Fri, 21 Mar 2025 07:20:00 +0400</pubDate>
-                <link>http://localhost:4000/the-most-useful-thing-i-did-for-my-local-dev-environment</link>
-                <guid isPermaLink="true">http://localhost:4000/the-most-useful-thing-i-did-for-my-local-dev-environment</guid>
+                <link>https://nomod.netlify.app/the-most-useful-thing-i-did-for-my-local-dev-environment</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/the-most-useful-thing-i-did-for-my-local-dev-environment</guid>
                 
                 <category>Tooling</category>
                 
@@ -347,8 +347,8 @@
 &lt;p&gt;I would rather have a simpler site that is accurately voiced than a richer one that reads like it belongs to someone else.&lt;/p&gt;
 </description>
                 <pubDate>Sun, 09 Mar 2025 11:45:00 +0400</pubDate>
-                <link>http://localhost:4000/rebuilding-this-jekyll-site-as-a-personal-tech-blog</link>
-                <guid isPermaLink="true">http://localhost:4000/rebuilding-this-jekyll-site-as-a-personal-tech-blog</guid>
+                <link>https://nomod.netlify.app/rebuilding-this-jekyll-site-as-a-personal-tech-blog</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/rebuilding-this-jekyll-site-as-a-personal-tech-blog</guid>
                 
                 <category>Jekyll</category>
                 
@@ -378,8 +378,8 @@
 &lt;p&gt;I like tools, but I trust written operational notes more than I trust my ability to reconstruct intent from a terminal history.&lt;/p&gt;
 </description>
                 <pubDate>Mon, 24 Feb 2025 18:10:00 +0400</pubDate>
-                <link>http://localhost:4000/why-i-keep-a-deployment-journal</link>
-                <guid isPermaLink="true">http://localhost:4000/why-i-keep-a-deployment-journal</guid>
+                <link>https://nomod.netlify.app/why-i-keep-a-deployment-journal</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/why-i-keep-a-deployment-journal</guid>
                 
                 <category>Delivery</category>
                 
@@ -416,8 +416,8 @@
 &lt;p&gt;The durable lesson was not about one incident. It was about investigation hygiene. The more noise I allow into the first ten minutes of debugging, the longer I spend feeling busy instead of becoming correct.&lt;/p&gt;
 </description>
                 <pubDate>Tue, 11 Feb 2025 08:15:00 +0400</pubDate>
-                <link>http://localhost:4000/what-a-debugging-session-taught-me-about-noise</link>
-                <guid isPermaLink="true">http://localhost:4000/what-a-debugging-session-taught-me-about-noise</guid>
+                <link>https://nomod.netlify.app/what-a-debugging-session-taught-me-about-noise</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/what-a-debugging-session-taught-me-about-noise</guid>
                 
                 <category>Debugging</category>
                 
@@ -455,8 +455,8 @@
 &lt;p&gt;That balance is where personal engineering work gets interesting. You learn how little structure is required before a project starts feeling durable.&lt;/p&gt;
 </description>
                 <pubDate>Sun, 26 Jan 2025 10:30:00 +0400</pubDate>
-                <link>http://localhost:4000/running-a-side-project-with-production-habits</link>
-                <guid isPermaLink="true">http://localhost:4000/running-a-side-project-with-production-habits</guid>
+                <link>https://nomod.netlify.app/running-a-side-project-with-production-habits</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/running-a-side-project-with-production-habits</guid>
                 
                 <category>Engineering</category>
                 
@@ -496,8 +496,8 @@
 &lt;p&gt;That sounds obvious, but it is surprisingly easy to skip when a project is small and familiar. Personal projects are exactly where sloppy assumptions survive the longest.&lt;/p&gt;
 </description>
                 <pubDate>Wed, 08 Jan 2025 09:00:00 +0400</pubDate>
-                <link>http://localhost:4000/the-week-i-finally-measured-where-my-site-was-slow</link>
-                <guid isPermaLink="true">http://localhost:4000/the-week-i-finally-measured-where-my-site-was-slow</guid>
+                <link>https://nomod.netlify.app/the-week-i-finally-measured-where-my-site-was-slow</link>
+                <guid isPermaLink="true">https://nomod.netlify.app/the-week-i-finally-measured-where-my-site-was-slow</guid>
                 
                 <category>Performance</category>
                 

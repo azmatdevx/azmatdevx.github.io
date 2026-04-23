@@ -1,46 +1,23 @@
 {% if site.data.settings.hero.enable == true %}
 <!-- begin hero -->
 <section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
   <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="hero__inner">
-          {% if site.data.settings.hero_authors.enable == true %}
-          <div class="hero__authors">
-            <div class="hero__authors__inner">
-              {% for author in site.authors limit:7 %}
-              {% assign post_count = site.posts | where:"author", author.username %}
-              <div class="hero__author__box">
-                {% if author.name %}
-                <div class="hero__author__meta">
-                  <span class="hero__author__name">{{ author.name }}</span>
-                  <span class="triangle"></span>
-                </div>
-                {% endif %}
-                {% if author.image %}
-                <a href="{{ author.url }}" class="hero__author__image">
-                  <img class="lazy" data-src="{{ author.image }}" alt="{{ author.name }}">
-                </a>
-                {% endif %}
-              </div>
-              {% endfor %}
-            </div>
-            {% if site.data.settings.hero_authors.hero_authors_description %}
-            <p class="hero__authors__description">{{ site.data.settings.hero_authors.hero_authors_description }}</p>
-            {% endif %}
-          </div>
-          {% endif %}
-          {% if site.data.settings.hero.hero_title %}
-          <h1 class="hero__title">{{ site.data.settings.hero.hero_title }}</h1>
-          {% endif %}
-          {% if site.data.settings.hero.hero_description %}
-          <p class="hero__description">{{ site.data.settings.hero.hero_description }}</p>
-          {% endif %}
-          <div class="hero__search">
-            <span class="hero__search__text">Search for the blog</span>
-            <i class="hero__search__icon fa-solid fa-magnifying-glass"></i>
-          </div>
-        </div>
+    <div class="hero__inner">
+      {% if site.data.settings.hero.hero_title %}
+      <h1 class="hero__title">{{ site.data.settings.hero.hero_title }}</h1>
+      {% endif %}
+      {% if site.data.settings.hero.hero_description %}
+      <p class="hero__description">{{ site.data.settings.hero.hero_description }}</p>
+      {% endif %}
+      <div class="hero__actions">
+        <button class="hero__search" aria-label="Search posts">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Search the journal</span>
+          <span class="hero__search-kbd"><kbd>⌘K</kbd></span>
+        </button>
+        <a href="/about/" class="hero__cta">About me <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
