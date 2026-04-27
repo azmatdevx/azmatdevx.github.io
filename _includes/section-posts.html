@@ -11,10 +11,26 @@
         </div>
       </div>
 
-      <div class="row grid">
+      <!-- Tag filter pills -->
+      {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+      {% if all_tags.size > 0 %}
+      <div class="posts__filter" id="posts-filter">
+        <button class="posts__filter-pill posts__filter-pill--active" data-tag="all">All</button>
+        {% for tag in all_tags %}
+          {% unless tag == '' %}
+          <button class="posts__filter-pill" data-tag="{{ tag | slugify }}">{{ tag }}</button>
+          {% endunless %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="row grid" id="posts-grid">
       {% if site.posts.size > 0 %}
-        {% for post in paginator.posts offset:0 %}
-          {% include article.html class="col col-4 col-d-6 col-t-12 animate grid__post" %}
+        {% for post in paginator.posts %}
+          {% assign post_tags_slugs = post.tags | map: 'slug' | join: ' ' %}
+          <div class="col col-4 col-d-6 col-t-12 animate grid__post" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
+            {% include article.html %}
+          </div>
         {% endfor %}
       {% endif %}
       </div>

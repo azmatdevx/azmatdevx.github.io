@@ -4,10 +4,10 @@ title: The Most Useful Thing I Did for My Local Dev Environment
 description: I stopped chasing the perfect setup and focused on reducing the small repeated frictions that were slowing me down every day.
 date: 2025-03-21 07:20:00 +0400
 author: azmat
-image: '/images/15.jpg'
+image: '/images/03-2.jpg'
 tags: [Tooling, Personal Tech]
 featured: false
-toc: true
+toc: false
 ---
 
 For a long time I treated my local development setup like a future optimization project. I kept a mental list of improvements I wanted to make, but most of them were abstract: better automation, cleaner shell config, a more elegant workflow.

@@ -4,10 +4,10 @@ title: The Architecture Decisions I Write Down Now
 description: I do not document every idea, but I have learned to capture the choices that become expensive once the context fades.
 date: 2025-03-28 20:00:00 +0400
 author: azmat
-image: '/images/18.jpg'
+image: '/images/03-4.jpg'
 tags: [Architecture, Personal Tech]
 featured: false
-toc: true
+toc: false
 ---
 
 The architecture decisions I regret most were rarely dramatic. They were the quiet choices that seemed obvious at the time and confusing six weeks later. Why did I split this service? Why did I avoid that dependency? Why is the queue configured this way?

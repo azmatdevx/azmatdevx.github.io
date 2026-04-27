@@ -1,15 +1,17 @@
 /* ── Section About ── */
 .about__inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 56px;
+  text-align: center;
+  gap: 36px;
 
   .about__image {
     position: relative;
     flex-shrink: 0;
-    width: 280px;
-    height: 280px;
-    border-radius: 12px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
     background: var(--v-800);
     border: 1px solid var(--v-700);
     overflow: hidden;
@@ -21,23 +23,22 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 12px;
     }
   }
 
   .about__content {
-    max-width: 560px;
+    max-width: 680px;
 
     .about__title {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: 40px;
-      font-weight: 400;
-      color: var(--p-50);
-      letter-spacing: -0.025em;
-      line-height: 1.05;
+      font-weight: 700;
+      color: var(--heading-font-color);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
       margin-bottom: 16px;
 
-      em { font-style: italic; color: var(--g-400); }
+      em { font-style: normal; color: var(--g-400); }
     }
 
     .about__subtitle {
@@ -63,7 +64,7 @@
     a:not([class]) {
       color: var(--g-400);
       text-decoration: underline;
-      text-decoration-color: rgba(61,179,138,0.3);
+      text-decoration-color: rgba(255, 69, 0, 0.3);
       text-underline-offset: 2px;
       transition: color .15s;
 
@@ -72,14 +73,7 @@
   }
 
   @media (max-width: $desktop) {
-    flex-direction: column;
-    gap: 32px;
-
-    .about__image {
-      width: 100%;
-      height: 0;
-      padding-top: 56%;
-    }
+    gap: 28px;
 
     .about__content {
       max-width: 100%;
@@ -89,6 +83,7 @@
   }
 
   @media (max-width: $mobile) {
+    .about__image { width: 120px; height: 120px; }
     .about__content .about__title { font-size: 26px; }
   }
 }

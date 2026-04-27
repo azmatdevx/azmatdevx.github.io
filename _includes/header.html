@@ -2,52 +2,120 @@
 <header class="header" id="top">
   <div class="header__inner">
 
-    <!-- Left: Brand -->
-    <a class="header__brand" href="{{ site.baseurl }}/">
-      <svg width="32" height="32" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-        <rect width="52" height="52" rx="13" fill="#0C1018"/>
-        <rect x="20" y="6"  width="12" height="12" rx="3.5" fill="#6DECCA"/>
-        <rect x="12" y="22" width="9"  height="9"  rx="2.5" fill="#28906A"/>
-        <rect x="31" y="22" width="9"  height="9"  rx="2.5" fill="#28906A"/>
-        <rect x="7"  y="37" width="9"  height="9"  rx="2.5" fill="#1A6B48"/>
-        <rect x="36" y="37" width="9"  height="9"  rx="2.5" fill="#1A6B48"/>
-        <rect x="16" y="28" width="6"  height="6"  rx="2"   fill="#3DB38A"/>
-        <rect x="30" y="28" width="6"  height="6"  rx="2"   fill="#3DB38A"/>
-      </svg>
-      <span class="header__wordmark-name">Azmat Mungur</span>
-    </a>
-
-    <!-- Center: Nav list (desktop only, collapses to dropdown on mobile) -->
-    <nav class="main-nav" id="main-nav" aria-label="Main menu">
-      <ul class="nav__list list-reset">
-        {% for item in site.data.settings.menu_settings.menu_items %}
-        <li class="nav__item">
-          <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
-
-    <!-- Right: Actions (search, theme toggle, CTA, hamburger) -->
-    <div class="nav__actions">
-      <div class="nav__search-wrap">
-        <i class="fa-solid fa-magnifying-glass nav__search-icon"></i>
-        <input type="text" id="nav-search-input" class="nav__search-input" placeholder="Search the journal..." autocomplete="off" aria-label="Search posts">
-        <div class="nav__search-results" id="nav-results-container"></div>
-      </div>
-      <button class="toggle-theme nav__theme-toggle" aria-label="Toggle dark mode">
-        <i class="fa-solid fa-moon theme-icon--dark"></i>
-        <i class="fa-solid fa-sun theme-icon--light"></i>
-      </button>
-      {% if site.data.settings.cta_button.enable == true %}
-      <a href="{% if site.data.settings.cta_button.cta_button_link %}{{ site.data.settings.cta_button.cta_button_link }}{% else %}#{% endif %}" class="button cta-button">{{ site.data.settings.cta_button.cta_button_text }}</a>
-      {% endif %}
+    <!-- Left: Home, Latest, Topics + mobile hamburger -->
+    <div class="nav--split-left">
+      <nav class="nav--desktop" aria-label="Primary navigation">
+        <ul class="nav__list list-reset">
+          {% for item in site.data.settings.menu_settings.menu_items limit:3 %}
+          <li class="nav__item">
+            <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <div></div>
       </button>
     </div>
 
-  </div>
-</header>
-<!-- end header -->
+    <!-- Center: Logo wordmark -->
+    <a class="header__logo-center" href="{{ site.baseurl }}/" aria-label="{{ site.name }} home">
+      <svg viewBox="0 0 1715 518" width="126" height="38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+        <g transform="matrix(1,0,0,1,0.000256,-0.001034)">
+            <g transform="matrix(1,0,0,1,-2750.457839,-1087)">
+                <g transform="matrix(1,0,0,1,1385.277101,40)">
+                    <g transform="matrix(0.7304,0,0,0.647326,1294.331945,-174.503503)">
+                        <g transform="matrix(0.740676,0,0,0.941023,-439.99046,721.747615)">
+                            <g>
+                                <path d="M1878,1532L1878,2088L1077.875,2088C882.988,2088 725,1963.648 725,1810.253L725,1808.328C725,1735.041 761.988,1664.756 827.827,1612.935C893.665,1561.113 982.962,1532 1076.072,1532L1878,1532ZM1661.981,1701.677L1078.642,1701.677C1002.635,1701.677 941.019,1750.175 941.019,1810C941.019,1869.825 1002.635,1918.323 1078.642,1918.323L1661.981,1918.323L1661.981,1701.677Z" style="fill:rgb(240,61,0);"/>
+                            </g>
+                        </g>
+                        <g transform="matrix(1.062937,0,0,1.552448,-738.27972,-126.524476)">
+                            <path d="M1122,1399.419L1122,1297L1437.474,1297C1520.607,1297 1588,1343.143 1588,1400.063L1588,1440L1437.474,1440L1437.474,1435.625C1437.474,1415.629 1413.799,1399.419 1384.594,1399.419L1122,1399.419Z" style="fill:rgb(240,61,0);"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,0,-8.70475)">
+                            <g transform="matrix(0.797404,0,0,0.797404,-297.540135,866.592937)">
+                                <rect x="1643" y="1694" width="224" height="224" style="fill:rgb(240,61,0);"/>
+                            </g>
+                            <g transform="matrix(0.797404,0,0,0.797404,-297.540135,1120.592937)">
+                                <path d="M1727.798,1694L1867,1694L1867,1918L1643,1918L1643,1778.798L1672.451,1778.798C1703.018,1778.798 1727.798,1754.018 1727.798,1723.451L1727.798,1694Z" style="fill:rgb(240,61,0);"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-22,-230.93434)">
+                        <g transform="matrix(1,0,0,1,198,1055)">
+                            <g transform="matrix(1,0,0,1,2076.295,524.454)">
+                                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:291.667px;fill:rgb(240,61,0);">azmat</text>
+                            </g>
+                        </g>
+                        <g transform="matrix(1,0,0,1,391.949382,1165)">
+                            <g>
+                                <g transform="matrix(1,0,0,1,2076.295,524.454)">
+                                    <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:83.333px;fill:rgb(240,61,0);">M</text>
+                                </g>
+                                <g transform="matrix(1,0,0,1,2158.212,524.454)">
+                                    <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:83.333px;fill:rgb(240,61,0);">U<tspan x="72.681px 145.361px 222.681px 295.361px " y="0px 0px 0px 0px ">NGUR</tspan></text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+    </a>
 
+    <!-- Right: About, Contact, Search -->
+    <div class="nav--split-right">
+      <nav class="nav--desktop" aria-label="Primary navigation">
+        <ul class="nav__list list-reset">
+          {% for item in site.data.settings.menu_settings.menu_items offset:3 %}
+          <li class="nav__item">
+            <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+          </li>
+          {% endfor %}
+          <li class="nav__item">
+            <button class="nav__link nav__search-trigger" aria-label="Open search">Search</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Mobile dropdown nav -->
+  <nav class="main-nav" id="main-nav" aria-label="Mobile navigation">
+    <ul class="nav__list list-reset">
+      {% for item in site.data.settings.menu_settings.menu_items %}
+      <li class="nav__item">
+        <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+      </li>
+      {% endfor %}
+      <li class="nav__item">
+        <button class="nav__link nav__search-trigger" aria-label="Open search">Search</button>
+      </li>
+    </ul>
+  </nav>
+
+</header>
+
+<!-- Search modal -->
+<div class="search-modal" id="search-modal" aria-hidden="true" role="dialog" aria-label="Search">
+  <div class="search-modal__backdrop" id="search-modal-backdrop"></div>
+  <div class="search-modal__panel">
+    <div class="search-modal__field">
+      <i class="fa-solid fa-magnifying-glass search-modal__icon"></i>
+      <input
+        type="text"
+        id="modal-search-input"
+        class="search-modal__input"
+        placeholder="Search the journal…"
+        autocomplete="off"
+        aria-label="Search posts"
+      />
+      <kbd class="search-modal__esc">ESC</kbd>
+    </div>
+    <div class="search-modal__results" id="modal-results-container"></div>
+  </div>
+</div>
+<!-- end header -->

@@ -4,10 +4,10 @@ title: What a Debugging Session Taught Me About Noise
 description: I went hunting for a deep systems issue and found a simpler explanation hiding behind too much telemetry and not enough judgment.
 date: 2025-02-11 08:15:00 +0400
 author: azmat
-image: '/images/10.jpg'
+image: '/images/03.jpg'
 tags: [Debugging, Personal Tech]
 featured: false
-toc: true
+toc: false
 ---
 
 I recently spent too long investigating an issue because the system had plenty of data but very little signal. Metrics were available. Logs existed. Dashboards looked impressive. None of that helped until I forced myself to ask a narrower question.

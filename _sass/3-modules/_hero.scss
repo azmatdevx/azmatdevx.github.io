@@ -47,9 +47,11 @@
 }
 
 .hero__inner {
-  max-width: 780px;
+  max-width: 80%;
   margin: 0 auto;
   text-align: center;
+
+  @media (max-width: $tablet) { max-width: 100%; }
 }
 
 .hero__eyebrow {
@@ -99,13 +101,40 @@
   em { color: var(--g-300); }
 }
 
+/* ── Typewriter ── */
+.hero__typewriter-wrap {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--p-800);
+  margin-bottom: 28px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :root[dark] &, .dark-mode & { color: var(--v-100); }
+}
+
+.hero__typewriter-cursor {
+  display: inline-block;
+  margin-left: 1px;
+  animation: tw-blink 0.65s step-end infinite;
+}
+
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .hero__description {
   font-family: var(--sans);
   font-size: 18px;
   font-weight: 400;
   color: var(--p-800);
   line-height: 1.7;
-  max-width: 560px;
+  max-width: 720px;
   margin: 0 auto 40px;
 }
 
@@ -159,7 +188,7 @@
 
   &:focus {
     border-color: var(--g-500);
-    box-shadow: 0 0 0 3px rgba(40, 144, 106, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.1);
   }
 }
 

@@ -1,29 +1,7 @@
 /* ── Brand Overrides ── */
 
 /* ── Logo: light vs dark mode ── */
-/* Light mode: paper-toned badge */
-.header__brand svg rect:first-child,
-.footer__brand-link svg rect:first-child {
-  fill: var(--p-200);
-}
-/* Light mode: brighten the mint top rect so it's visible on light bg */
-.header__brand svg rect:nth-child(2),
-.footer__brand-link svg rect:nth-child(2) {
-  fill: var(--g-500);
-}
-/* Dark mode: restore original dark badge */
-:root[dark] .header__brand svg rect:first-child,
-:root[dark] .footer__brand-link svg rect:first-child,
-.dark-mode  .header__brand svg rect:first-child,
-.dark-mode  .footer__brand-link svg rect:first-child {
-  fill: #0C1018;
-}
-:root[dark] .header__brand svg rect:nth-child(2),
-:root[dark] .footer__brand-link svg rect:nth-child(2),
-.dark-mode  .header__brand svg rect:nth-child(2),
-.dark-mode  .footer__brand-link svg rect:nth-child(2) {
-  fill: #6DECCA;
-}
+/* Logo SVG colors adapt via CSS vars on the paths/shapes */
 
 /* ── Article cards: light-mode color fixes ── */
 .article__image {
@@ -108,10 +86,27 @@
   a:hover { color: var(--g-300) !important; }
 }
 
-/* Article tag colors — light mode contrast */
+/* Article tag colors — orange pill to match post tags */
 .article__tag {
-  color: var(--g-700) !important;
-  :root[dark] &, .dark-mode & { color: var(--g-400) !important; }
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--g-600) !important;
+  background: rgba(255, 69, 0, 0.07) !important;
+  border: 1px solid rgba(255, 69, 0, 0.15) !important;
+  border-radius: 5px !important;
+  padding: 4px 10px !important;
+
+  &:hover { background: rgba(255, 69, 0, 0.12) !important; }
+
+  :root[dark] &, .dark-mode & {
+    color: var(--g-400) !important;
+    background: rgba(255, 107, 53, 0.08) !important;
+    border-color: rgba(255, 107, 53, 0.15) !important;
+
+    &:hover { background: rgba(255, 107, 53, 0.14) !important; }
+  }
 }
 
 /* Scrollbar */
@@ -121,7 +116,7 @@
 
 /* Selection */
 ::selection {
-  background: rgba(40, 144, 106, 0.18);
+  background: rgba(255, 69, 0, 0.18);
   color: var(--heading-font-color);
 }
 
@@ -130,7 +125,7 @@
 .page__content a:not([class]) {
   color: var(--g-600);
   text-decoration: underline;
-  text-decoration-color: rgba(40, 144, 106, 0.3);
+  text-decoration-color: rgba(255, 69, 0, 0.3);
   text-underline-offset: 2px;
   transition: color .15s;
 
@@ -148,7 +143,7 @@
 /* Blockquote brand treatment */
 blockquote {
   border-left: 3px solid var(--g-500);
-  background: rgba(40, 144, 106, 0.05);
+  background: rgba(255, 69, 0, 0.05);
   border-radius: 0 8px 8px 0;
   padding: 20px 24px;
   margin: 32px 0;
@@ -211,21 +206,21 @@ pre {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--g-600) !important;
-  background: rgba(40, 144, 106, 0.07) !important;
-  border: 1px solid rgba(40, 144, 106, 0.15) !important;
+  background: rgba(255, 69, 0, 0.07) !important;
+  border: 1px solid rgba(255, 69, 0, 0.15) !important;
   border-radius: 5px !important;
   padding: 4px 10px !important;
 
-  &:hover { background: rgba(40, 144, 106, 0.12) !important; }
+  &:hover { background: rgba(255, 69, 0, 0.12) !important; }
 }
 
 :root[dark] .post__tag,
 .dark-mode  .post__tag {
   color: var(--g-400) !important;
-  background: rgba(61, 179, 138, 0.08) !important;
-  border-color: rgba(61, 179, 138, 0.15) !important;
+  background: rgba(255, 107, 53, 0.08) !important;
+  border-color: rgba(255, 107, 53, 0.15) !important;
 
-  &:hover { background: rgba(61, 179, 138, 0.14) !important; }
+  &:hover { background: rgba(255, 107, 53, 0.14) !important; }
 }
 
 /* Share links */
@@ -276,11 +271,12 @@ pre {
 /* Container max-width alignment */
 .container,
 .container-big {
-  max-width: 1200px;
+  max-width: 1760px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 48px;
 
-  @media (max-width: $mobile) { padding: 0 20px; }
+  @media (max-width: $desktop) { padding: 0 32px; }
+  @media (max-width: $mobile)  { padding: 0 20px; }
 }
 
 /* HR brand */
@@ -330,7 +326,7 @@ table tr:nth-child(even) {
   font-family: var(--sans);
   font-size: 17px;
   font-weight: 400;
-  color: var(--text-color);
+  color: rgb(60, 59, 55);
   line-height: 1.85;
 
   h1, h2, h3, h4, h5, h6 {
@@ -351,12 +347,13 @@ table tr:nth-child(even) {
   }
 }
 
-/* ── Post image ── */
-.post__image,
-.page__image {
-  border-radius: 10px !important;
-  border: 1px solid var(--border-color);
+:root[dark] .post,
+:root[dark] .page,
+.dark-mode .post,
+.dark-mode .page {
+  color: rgb(200, 199, 195);
 }
+
 
 /* ── ToC brand ── */
 .post__toc,
@@ -368,20 +365,21 @@ table tr:nth-child(even) {
 
   .post__toc__title,
   .page__toc__title {
-    font-family: var(--mono) !important;
-    font-size: 9px !important;
-    letter-spacing: 0.14em;
+    font-family: var(--sans) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--g-600) !important;
     border-bottom-color: var(--border-color) !important;
-    margin-bottom: 16px !important;
-    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 10px !important;
   }
 
   .post__toc__list,
   .page__toc__list {
-    font-family: var(--mono) !important;
-    font-size: 12px !important;
+    font-family: var(--sans) !important;
+    font-size: 15px !important;
     color: var(--text-alt-color) !important;
 
     li { margin-bottom: 10px !important; }

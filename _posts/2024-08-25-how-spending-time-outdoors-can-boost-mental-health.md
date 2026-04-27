@@ -7,7 +7,7 @@ published: false
 author: richard
 image: '/images/14.jpg'
 tags: [Lifestyle]
-toc: true
+toc: false
 ---
 
 One of the most immediate benefits of spending time outdoors is its ability to reduce stress and anxiety. Nature has a calming effect on the mind, helping to lower cortisol levels (the body's stress hormone). A walk through a park or a hike in the woods can create a sense of tranquility, providing a break from the constant demands of modern life. The gentle rustling of leaves, the sound of flowing water, and the fresh air all work together to create an environment where the mind can unwind.

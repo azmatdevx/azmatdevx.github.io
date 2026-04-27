@@ -7,7 +7,7 @@ published: false
 author: admin
 image: '/images/11.jpg'
 tags: [Design]
-toc: true
+toc: false
 ---
 
 In the fast-paced world of design, trends come and go, often leaving a trail of dated aesthetics in their wake. Yet, some designs stand the test of time, maintaining their appeal and functionality across decades. What makes certain designs endure while others fade into obscurity? Timeless design is more than just a look—it's a thoughtful blend of functionality, simplicity, and cultural resonance that transcends changing tastes. Understanding the elements that contribute to lasting design can help designers create work that remains relevant and captivating, year after year.

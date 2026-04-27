@@ -9,7 +9,7 @@ image: '/images/02.jpg'
 video_embed: https://www.youtube.com/embed/JsoUDxfx-Yw?si=_JbYlsqfyOiI6zFO
 tags: [Lifestyle]
 featured: true
-toc: true
+toc: false
 ---
 
 Travel is one of life’s greatest pleasures, but it doesn’t need to come with a hefty price tag. With some thoughtful planning and smart choices, you can embark on incredible journeys without overspending. Budget travel isn’t about compromising on experiences; it’s about making the most of every moment while staying within your financial means.

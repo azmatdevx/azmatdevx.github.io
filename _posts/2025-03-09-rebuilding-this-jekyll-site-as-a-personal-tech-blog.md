@@ -7,7 +7,7 @@ author: azmat
 image: '/images/14.jpg'
 tags: [Jekyll, Personal Tech]
 featured: false
-toc: true
+toc: false
 ---
 
 When I first set this site up, the theme was visually solid but semantically wrong. It was built around teams, multiple authors, lifestyle categories, and generic editorial copy. None of that matched what I wanted the site to be.

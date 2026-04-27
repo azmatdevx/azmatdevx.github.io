@@ -7,7 +7,7 @@ author: azmat
 image: '/images/06.jpg'
 tags: [Engineering, Personal Tech]
 featured: false
-toc: true
+toc: false
 ---
 
 One of the most useful changes I made to my side projects was psychological: I stopped treating them like temporary prototypes just because they were small. That did not mean adding process for the sake of looking professional. It meant adopting a few habits that reduce future damage.

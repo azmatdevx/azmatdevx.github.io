@@ -7,7 +7,7 @@ published: false
 author: daniel
 image: '/images/10.jpg'
 tags: [Lifestyle]
-toc: true
+toc: false
 ---
 
 In today’s hyper-connected world, technology is an integral part of our daily lives. From smartphones and tablets to laptops and smartwatches, we are constantly bombarded with notifications, emails, and updates. While these devices have made communication and access to information easier than ever, they can also lead to digital fatigue. The constant influx of information can be overwhelming, leaving us feeling drained and unbalanced. As a result, many are exploring the benefits of disconnecting from technology to restore a sense of balance and well-being.

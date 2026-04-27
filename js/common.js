@@ -21,21 +21,53 @@ document.addEventListener("DOMContentLoaded", function() {
     menuList.classList.toggle("is-visible");
   }
 
-  // Close search results when clicking outside
+  // Clear hero search input + results when clicking outside
   document.addEventListener("click", (e) => {
     const heroWrap = document.querySelector(".hero__search-wrap");
     if (heroWrap && !heroWrap.contains(e.target)) {
+      const input = document.getElementById("hero-search-input");
       const results = document.getElementById("hero-results-container");
+      if (input) input.value = "";
       if (results) results.innerHTML = "";
     }
+  });
 
-    const navWrap = document.querySelector(".nav__search-wrap");
-    if (navWrap && !navWrap.contains(e.target)) {
-      const results = document.getElementById("nav-results-container");
-      if (results) {
-        results.innerHTML = "";
-        results.classList.remove("is-open");
-      }
+  // =====================
+  // Search Modal
+  // =====================
+  const searchModal    = document.getElementById("search-modal");
+  const searchBackdrop = document.getElementById("search-modal-backdrop");
+  const modalInput     = document.getElementById("modal-search-input");
+
+  function openSearchModal() {
+    if (!searchModal) return;
+    searchModal.classList.add("is-open");
+    searchModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    setTimeout(() => { if (modalInput) modalInput.focus(); }, 80);
+  }
+
+  function closeSearchModal() {
+    if (!searchModal) return;
+    searchModal.classList.remove("is-open");
+    searchModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (modalInput) {
+      modalInput.value = "";
+      const r = document.getElementById("modal-results-container");
+      if (r) r.innerHTML = "";
+    }
+  }
+
+  document.querySelectorAll(".nav__search-trigger").forEach(btn => {
+    btn.addEventListener("click", openSearchModal);
+  });
+
+  if (searchBackdrop) searchBackdrop.addEventListener("click", closeSearchModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && searchModal && searchModal.classList.contains("is-open")) {
+      closeSearchModal();
     }
   });
 
@@ -132,16 +164,52 @@ document.addEventListener("DOMContentLoaded", function() {
         6
       );
       bindSearch(
-        document.getElementById("nav-search-input"),
-        document.getElementById("nav-results-container"),
-        5,
-        (open) => {
-          const c = document.getElementById("nav-results-container");
-          if (c) c.classList.toggle("is-open", open);
-        }
+        document.getElementById("modal-search-input"),
+        document.getElementById("modal-results-container"),
+        8
       );
     })
     .catch(() => {});
+
+
+  /* =======================
+  // Hero Typewriter
+  ======================= */
+  const twEl = document.getElementById("hero-typewriter");
+  if (twEl) {
+    const phrases = [
+      "Performance Engineering",
+      "AI-Augmented Systems",
+      "Production Debugging",
+      "Platform Architecture",
+      "Systems Thinking",
+      "Shipping Real Code"
+    ];
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+
+    function typeStep() {
+      const phrase = phrases[phraseIdx];
+      if (!deleting) {
+        twEl.textContent = phrase.slice(0, ++charIdx);
+        if (charIdx === phrase.length) {
+          deleting = true;
+          setTimeout(typeStep, 2200);
+          return;
+        }
+        setTimeout(typeStep, 72);
+      } else {
+        twEl.textContent = phrase.slice(0, --charIdx);
+        if (charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(typeStep, 400);
+          return;
+        }
+        setTimeout(typeStep, 38);
+      }
+    }
+    setTimeout(typeStep, 800);
+  }
 
 
   /* =======================
@@ -230,5 +298,35 @@ document.addEventListener("DOMContentLoaded", function() {
       })
     }
   });
+
+  /* =======================
+  // Tag Filter Pills
+  ======================= */
+  const filterPills = document.querySelectorAll(".posts__filter-pill");
+  const gridPosts   = document.querySelectorAll("#posts-grid .grid__post");
+
+  if (filterPills.length) {
+    filterPills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        filterPills.forEach(function (p) { p.classList.remove("posts__filter-pill--active"); });
+        pill.classList.add("posts__filter-pill--active");
+
+        const selected = pill.dataset.tag;
+
+        gridPosts.forEach(function (post) {
+          if (selected === "all") {
+            post.classList.remove("grid__post--hidden");
+          } else {
+            const tags = (post.dataset.tags || "").trim().split(/\s+/);
+            if (tags.includes(selected)) {
+              post.classList.remove("grid__post--hidden");
+            } else {
+              post.classList.add("grid__post--hidden");
+            }
+          }
+        });
+      });
+    });
+  }
 
 });
