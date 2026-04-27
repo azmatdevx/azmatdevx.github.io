@@ -7,7 +7,7 @@ published: false
 author: abram
 image: '/images/07.jpg'
 tags: [Lifestyle]
-toc: true
+toc: false
 ---
 
 How you start your morning often sets the tone for the rest of your day. While it’s easy to hit the snooze button and delay getting up, building a productive morning routine can transform not only your day but also your life. A structured, intentional morning allows you to prioritize your goals, improve focus, and maximize your energy levels. Whether you’re a morning person or not, creating a routine that harnesses the early hours can significantly increase your productivity.

@@ -13,7 +13,7 @@
       "content" : "The architecture decisions I regret most were rarely dramatic. They were the quiet choices that seemed obvious at the time and confusing six weeks later. Why did I split this service? Why did I avoid that dependency? Why is the queue configured this way?I now write down decisions when they have one of three properties:  the tradeoff was real  reversing it later would be annoying  someone, including future me, will absolutely ask whyWhat goes into the noteI keep the format simple:  the decision  the alternatives I considered  the reason I chose this path  what would cause me to revisit itThat is usually enough. The point is not documentation theater. The point is preserving judgment while the context is still fresh.Why this matters on personal projects tooIt is easy to assume lightweight projects do not need this kind of discipline. I have found the opposite. Personal projects often have the worst context retention because nobody else is asking for clarity, which means unclear decisions can survive unchallenged for months.Writing decisions down creates a small amount of accountability. More importantly, it shortens the time required to re-enter a project after a gap. That alone makes the habit worthwhile.",
       "url"     : "/the-architecture-decisions-i-write-down-now",
       "date"    : "28 Mar 2025",
-      "image"   : "/images/18.jpg"
+      "image"   : "/images/03-4.jpg"
     } ,
   
     {
@@ -21,7 +21,7 @@
       "content" : "For a long time I treated my local development setup like a future optimization project. I kept a mental list of improvements I wanted to make, but most of them were abstract: better automation, cleaner shell config, a more elegant workflow.The setup started improving only when I switched from “make it impressive” to “remove one repeated annoyance at a time.”What actually helpedThe highest-value changes were small:  faster project navigation  fewer manual steps to start common services  more predictable environment naming  defaults that failed loudly instead of silentlyNone of those changes would make for an exciting workstation screenshot. Together, they saved attention every day.The pattern I now followIf a task feels slightly irritating and I do it several times a week, it qualifies for improvement. That rule is much better than waiting for a mythical full-system refactor of my tooling.Local environments shape the emotional texture of engineering work more than we admit. When the setup is slightly chaotic, every task begins with drag. When the setup is calm, the work starts closer to the actual problem.That is the version of productivity advice I trust now: less optimization theater, more friction removal.",
       "url"     : "/the-most-useful-thing-i-did-for-my-local-dev-environment",
       "date"    : "21 Mar 2025",
-      "image"   : "/images/15.jpg"
+      "image"   : "/images/03-2.jpg"
     } ,
   
     {
@@ -45,7 +45,7 @@
       "content" : "I recently spent too long investigating an issue because the system had plenty of data but very little signal. Metrics were available. Logs existed. Dashboards looked impressive. None of that helped until I forced myself to ask a narrower question.The actual problem was a burst of retries that amplified a dependency slowdown. That should have been straightforward to identify. Instead, I lost time bouncing between charts because every panel looked equally important.The trapWhen tooling gets better, it becomes easier to confuse visibility with clarity. A screen full of graphs can create the feeling of disciplined investigation while quietly pulling attention away from the most basic hypothesis.What helped was writing down the event in plain language:  Requests started taking longer than normal.  The application responded by retrying too aggressively.  The retry pattern increased pressure on the dependency.  Recovery took longer because the system kept re-injuring itself.That sequence did more for me than another fifteen minutes in the dashboard.What I changed afterwardsI reduced retry aggressiveness, tightened a few logs around the boundary where the slowdown first appears, and simplified the dashboards I use most often. Fewer charts, better defaults, less time admiring telemetry.The durable lesson was not about one incident. It was about investigation hygiene. The more noise I allow into the first ten minutes of debugging, the longer I spend feeling busy instead of becoming correct.",
       "url"     : "/what-a-debugging-session-taught-me-about-noise",
       "date"    : "11 Feb 2025",
-      "image"   : "/images/10.jpg"
+      "image"   : "/images/03.jpg"
     } ,
   
     {

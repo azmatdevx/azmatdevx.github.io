@@ -6,12 +6,13 @@ layout: default
   <div class="post__head">
     <div class="post__info">
 
+      <!-- Tags + date + read time + share on one row -->
       <div class="post__head__inner">
         {% if page.tags.size >= 1 %}
         <div class="post__tags">
-        {% for tag in page.tags %}
+          {% for tag in page.tags %}
           <a href="{{ site.baseurl }}/tags#{{ tag }}" class="post__tag">{{ tag }}</a>
-        {% endfor %}
+          {% endfor %}
         </div>
         {% endif %}
         <div class="post__date">•
@@ -27,6 +28,9 @@ layout: default
             {% endif %}
           </span>
         </div>
+        <div class="post__share post__share--inline">
+          {% include share-buttons.html %}
+        </div>
       </div>
 
       <h1 class="post__title">{{ page.title | escape }}</h1>
@@ -35,50 +39,31 @@ layout: default
       <div class="post__description">{{ page.description }}</div>
       {% endif %}
 
-      <div class="post__meta">
-        <div class="post__author">
-          {% assign author = site.authors | where: 'username', page.author | first %}
-          {% if author %}
-          <a href="{{ author.url | relative_url }}" class="post__author__image">
-            <img class="lazy" data-src="{{ author.image | relative_url }}" alt="{{ author.name }}">
-          </a>
-          <div class="post__author__bottom">
-            <span>Written by</span>
-            <a class="post__author__name" href="{{ author.url | relative_url }}">{{ author.name }}</a>
-          </div>
-          {% endif %}
-        </div>
-
-        <div class="post__share">
-          {% include share-buttons.html %}
-        </div>
-      </div>
-
     </div>
 
+    <!-- Full-width hero image -->
     {% if page.video_embed %}
     <div class="post__video">
       <div class="post__video__wrap">
         <iframe src="{{ page.video_embed }}" loading="lazy" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
     </div>
-    {% else %}
-
-    {% if page.image %}
-    <div class="post__image">
-      <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
+    {% elsif page.image %}
+    <div class="post__image-wrap">
+      <img class="lazy post__image" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
     </div>
-    {% endif %}
     {% endif %}
 
     {% if page.image_caption %}
     <div class="post__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</div>
     {% endif %}
+
   </div>
 
   <!-- begin post -->
   <article class="post">
     <div class="post__content">
+
       {% if page.toc == true %}
       <div class="post__toc">
         <h2 class="post__toc__title">Table of Contents</h2>
@@ -91,8 +76,6 @@ layout: default
   </article>
   <!-- end post -->
 </div>
-
-
 
 {% if site.data.settings.disqus_identifier %}
   {% include disqus-comments.html %}

@@ -1,16 +1,16 @@
-/* ── SIGNAL GREEN SYSTEM ── */
+/* ── SIGNAL ORANGE SYSTEM ── */
 :root {
-  --g-950: #030E08;
-  --g-900: #061A0F;
-  --g-800: #0A2E1C;
-  --g-700: #0F4A2C;
-  --g-600: #1A6B48;
-  --g-500: #28906A;
-  --g-400: #3DB38A;
-  --g-300: #6DECCA;
-  --g-200: #9FE1CB;
-  --g-100: #CBF0E4;
-  --g-50:  #E8F8F3;
+  --g-950: #1A0800;
+  --g-900: #2D0C00;
+  --g-800: #661500;
+  --g-700: #992000;
+  --g-600: #CC3700;
+  --g-500: #FF4500;
+  --g-400: #FF6B35;
+  --g-300: #FF8C61;
+  --g-200: #FFB599;
+  --g-100: #FFD6C4;
+  --g-50:  #FFF0EB;
 
   /* ── VOID SYSTEM ── */
   --v-950: #060810;
@@ -35,7 +35,7 @@
   --p-300: #D8D6D0;
   --p-200: #EEEEE9;
   --p-100: #F4F3EF;
-  --p-50:  #F8F7F2;
+  --p-50:  #F5F4EF;
 
   /* ── RUST (alerts) ── */
   --rust:       #C4441E;
@@ -68,9 +68,9 @@
   --th-color: var(--p-200);
   --tr-color: var(--p-100);
 
-  --callout-note:      rgba(61,179,138,0.08);
-  --callout-tip:       rgba(26,107,72,0.1);
-  --callout-important: rgba(61,179,138,0.06);
+  --callout-note:      rgba(255, 107, 53, 0.08);
+  --callout-tip:       rgba(255, 69, 0, 0.1);
+  --callout-important: rgba(255, 107, 53, 0.06);
   --callout-warning:   rgba(196,68,30,0.08);
   --callout-caution:   rgba(196,68,30,0.1);
 
@@ -80,13 +80,13 @@
   --mono:  'Geist Mono', 'Courier New', monospace;
   --sans:  'Geist', system-ui, -apple-system, sans-serif;
 
-  --nav-height: 60px;
-  --brand-green:      var(--g-600);
-  --brand-green-hi:   var(--g-400);
-  --brand-green-apex: var(--g-300);
+  --nav-height: 80px;
+  --brand-orange:      var(--g-600);
+  --brand-orange-hi:   var(--g-400);
+  --brand-orange-apex: var(--g-300);
 
   /* Nav-specific tokens (light defaults) */
-  --nav-bg:         rgba(248, 247, 242, 0.92);
+  --nav-bg:         rgba(245, 244, 239, 0.92);
   --nav-border:     var(--p-300);
   --nav-text:       var(--p-700);
   --nav-text-hover: var(--g-600);
@@ -96,8 +96,8 @@
   --hero-overlay: rgba(248, 247, 242, 0.55);
 
   /* Code/pre background */
-  --code-bg:     rgba(26, 107, 72, 0.06);
-  --code-border: rgba(26, 107, 72, 0.12);
+  --code-bg:     rgba(255, 69, 0, 0.06);
+  --code-border: rgba(255, 69, 0, 0.12);
   --code-color:  var(--g-700);
   --pre-bg:      var(--p-100);
   --pre-border:  var(--p-300);
@@ -124,8 +124,8 @@
   --link-color-hover: var(--g-300);
 
   --button-color:                var(--v-950);
-  --button-background-color:     var(--g-400);
-  --button-background-hover:     var(--g-300);
+  --button-background-color:     var(--g-500);
+  --button-background-hover:     var(--g-400);
 
   --border-color:     var(--v-700);
   --border-alt-color: var(--v-800);
@@ -146,8 +146,8 @@
   --hero-overlay: rgba(6, 8, 16, 0.6);
 
   /* Code/pre */
-  --code-bg:     rgba(61, 179, 138, 0.06);
-  --code-border: rgba(61, 179, 138, 0.12);
+  --code-bg:     rgba(255, 107, 53, 0.06);
+  --code-border: rgba(255, 107, 53, 0.12);
   --code-color:  var(--g-300);
   --pre-bg:      var(--v-900);
   --pre-border:  var(--v-700);

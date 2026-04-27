@@ -8,7 +8,7 @@ author: daniel
 image: '/images/05.jpg'
 tags: [Lifestyle]
 featured: true
-toc: true
+toc: false
 ---
 
 In today’s world, we are constantly bombarded with information, distractions, and the pressure to keep up with an ever-accelerating pace. It’s easy to get lost in the whirlwind of daily life, neglecting our mental well-being and missing out on the present moment. Embracing a more mindful lifestyle offers a solution to this problem. By focusing on the here and now, we can cultivate a deeper connection to ourselves, our surroundings, and those around us.

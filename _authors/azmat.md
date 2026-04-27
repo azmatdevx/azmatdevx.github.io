@@ -1,7 +1,7 @@
 ---
 username: azmat
 name: Azmat Mungur
-image: "/images/profile.jpg"
+image: "/images/profile.png"
 location: Mauritius
 website:
 facebook:

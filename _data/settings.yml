@@ -19,10 +19,12 @@ menu_settings:
       url: "/tags/"
     - title: "About"
       url: "/about/"
+    - title: "Contact"
+      url: "/contact/"
 
 # Call to action button
 cta_button:
-  enable: true
+  enable: false
   cta_button_link: "/contact/"
   cta_button_text: Say hello
 
@@ -41,7 +43,7 @@ hero_authors:
 # Blog Section Settings
 blog:
   enable: true
-  blog_title: Recent writing
+  blog_title: Latest
 
 #-------------------------------
 # Recommended Section Settings
@@ -60,7 +62,7 @@ about:
     This site is my working notebook for the technical side of life: performance investigations, architecture tradeoffs, deployment lessons, and the odd side project that teaches me something useful.
 
     I’m less interested in polished thought leadership than in honest field notes. If a post lives here, it usually came from a real incident, a stubborn bottleneck, or a build that finally started making sense after enough iteration.
-  about_image: "/images/profile.jpg"
+  about_image: "/images/profile.png"
   about_image_alt: Azmat Mungur
   about_button_text: Read more about me
   about_button_link: "/about/"

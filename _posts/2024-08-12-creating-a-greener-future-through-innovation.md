@@ -9,7 +9,7 @@ image: '/images/06.jpg'
 video_embed: https://www.youtube.com/embed/TumrA0XsX0A?si=CpIToREi6CEh1KFu
 tags: [Design]
 featured: true
-toc: true
+toc: false
 ---
 
 As the world faces the consequences of climate change, pollution, and resource depletion, the call for a greener future has never been louder. The environmental challenges we face today require innovative solutions that not only reduce our ecological footprint but also promote sustainable growth. Creating a greener future isn’t just about limiting damage; it’s about harnessing the power of technology, science, and forward-thinking design to protect the planet for future generations.

@@ -8,7 +8,7 @@ author: richard
 image: '/images/08.jpg'
 video_embed: https://www.youtube.com/embed/DbpMfyYKY3M
 tags: [Design]
-toc: true
+toc: false
 ---
 
 In recent years, minimalist design has become a defining trend in web aesthetics. As websites continue to evolve, the desire for clean, simple, and intuitive design has grown significantly. Minimalism, with its focus on essential elements and decluttered interfaces, has emerged as a powerful approach to creating visually appealing and user-friendly digital experiences. It’s not just a passing trend; minimalist design is shaping the future of web aesthetics by putting clarity and usability at the forefront.

@@ -7,7 +7,7 @@ published: false
 author: admin
 image: '/images/09.jpg'
 tags: [Technology]
-toc: true
+toc: false
 ---
 
 When most people hear the word "blockchain," they often associate it with cryptocurrencies like Bitcoin or Ethereum. While blockchain technology is the backbone of digital currencies, its potential reaches far beyond financial transactions. As a decentralized, transparent, and secure ledger, blockchain is transforming industries across the globe, offering solutions that improve efficiency, security, and accountability. From supply chains to healthcare and beyond, blockchain's role in reshaping the modern world is just beginning.

@@ -7,7 +7,7 @@ author: azmat
 image: '/images/04.jpg'
 tags: [Performance, Personal Tech]
 featured: true
-toc: true
+toc: false
 ---
 
 I had been describing one of my side projects as "mostly fast" for months, which really meant I had never measured it properly. Pages felt acceptable on my laptop, deploys were clean, and synthetic checks looked fine until I opened the site over a weaker connection and watched the delays stack up.

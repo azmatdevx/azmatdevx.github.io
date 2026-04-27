@@ -9,7 +9,7 @@ image: '/images/03.jpg'
 video_embed:
 tags: [Lifestyle]
 featured: true
-toc: true
+toc: false
 ---
 
 In a world full of distractions, it’s easy to become overwhelmed by clutter—both physical and mental. The constant influx of information, obligations, and objects in our daily lives often clouds our ability to think clearly and act with intention. Decluttering is more than just tidying up; it's about making space for clarity, focus, and personal growth.

@@ -14,7 +14,7 @@ image: '/images/oom.png'
 #   - '/images/13.jpg'
 tags: [Performance Testing, JVM, Debugging]
 featured: false
-toc: true
+toc: false
 ---
 
 ## Session Outcomes

@@ -7,7 +7,7 @@ published: false
 author: daniel
 image: '/images/15.jpg'
 tags: [Technology]
-toc: true
+toc: false
 ---
 
 Historically, data processing has relied on centralized cloud data centers that store, analyze, and process information from all over the globe. However, this approach introduces a delay—known as latency—when sending data back and forth over long distances. As applications become more time-sensitive, even milliseconds can make a significant difference, particularly in fields like healthcare and smart manufacturing.
