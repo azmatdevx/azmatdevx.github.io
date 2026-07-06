@@ -6,28 +6,13 @@
     <div class="section__inner">
       <div class="section__info">
         <div class="section__head">
-          <h2 class="section__title"><a href="{{ '/latest' | relative_url }}">{{ site.data.settings.blog.blog_title }}</a></h2>
-          <a class="section__link" href="{{ '/latest' | relative_url }}">All posts <i class="fa-solid fa-arrow-right"></i></a>
+          <h2 class="section__title">{{ site.data.settings.blog.blog_title }}</h2>
         </div>
       </div>
-
-      <!-- Tag filter pills -->
-      {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
-      {% if all_tags.size > 0 %}
-      <div class="posts__filter" id="posts-filter">
-        <button class="posts__filter-pill posts__filter-pill--active" data-tag="all">All</button>
-        {% for tag in all_tags %}
-          {% unless tag == '' %}
-          <button class="posts__filter-pill" data-tag="{{ tag | slugify }}">{{ tag }}</button>
-          {% endunless %}
-        {% endfor %}
-      </div>
-      {% endif %}
 
       <div class="row grid" id="posts-grid">
       {% if site.posts.size > 0 %}
         {% for post in paginator.posts %}
-          {% assign post_tags_slugs = post.tags | map: 'slug' | join: ' ' %}
           <div class="col col-4 col-d-6 col-t-12 animate grid__post" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
             {% include article.html %}
           </div>

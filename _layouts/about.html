@@ -1,0 +1,142 @@
+---
+layout: default
+---
+
+<div class="ap-wrap">
+  <div class="container">
+  <div class="ap">
+
+    <!-- ── Profile Hero (full width) ── -->
+    <section class="ap__profile">
+      {% if page.about_image %}
+      <div class="ap__photo-wrap">
+        <div class="ap__photo">
+          <img src="{{ page.about_image | relative_url }}" alt="{{ page.about_image_alt | default: page.about_name }}">
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="ap__profile-info">
+        <h1 class="ap__name">{{ page.about_name }}</h1>
+        {% if page.about_role %}
+        <p class="ap__role">{{ page.about_role }}</p>
+        {% endif %}
+        {% if page.about_bio %}
+        <p class="ap__bio">{{ page.about_bio }}</p>
+        {% endif %}
+
+        {% if site.data.settings.social %}
+        <div class="ap__social">
+          {% for item in site.data.settings.social %}
+          <a href="{{ item.link }}" class="ap__social-link" aria-label="{{ item.name }}" {% unless item.link contains 'mailto' %}target="_blank" rel="noopener"{% endunless %}>
+            <i class="{{ item.icon }}"></i>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- ── Two-column body ── -->
+    <div class="ap__body">
+
+      <!-- LEFT: Approach + Currently -->
+      <div class="ap__col ap__col--left">
+
+        {% if page.about_philosophy %}
+        <section class="ap__section">
+          <p class="ap__section-label">Approach</p>
+          <blockquote class="ap__philosophy">{{ page.about_philosophy }}</blockquote>
+        </section>
+        {% endif %}
+
+        {% if page.about_currently %}
+        <section class="ap__section">
+          <p class="ap__section-label">Currently</p>
+          <div class="ap__currently-card">
+            <div class="ap__currently-dot"></div>
+            <p class="ap__currently-text">{{ page.about_currently }}</p>
+          </div>
+        </section>
+        {% endif %}
+
+      </div>
+
+      <!-- RIGHT: Expertise + Experience -->
+      <div class="ap__col ap__col--right">
+
+        {% if page.about_expertise %}
+        <section class="ap__section">
+          <p class="ap__section-label">Expertise</p>
+          <div class="ap__chips">
+            {% for chip in page.about_expertise %}
+            <span class="ap__chip">{{ chip }}</span>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
+        {% if page.about_experience %}
+        <section class="ap__section">
+          <p class="ap__section-label">Experience</p>
+          <div class="ap__timeline">
+            {% for item in page.about_experience %}
+            <div class="ap__timeline-item">
+              <div class="ap__timeline-marker"></div>
+              <div class="ap__timeline-body">
+                <div class="ap__timeline-head">
+                  <span class="ap__timeline-primary">
+                    <span class="ap__timeline-role">{{ item.role }}</span>
+                    <span class="ap__timeline-sep"> · </span>
+                    <span class="ap__timeline-company">{{ item.company }}</span>
+                  </span>
+                  <span class="ap__timeline-years">{{ item.years }}</span>
+                </div>
+                {% if item.note %}
+                <p class="ap__timeline-note">{{ item.note }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
+      </div>
+
+    </div><!-- /.ap__body -->
+
+    <!-- ── Certifications ── -->
+    {% if page.about_certifications %}
+    <section class="ap__section ap__certs">
+      <p class="ap__section-label">Certifications</p>
+      <div class="ap__badges">
+        {% for cert in page.about_certifications %}
+        <div class="ap__badge"
+             data-iframe-width="150"
+             data-iframe-height="270"
+             data-share-badge-id="{{ cert.badge_id }}"
+             data-share-badge-host="https://www.credly.com">
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── Contact CTA (full width) ── -->
+    <section class="ap__cta">
+      <h2 class="ap__cta-heading">{{ page.about_cta_heading | default: "Let's talk." }}</h2>
+      <p class="ap__cta-text">{{ page.about_cta_text | default: "If any of this resonates, I'm always up for a good engineering conversation." }}</p>
+      <a href="{{ page.about_cta_link | default: '/contact/' | relative_url }}" class="ap__cta-btn">
+        {{ page.about_cta_button | default: "Get in touch" }}
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </section>
+
+  </div>
+  </div>
+</div>
+
+{% if page.about_certifications %}
+<script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+{% endif %}

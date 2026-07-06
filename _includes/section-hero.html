@@ -1,19 +1,56 @@
 {% if site.data.settings.hero.enable == true %}
 <!-- begin hero -->
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true"></div>
-  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <!-- Geometric background shapes -->
+  <div class="hero__geo" aria-hidden="true">
+    <div class="hero__geo-shape hero__geo-shape--1"></div>
+    <div class="hero__geo-shape hero__geo-shape--2"></div>
+    <div class="hero__geo-shape hero__geo-shape--3"></div>
+    <div class="hero__geo-shape hero__geo-shape--4"></div>
+    <!-- Peach ambient glows -->
+    <svg class="hero__glow" viewBox="0 0 1526 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="hg0" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+          <feGaussianBlur stdDeviation="107"/>
+        </filter>
+        <filter id="hg1" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+          <feGaussianBlur stdDeviation="150"/>
+        </filter>
+        <linearGradient id="hga" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#FFCE85"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="hgb" x1="100%" y1="100%" x2="40%" y2="0%">
+          <stop offset="0%" stop-color="#FFE7C2"/>
+          <stop offset="100%" stop-color="#FCC06E" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g opacity="0.18" filter="url(#hg0)">
+        <path d="M800 80L1440 0V600L800 520V80Z" fill="url(#hga)"/>
+      </g>
+      <g opacity="0.22" filter="url(#hg1)">
+        <path d="M900 300L1526 200V900L900 780V300Z" fill="url(#hgb)"/>
+      </g>
+    </svg>
+  </div>
+
   <div class="container">
     <div class="hero__inner">
+
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-dot"></span>
+        <span class="hero__typewriter-text" id="hero-typewriter" aria-hidden="true"></span><span class="hero__typewriter-cursor" aria-hidden="true">_</span>
+      </div>
+
       {% if site.data.settings.hero.hero_title %}
       <h1 class="hero__title">{{ site.data.settings.hero.hero_title }}</h1>
       {% endif %}
-      <div class="hero__typewriter-wrap" aria-hidden="true">
-        <span class="hero__typewriter-text" id="hero-typewriter"></span><span class="hero__typewriter-cursor">_</span>
-      </div>
+
       {% if site.data.settings.hero.hero_description %}
       <p class="hero__description">{{ site.data.settings.hero.hero_description }}</p>
       {% endif %}
+
       <div class="hero__actions">
         <div class="hero__search-wrap">
           <i class="fa-solid fa-magnifying-glass hero__search-icon"></i>
@@ -21,6 +58,7 @@
           <div class="hero__search-results" id="hero-results-container"></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

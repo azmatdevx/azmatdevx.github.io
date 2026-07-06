@@ -2,84 +2,64 @@
 <header class="header" id="top">
   <div class="header__inner">
 
-    <!-- Left: Home, Latest, Topics + mobile hamburger -->
-    <div class="nav--split-left">
-      <nav class="nav--desktop" aria-label="Primary navigation">
-        <ul class="nav__list list-reset">
-          {% for item in site.data.settings.menu_settings.menu_items limit:3 %}
-          <li class="nav__item">
-            <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <div></div>
-      </button>
-    </div>
-
-    <!-- Center: Logo wordmark -->
-    <a class="header__logo-center" href="{{ site.baseurl }}/" aria-label="{{ site.name }} home">
-      <svg viewBox="0 0 1715 518" width="126" height="38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-        <g transform="matrix(1,0,0,1,0.000256,-0.001034)">
-            <g transform="matrix(1,0,0,1,-2750.457839,-1087)">
-                <g transform="matrix(1,0,0,1,1385.277101,40)">
-                    <g transform="matrix(0.7304,0,0,0.647326,1294.331945,-174.503503)">
-                        <g transform="matrix(0.740676,0,0,0.941023,-439.99046,721.747615)">
-                            <g>
-                                <path d="M1878,1532L1878,2088L1077.875,2088C882.988,2088 725,1963.648 725,1810.253L725,1808.328C725,1735.041 761.988,1664.756 827.827,1612.935C893.665,1561.113 982.962,1532 1076.072,1532L1878,1532ZM1661.981,1701.677L1078.642,1701.677C1002.635,1701.677 941.019,1750.175 941.019,1810C941.019,1869.825 1002.635,1918.323 1078.642,1918.323L1661.981,1918.323L1661.981,1701.677Z" style="fill:rgb(240,61,0);"/>
-                            </g>
-                        </g>
-                        <g transform="matrix(1.062937,0,0,1.552448,-738.27972,-126.524476)">
-                            <path d="M1122,1399.419L1122,1297L1437.474,1297C1520.607,1297 1588,1343.143 1588,1400.063L1588,1440L1437.474,1440L1437.474,1435.625C1437.474,1415.629 1413.799,1399.419 1384.594,1399.419L1122,1399.419Z" style="fill:rgb(240,61,0);"/>
-                        </g>
-                        <g transform="matrix(1,0,0,1,0,-8.70475)">
-                            <g transform="matrix(0.797404,0,0,0.797404,-297.540135,866.592937)">
-                                <rect x="1643" y="1694" width="224" height="224" style="fill:rgb(240,61,0);"/>
-                            </g>
-                            <g transform="matrix(0.797404,0,0,0.797404,-297.540135,1120.592937)">
-                                <path d="M1727.798,1694L1867,1694L1867,1918L1643,1918L1643,1778.798L1672.451,1778.798C1703.018,1778.798 1727.798,1754.018 1727.798,1723.451L1727.798,1694Z" style="fill:rgb(240,61,0);"/>
-                            </g>
-                        </g>
-                    </g>
-                    <g transform="matrix(1,0,0,1,-22,-230.93434)">
-                        <g transform="matrix(1,0,0,1,198,1055)">
-                            <g transform="matrix(1,0,0,1,2076.295,524.454)">
-                                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:291.667px;fill:rgb(240,61,0);">azmat</text>
-                            </g>
-                        </g>
-                        <g transform="matrix(1,0,0,1,391.949382,1165)">
-                            <g>
-                                <g transform="matrix(1,0,0,1,2076.295,524.454)">
-                                    <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:83.333px;fill:rgb(240,61,0);">M</text>
-                                </g>
-                                <g transform="matrix(1,0,0,1,2158.212,524.454)">
-                                    <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:83.333px;fill:rgb(240,61,0);">U<tspan x="72.681px 145.361px 222.681px 295.361px " y="0px 0px 0px 0px ">NGUR</tspan></text>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </svg>
+    <!-- Logo: left -->
+    <a class="header__logo" href="{{ site.baseurl }}/" aria-label="{{ site.name }} home">
+      <svg viewBox="0 0 2006 605" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+          <g transform="matrix(1,0,0,1,-2578.205304,-935.958326)">
+              <g transform="matrix(1,0,0,1,1725.463987,83.75737)">
+                  <g transform="matrix(0.707107,0.707107,-0.707107,0.707107,770.241683,-869.236117)">
+                      <g transform="matrix(0.000289,-1.087571,1.251675,0.000332,1035.28608,2373.692319)">
+                          <path d="M1389,441.312L1389,622.688C1389,637.762 1374.915,650 1357.567,650L877.433,650C860.085,650 846,637.762 846,622.688L846,441.312C846,426.238 860.085,414 877.433,414L1357.567,414C1374.915,414 1389,426.238 1389,441.312Z" style="fill:rgb(43,102,255);"/>
+                      </g>
+                      <g transform="matrix(0.506459,-0.506459,0.513017,0.513017,595.216819,1444.869381)">
+                          <path d="M1258,939.045L1258,1190.955C1258,1205.33 1246.178,1217 1231.618,1217L980.382,1217C965.822,1217 954,1205.33 954,1190.955L954,939.045C954,924.67 965.822,913 980.382,913L1231.618,913C1246.178,913 1258,924.67 1258,939.045Z" style="fill:rgb(43,102,255);"/>
+                      </g>
+                      <g transform="matrix(0.506459,-0.506459,0.513017,0.513017,595.216819,903.604349)">
+                          <path d="M1258,939.045L1258,1190.955C1258,1205.33 1246.178,1217 1231.618,1217L980.382,1217C965.822,1217 954,1205.33 954,1190.955L954,939.045C954,924.67 965.822,913 980.382,913L1231.618,913C1246.178,913 1258,924.67 1258,939.045Z" style="fill:rgb(43,102,255);"/>
+                      </g>
+                  </g>
+                  <g>
+                      <g transform="matrix(0.964722,0,0,0.964722,385.65489,282.208506)">
+                          <path d="M1258,943.803L1258,1186.197C1258,1203.198 1244.198,1217 1227.197,1217L984.803,1217C967.802,1217 954,1203.198 954,1186.197L954,943.803C954,926.802 967.802,913 984.803,913L1227.197,913C1244.198,913 1258,926.802 1258,943.803Z" style="fill:rgb(43,102,255);"/>
+                      </g>
+                      <g transform="matrix(1,0,0,1,-447,255)">
+                          <rect x="1755" y="692" width="145" height="246" style="fill:rgb(43,102,255);"/>
+                      </g>
+                  </g>
+              </g>
+              <g transform="matrix(1.525514,0,0,1.525514,1539.081855,-147.750547)">
+                  <g transform="matrix(1,0,0,1,1151,365)">
+                      <text x="85.634px" y="560.575px" style="font-family:'Helvetica';font-size:300px;fill:rgb(43,102,255);">A<tspan x="264.732px 393.732px 622.634px 768.48px " y="560.575px 560.575px 560.575px 560.575px ">zmat</tspan></text>
+                  </g>
+                  <g transform="matrix(1,0,0,1,1261.50887,505.464803)">
+                      <text x="85.634px" y="560.575px" style="font-family:'Helvetica';font-size:174.804px;fill:rgb(43,102,255);">M<tspan x="219.011px 303.993px 388.974px 473.956px 558.938px " y="560.575px 560.575px 560.575px 560.575px 560.575px ">ungur</tspan></text>
+                  </g>
+              </g>
+          </g>
+      </svg>
     </a>
 
-    <!-- Right: About, Contact, Search -->
-    <div class="nav--split-right">
-      <nav class="nav--desktop" aria-label="Primary navigation">
-        <ul class="nav__list list-reset">
-          {% for item in site.data.settings.menu_settings.menu_items offset:3 %}
-          <li class="nav__item">
-            <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
-          </li>
-          {% endfor %}
-          <li class="nav__item">
-            <button class="nav__link nav__search-trigger" aria-label="Open search">Search</button>
-          </li>
-        </ul>
-      </nav>
+    <!-- Nav links: center -->
+    <nav class="nav--desktop" aria-label="Primary navigation">
+      <ul class="nav__list list-reset">
+        {% for item in site.data.settings.menu_settings.menu_items %}
+        <li class="nav__item">
+          <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Right: Search + CTA -->
+    <div class="header__actions">
+      <button class="nav__link nav__search-trigger" aria-label="Open search">Search</button>
+      <a href="{{ '/contact/' | relative_url }}" class="header__cta">Get in touch</a>
     </div>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <div></div>
+    </button>
 
   </div>
 

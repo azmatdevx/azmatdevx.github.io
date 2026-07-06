@@ -13,8 +13,6 @@ menu_settings:
   menu_items:
     - title: "Home"
       url: "/"
-    - title: "Latest"
-      url: "/latest/"
     - title: "Topics"
       url: "/tags/"
     - title: "About"
@@ -43,12 +41,12 @@ hero_authors:
 # Blog Section Settings
 blog:
   enable: true
-  blog_title: Latest
+  blog_title: Latest Posts
 
 #-------------------------------
 # Recommended Section Settings
 recommended:
-  enable: true
+  enable: false
   recommended_title: More from the journal
   recommended_tag: "Personal Tech"
 
