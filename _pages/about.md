@@ -1,38 +1,49 @@
 ---
-layout: page
+layout: about
 title: About
-description: I’m Azmat Mungur, a performance engineer evolving into an AI-performance engineer, documenting practical lessons from building reliable systems and augmenting the discipline with AI agents.
 permalink: /about/
-image: '/images/17.jpg'
-image_caption: Notes from the workbench
+
+about_name: Azmat Mungur
+about_role: Performance Engineer · AI-Augmented Systems
+about_image: "/images/profile.png"
+about_image_alt: Azmat Mungur
+about_bio: "I make software faster, more reliable, and easier to operate in production. I'm also moving deeper into AI-augmented engineering — using agents and agentic workflows to amplify performance practice rather than replace the discipline underneath it."
+
+about_philosophy: "I think good performance engineering is fundamentally about measurement before opinion. Most slowdowns have a real cause — you just haven't looked in the right place yet. I try to bring that same discipline to everything I build: understand the system before you change it, and be honest about what the data is actually telling you."
+
+about_currently: "Building AI-augmented performance tooling — using agents to surface bottlenecks, automate load-test analysis, and cut the manual overhead that slows engineering decisions. Writing about what I learn along the way."
+
+about_expertise:
+  - "Performance Engineering"
+  - "AI Agents & Agentic Workflows"
+  - "Cloud Infrastructure"
+  - "Developer Tooling"
+  - "Systems Design"
+  - "Production Debugging"
+  - "Observability"
+  - "Load Testing"
+
+about_certifications:
+  - badge_id: "db74497d-78e8-4076-ad7d-f20e8cf2d6cb"
+  - badge_id: "633586fb-74b5-45c4-ba69-2ebaed003175"
+  - badge_id: "c14c7c9b-a572-465e-987c-c25a2217afeb"
+
+about_cta_heading: "Let's talk."
+about_cta_text: "If any of this resonates — a performance challenge, an AI tooling idea, or just comparing notes on something you're building — I'm always up for a good engineering conversation."
+about_cta_link: "/contact/"
+about_cta_button: "Get in touch"
+
+about_experience:
+  - role: "Senior Performance Engineer"
+    company: "[Company Name]"
+    years: "2022–present"
+    note: "Performance strategy, load testing, observability, and reliability improvements across distributed systems at scale."
+  - role: "Performance Engineer"
+    company: "[Company Name]"
+    years: "2019–2022"
+    note: "Identified and resolved throughput bottlenecks; built internal tooling to automate performance regression detection."
+  - role: "Software Engineer"
+    company: "[Company Name]"
+    years: "2017–2019"
+    note: "Full-stack development with a growing focus on backend performance and infrastructure."
 ---
-
-I built this site to be a personal technical journal, not a polished company blog. Most of what shows up here starts with real work: a slow page, a deployment that did not go as planned, an architecture decision that looked obvious until the tradeoffs arrived, or a side project that taught me something I wanted to remember.
-
-I spend most of my time around software performance, delivery, infrastructure, and the everyday engineering decisions that shape whether a system stays maintainable after the first release. I am also moving deeper into AI-performance engineering, using AI agents and agentic AI to augment performance engineering practice rather than replace the core discipline. I like writing about the details that usually get edited out of success stories: what failed first, what signal turned out to matter, and what changed once the system met real traffic and real constraints.
-
-The posts here are intentionally first-person and experience-driven. Some are short operational notes. Some are deeper breakdowns of debugging sessions, architecture choices, or tools I am experimenting with. All of them are meant to be useful to future me first, which usually makes them more useful to other engineers too.
-
-I am especially interested in:
-
-- performance engineering and measurement that leads to actual decisions
-- AI agents and agentic workflows that strengthen performance engineering practice
-- developer tooling that reduces friction instead of adding ceremony
-- cloud infrastructure choices that hold up under operational pressure
-- shipping personal projects without pretending every experiment is a startup
-
-![Workspace]({{site.baseurl}}/images/17-1.jpg#wide)
-*A quieter place to think through technical problems*
-
-<div class="gallery-box">
-  <div class="gallery gallery-column-3">
-    <img src="/images/17-2.jpg" loading="lazy">
-    <img src="/images/17-4.jpg" loading="lazy">
-    <img src="/images/17-3.jpg" loading="lazy">
-  </div>
-  <em>Sketches, experiments, and implementation notes</em>
-</div>
-
-If that sounds useful, start with the latest posts or reach out through the contact page. This site is where I think in public about the technical work I care about.
-
-***

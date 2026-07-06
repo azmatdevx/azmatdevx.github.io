@@ -2,65 +2,69 @@
 layout: default
 ---
 
-<div class="container">
-  <div class="post__head">
-    <div class="post__info">
+<div class="post__header">
+  <div class="post__header-glow" aria-hidden="true"></div>
 
-      <!-- Tags + date + read time + share on one row -->
-      <div class="post__head__inner">
-        {% if page.tags.size >= 1 %}
-        <div class="post__tags">
-          {% for tag in page.tags %}
-          <a href="{{ site.baseurl }}/tags#{{ tag }}" class="post__tag">{{ tag }}</a>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <div class="post__date">•
-          <time datetime="{{ page.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%-b %d, %Y" %}{{ page.date | date: date_format }}</time>
-        </div>
-        <div class="post__minutes">•
-          <span>
-            {% assign words = page.content | number_of_words %}
-            {% if words < 360 %}
-              1 min read
-            {% else %}
-              {{ words | divided_by:180 }} min read
-            {% endif %}
-          </span>
-        </div>
+  <div class="container">
+    <div class="post__title-block">
+
+      {% if page.tags.size >= 1 %}
+      <div class="post__tags">
+        {% for tag in page.tags %}
+        <a href="{{ site.baseurl }}/tags#{{ tag }}" class="post__tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h1 class="post__title">{{ page.title | escape }}</h1>
+
+      {% if page.description %}
+      <p class="post__description">{{ page.description }}</p>
+      {% endif %}
+
+      <div class="post__meta-bar">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" | upcase }}</time>
+        <span class="post__meta-sep" aria-hidden="true">•</span>
+        <span class="post__meta-read">{% assign words = page.content | number_of_words %}{% if words < 360 %}1 MIN READ{% else %}{{ words | divided_by:180 }} MIN READ{% endif %}</span>
+        <span class="post__meta-sep post__meta-share-sep" aria-hidden="true">•</span>
         <div class="post__share post__share--inline">
           {% include share-buttons.html %}
         </div>
       </div>
 
-      <h1 class="post__title">{{ page.title | escape }}</h1>
-
-      {% if page.description %}
-      <div class="post__description">{{ page.description }}</div>
-      {% endif %}
-
     </div>
-
-    <!-- Full-width hero image -->
-    {% if page.video_embed %}
-    <div class="post__video">
-      <div class="post__video__wrap">
-        <iframe src="{{ page.video_embed }}" loading="lazy" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      </div>
-    </div>
-    {% elsif page.image %}
-    <div class="post__image-wrap">
-      <img class="lazy post__image" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
-    </div>
-    {% endif %}
-
-    {% if page.image_caption %}
-    <div class="post__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</div>
-    {% endif %}
-
   </div>
 
-  <!-- begin post -->
+  {% if page.image %}
+  <div class="post__cover-wrap">
+    <div class="container">
+      <div class="post__cover">
+        <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if page.image_caption %}
+  <div class="container">
+    <p class="post__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</p>
+  </div>
+  {% endif %}
+
+</div>
+
+{% if page.video_embed %}
+<div class="container">
+  <div class="post__video">
+    <div class="post__video__wrap">
+      <iframe src="{{ page.video_embed }}" loading="lazy" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- begin post -->
+<div class="container">
   <article class="post">
     <div class="post__content">
 
@@ -74,8 +78,8 @@ layout: default
       {{ content }}
     </div>
   </article>
-  <!-- end post -->
 </div>
+<!-- end post -->
 
 {% if site.data.settings.disqus_identifier %}
   {% include disqus-comments.html %}

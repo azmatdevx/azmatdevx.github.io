@@ -44,8 +44,8 @@
     .about__subtitle {
       font-family: var(--sans);
       font-size: 16px;
-      font-weight: 300;
-      color: var(--v-200);
+      font-weight: 400;
+      color: var(--text-alt-color);
       line-height: 1.65;
       margin-bottom: 20px;
     }
@@ -53,9 +53,9 @@
     .about__description {
       margin-bottom: 28px;
       font-size: 14px;
-      color: var(--v-300);
+      color: var(--text-alt-color);
       line-height: 1.75;
-      font-weight: 300;
+      font-weight: 400;
 
       p { margin-bottom: 16px; }
       p:last-child { margin-bottom: 0; }
@@ -64,7 +64,7 @@
     a:not([class]) {
       color: var(--g-400);
       text-decoration: underline;
-      text-decoration-color: rgba(255, 69, 0, 0.3);
+      text-decoration-color: rgba(43, 102, 255, 0.3);
       text-underline-offset: 2px;
       transition: color .15s;
 

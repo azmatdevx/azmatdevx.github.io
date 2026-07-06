@@ -1,41 +1,59 @@
-/* ── SIGNAL ORANGE SYSTEM ── */
+/* ── PRIMARY: BLUE ── */
 :root {
-  --g-950: #1A0800;
-  --g-900: #2D0C00;
-  --g-800: #661500;
-  --g-700: #992000;
-  --g-600: #CC3700;
-  --g-500: #FF4500;
-  --g-400: #FF6B35;
-  --g-300: #FF8C61;
-  --g-200: #FFB599;
-  --g-100: #FFD6C4;
-  --g-50:  #FFF0EB;
+  --g-950: #071842;
+  --g-900: #0D2B8A;
+  --g-800: #1040CC;
+  --g-700: #1A52E8;
+  --g-600: #2B66FF;
+  --g-500: #4D84FF;
+  --g-400: #7BA8FF;
+  --g-300: #A8C8FF;
+  --g-200: #C8DDFF;
+  --g-100: #DDEAFF;
+  --g-50:  #EDF4FF;
 
-  /* ── VOID SYSTEM ── */
-  --v-950: #060810;
-  --v-900: #0A0D18;
-  --v-800: #0F1220;
-  --v-700: #161A2C;
-  --v-600: #1E2438;
-  --v-500: #2A3248;
-  --v-400: #3A4560;
-  --v-300: #5A6888;
-  --v-200: #8A9AB8;
-  --v-100: #C0CCE0;
+  /* ── SECONDARY: PINK / VIOLET ── */
+  --s-500: #D771FF;
+  --s-400: #E8AFFF;
+  --s-300: #F2D0FF;
+  --s-50:  #F7E4FF;
 
-  /* ── PAPER SYSTEM ── */
-  --p-950: #0D0D0B;
-  --p-900: #1A1A17;
-  --p-800: #3C3B37;
-  --p-700: #5A5955;
-  --p-600: #7A7971;
-  --p-500: #9A9892;
-  --p-400: #BDBCB6;
-  --p-300: #D8D6D0;
-  --p-200: #EEEEE9;
-  --p-100: #F4F3EF;
-  --p-50:  #F5F4EF;
+  /* ── TERTIARY: SKY BLUE ── */
+  --b-500: #52C4F8;
+  --b-400: #85D5FA;
+  --b-300: #B2E6FD;
+  --b-50:  #E6F7FF;
+
+  /* ── HIGHLIGHT: AMBER ── */
+  --a-500: #FFCE85;
+  --a-400: #FFD699;
+  --a-300: #FFE7C2;
+  --a-50:  #FFF8EC;
+
+  /* ── CHARCOAL SLATE (dark mode surfaces) ── */
+  --v-950: #0F1117;
+  --v-900: #14161E;
+  --v-800: #1B1E28;
+  --v-700: #252838;
+  --v-600: #32364A;
+  --v-500: #444A62;
+  --v-400: #606880;
+  --v-300: #8B96B0;
+  --v-200: #B4BDD0;
+  --v-100: #D8DDE8;
+
+  /* ── NEUTRAL GREY (light mode surfaces) ── */
+  --p-950: #111318;
+  --p-900: #1C1F26;
+  --p-800: #2E333D;
+  --p-700: #4A5060;
+  --p-600: #677080;
+  --p-500: #8A93A2;
+  --p-400: #B0B8C4;
+  --p-300: #CDD3DB;
+  --p-200: #E2E6EC;
+  --p-100: #F0F2F5;
+  --p-50:  #F7F8FA;
 
   /* ── RUST (alerts) ── */
   --rust:       #C4441E;
@@ -60,7 +78,7 @@
 
   --button-color:                #ffffff;
   --button-background-color:     var(--g-500);
-  --button-background-hover:     var(--g-400);
+  --button-background-hover:     var(--g-600);
 
   --border-color:     var(--p-300);
   --border-alt-color: var(--p-200);
@@ -68,36 +86,51 @@
   --th-color: var(--p-200);
   --tr-color: var(--p-100);
 
-  --callout-note:      rgba(255, 107, 53, 0.08);
-  --callout-tip:       rgba(255, 69, 0, 0.1);
-  --callout-important: rgba(255, 107, 53, 0.06);
-  --callout-warning:   rgba(196,68,30,0.08);
-  --callout-caution:   rgba(196,68,30,0.1);
+  --callout-note:      rgba(43, 102, 255, 0.08);
+  --callout-tip:       rgba(43, 102, 255, 0.10);
+  --callout-important: rgba(43, 102, 255, 0.06);
+  --callout-warning:   rgba(196, 68, 30, 0.08);
+  --callout-caution:   rgba(196, 68, 30, 0.10);
 
   --syntax-highlighting-background: var(--p-100);
 
   /* ── BRAND TOKENS ── */
-  --mono:  'Geist Mono', 'Courier New', monospace;
-  --sans:  'Geist', system-ui, -apple-system, sans-serif;
+  --mono:    ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+  --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --display: 'Everett', system-ui, sans-serif;
 
   --nav-height: 80px;
-  --brand-orange:      var(--g-600);
-  --brand-orange-hi:   var(--g-400);
-  --brand-orange-apex: var(--g-300);
 
   /* Nav-specific tokens (light defaults) */
-  --nav-bg:         rgba(245, 244, 239, 0.92);
+  --nav-bg:         rgba(247, 248, 250, 0.92);
   --nav-border:     var(--p-300);
   --nav-text:       var(--p-700);
   --nav-text-hover: var(--g-600);
   --nav-active:     var(--g-600);
 
   /* Hero overlay (light) */
-  --hero-overlay: rgba(248, 247, 242, 0.55);
+  --hero-overlay: rgba(247, 248, 250, 0.55);
+
+  /* Hero section tokens (light mode) */
+  --hero-bg:                 var(--p-100);
+  --hero-border:             var(--border-color);
+  --hero-shape-1:            rgba(0, 0, 0, 0.035);
+  --hero-shape-2:            rgba(0, 0, 0, 0.025);
+  --hero-shape-3:            rgba(0, 0, 0, 0.018);
+  --hero-shape-4:            rgba(0, 0, 0, 0.028);
+  --hero-title-color:        var(--heading-font-color);
+  --hero-desc-color:         var(--text-alt-color);
+  --hero-eyebrow-color:      var(--text-alt-color);
+  --hero-search-bg:          rgba(0, 0, 0, 0.04);
+  --hero-search-border:      var(--border-color);
+  --hero-search-text:        var(--heading-font-color);
+  --hero-search-placeholder: var(--text-alt-color);
+  --hero-search-icon:        var(--text-alt-color);
+  --hero-results-bg:         var(--background-color);
 
   /* Code/pre background */
-  --code-bg:     rgba(255, 69, 0, 0.06);
-  --code-border: rgba(255, 69, 0, 0.12);
+  --code-bg:     rgba(43, 102, 255, 0.06);
+  --code-border: rgba(43, 102, 255, 0.14);
   --code-color:  var(--g-700);
   --pre-bg:      var(--p-100);
   --pre-border:  var(--p-300);
@@ -136,18 +169,35 @@
   --syntax-highlighting-background: var(--v-900);
 
   /* Nav-specific tokens (dark) */
-  --nav-bg:         rgba(6, 8, 16, 0.92);
+  --nav-bg:         rgba(15, 17, 23, 0.92);
   --nav-border:     var(--v-700);
   --nav-text:       var(--v-300);
   --nav-text-hover: var(--g-400);
   --nav-active:     var(--g-400);
 
   /* Hero overlay (dark) */
-  --hero-overlay: rgba(6, 8, 16, 0.6);
+  --hero-overlay: rgba(15, 17, 23, 0.6);
+
+  /* Hero section tokens (dark mode) */
+  --hero-bg:                 #22242A;
+  --hero-border:             rgba(255, 255, 255, 0.06);
+  --hero-shape-1:            rgba(255, 255, 255, 0.05);
+  --hero-shape-2:            rgba(255, 255, 255, 0.03);
+  --hero-shape-3:            rgba(255, 255, 255, 0.08);
+  --hero-shape-4:            rgba(255, 255, 255, 0.04);
+  --hero-title-color:        #ffffff;
+  --hero-desc-color:         rgba(255, 255, 255, 0.55);
+  --hero-eyebrow-color:      var(--g-400);
+  --hero-search-bg:          rgba(255, 255, 255, 0.07);
+  --hero-search-border:      rgba(255, 255, 255, 0.12);
+  --hero-search-text:        #ffffff;
+  --hero-search-placeholder: rgba(255, 255, 255, 0.35);
+  --hero-search-icon:        rgba(255, 255, 255, 0.4);
+  --hero-results-bg:         #2C2E35;
 
   /* Code/pre */
-  --code-bg:     rgba(255, 107, 53, 0.06);
-  --code-border: rgba(255, 107, 53, 0.12);
+  --code-bg:     rgba(77, 132, 255, 0.07);
+  --code-border: rgba(77, 132, 255, 0.14);
   --code-color:  var(--g-300);
   --pre-bg:      var(--v-900);
   --pre-border:  var(--v-700);

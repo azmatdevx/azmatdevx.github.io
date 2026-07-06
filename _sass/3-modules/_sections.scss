@@ -1,6 +1,6 @@
 /* ── Sections ── */
 .section {
-  margin-bottom: 72px;
+  margin-bottom: 20px;
 
   @media (max-width: $desktop) { margin-bottom: 56px; }
   @media (max-width: $mobile)  { margin-bottom: 40px; }
@@ -15,12 +15,20 @@
   &.related-posts {
     .section__inner { margin-bottom: -32px; }
   }
+
+  /* standalone page top breathing room */
+  &.tags-page {
+    padding-top: 56px;
+
+    @media (max-width: $desktop) { padding-top: 40px; }
+    @media (max-width: $mobile)  { padding-top: 28px; }
+  }
 }
 
 .section__info {
   position: relative;
   padding-bottom: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
 }
 
 .section__head {
