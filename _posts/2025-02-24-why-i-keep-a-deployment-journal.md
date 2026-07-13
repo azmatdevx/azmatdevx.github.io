@@ -4,7 +4,7 @@ title: Why I Keep a Deployment Journal
 description: Small written notes after each release have saved me more time than several smart tools I was sure would solve the same problem.
 date: 2025-02-24 18:10:00 +0400
 author: azmat
-image: '/images/12.jpg'
+image: '/images/shipped.png'
 tags: [Delivery, Personal Tech]
 featured: false
 toc: false

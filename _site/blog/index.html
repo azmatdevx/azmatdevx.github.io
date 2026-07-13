@@ -6,22 +6,64 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>What a Debugging Session Taught Me About Noise — azmat.devx</title>
-  <meta name='description' content='I went hunting for a deep systems issue and found a simpler explanation hiding behind too much telemetry and not enough judgment.'>
+  <title>Blog — azmat.devx</title>
+  <meta name='description' content='Personal notes on software, performance, infrastructure, and the messy reality of building things.'>
 
-  <link rel="canonical" href="http://localhost:4000/what-a-debugging-session-taught-me-about-noise">
+  <link rel="canonical" href="http://localhost:4000/blog/">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="What a Debugging Session Taught Me About Noise — azmat.devx">
-  <meta name="twitter:description" content="I went hunting for a deep systems issue and found a simpler explanation hiding behind too much telemetry and not enough judgment.">
-  <meta name="twitter:image:src" content="http://localhost:4000/images/rootcause.png">
+  <meta name="twitter:title" content="Blog — azmat.devx">
+  <meta name="twitter:description" content="
+
+
+  
+    
+
+      Field notes from the engineering bench
+
+      Raw observations from production systems, side projects, and the decisions that only make sense after they&apos;ve shipped.
+
+      
+        
+        
+        
+      
+
+    
+  
+
+
+
+">
+  <meta name="twitter:image:src" content="">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="What a Debugging Session Taught Me About Noise — azmat.devx">
-  <meta property="og:description" content="I went hunting for a deep systems issue and found a simpler explanation hiding behind too much telemetry and not enough judgment.">
-  <meta property="og:image" content="http://localhost:4000/images/rootcause.png">
+  <meta property="og:title" content="Blog — azmat.devx">
+  <meta property="og:description" content="
+
+
+  
+    
+
+      Field notes from the engineering bench
+
+      Raw observations from production systems, side projects, and the decisions that only make sense after they&apos;ve shipped.
+
+      
+        
+        
+        
+      
+
+    
+  
+
+
+
+">
+  <meta property="og:image" content="">
 
 
   <!-- Theme: always dark -->
@@ -55,7 +97,7 @@
 </head>
 
 
-<body class="dark-page">
+<body class="has-hero dark-page">
 
   
 
@@ -130,7 +172,7 @@
       <ul class="nav__list list-reset">
         
         <li class="nav__item">
-          <a href="/blog/" class="nav__link">Field Notes</a>
+          <a href="/blog/" class="nav__link active-link">Field Notes</a>
         </li>
         
       </ul>
@@ -148,7 +190,7 @@
     <ul class="nav__list list-reset">
       
       <li class="nav__item">
-        <a href="/blog/" class="nav__link">Field Notes</a>
+        <a href="/blog/" class="nav__link active-link">Field Notes</a>
       </li>
       
     </ul>
@@ -171,117 +213,43 @@
 
     <!-- begin content -->
     <main class="content" aria-label="Content">
-      <div class="post__header">
+      
+<!-- begin hero -->
+<section class="hero hero--writing">
   <div class="container">
-    <div class="post__hero">
+    <div class="hero__writing-head">
 
-      <h1 class="post__title">What a Debugging Session Taught Me About Noise</h1>
+      <h1 class="hero__title">Field notes from the <em>engineering bench</em></h1>
 
-      <div class="post__meta-bar">
-        <time datetime="2025-02-11T08:15:00+04:00">11 February 2025</time>
-        <span class="post__meta-sep" aria-hidden="true">•</span>
-        <span class="post__meta-read">1 min read</span>
-        
-        <span class="post__meta-sep" aria-hidden="true">•</span>
-        
-        <span class="post__tag">Debugging</span>
-        
-        <span class="post__tag">Personal Tech</span>
-        
-        
+      <p class="hero__description">Raw observations from production systems, side projects, and the decisions that only make sense after they've shipped.</p>
+
+      <div class="hero__search-wrap">
+        <i class="fa-solid fa-magnifying-glass hero__search-icon"></i>
+        <input type="text" id="hero-search-input" class="hero__search-input" placeholder="Search the notes." autocomplete="off" aria-label="Search posts">
+        <div class="hero__search-results" id="hero-results-container"></div>
       </div>
 
-      <a href="/blog" class="post__back">
-        <i class="fa-solid fa-arrow-left"></i> Field Notes
-      </a>
-
     </div>
   </div>
-</div>
+</section>
+<!-- end hero -->
 
 
-<div class="post__cover-wrap">
+
+<!-- begin blog posts -->
+<section class="section section-posts animate">
   <div class="container">
-    <div class="post__cover">
-      <img class="lazy" data-src="/images/rootcause.png" alt="What a Debugging Session Taught Me About Noise">
-    </div>
-  </div>
-</div>
+    <div class="section__inner">
+      <div class="section__info">
+        <div class="section__head">
+          <h2 class="section__title">Latest Posts</h2>
+        </div>
+      </div>
 
-
-
-
-
-
-<!-- begin post -->
-<div class="container">
-  <article class="post">
-    <div class="post__content">
-
-      
-
-      <p>I recently spent too long investigating an issue because the system had plenty of data but very little signal. Metrics were available. Logs existed. Dashboards looked impressive. None of that helped until I forced myself to ask a narrower question.</p>
-
-<p>The actual problem was a burst of retries that amplified a dependency slowdown. That should have been straightforward to identify. Instead, I lost time bouncing between charts because every panel looked equally important.</p>
-
-<h2 id="the-trap">The trap</h2>
-
-<p>When tooling gets better, it becomes easier to confuse visibility with clarity. A screen full of graphs can create the feeling of disciplined investigation while quietly pulling attention away from the most basic hypothesis.</p>
-
-<p>What helped was writing down the event in plain language:</p>
-
-<ol>
-  <li>Requests started taking longer than normal.</li>
-  <li>The application responded by retrying too aggressively.</li>
-  <li>The retry pattern increased pressure on the dependency.</li>
-  <li>Recovery took longer because the system kept re-injuring itself.</li>
-</ol>
-
-<p>That sequence did more for me than another fifteen minutes in the dashboard.</p>
-
-<h2 id="what-i-changed-afterwards">What I changed afterwards</h2>
-
-<p>I reduced retry aggressiveness, tightened a few logs around the boundary where the slowdown first appears, and simplified the dashboards I use most often. Fewer charts, better defaults, less time admiring telemetry.</p>
-
-<p>The durable lesson was not about one incident. It was about investigation hygiene. The more noise I allow into the first ten minutes of debugging, the longer I spend feeling busy instead of becoming correct.</p>
-
-    </div>
-  </article>
-</div>
-<!-- end post -->
-
-
-
-
-
-
-
-
-
-<!-- begin related posts -->
-<section class="section related-posts is-related">
-  <div class="container">
-    <div class="row">
-
-      <div class="col col-12">
-        <div class="section__inner">
-
-          <div class="section__info">
-            <div class="section__head">
-              <h2 class="section__title">Related</h2>
-            </div>
-          </div>
-
-          <div class="row">
+      <div class="row grid" id="posts-grid">
+        
           
-            
-            
-
-            
-
-            
-
-            <div class="col col-6 col-t-12">
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="performance-testing jvm debugging ">
               <a href="/oom-is-a-symptom-not-the-problem" class="post-panel">
   
   <div class="post-panel__image">
@@ -309,19 +277,8 @@
 </a>
 
             </div>
-
-            
-            
-            
           
-            
-            
-
-            
-
-            
-
-            <div class="col col-6 col-t-12">
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="architecture personal-tech ">
               <a href="/the-architecture-decisions-i-write-down-now" class="post-panel">
   
   <div class="post-panel__image">
@@ -347,18 +304,175 @@
 </a>
 
             </div>
+          
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="tooling personal-tech ">
+              <a href="/the-most-useful-thing-i-did-for-my-local-dev-environment" class="post-panel">
+  
+  <div class="post-panel__image">
+    <img class="lazy" data-src="/images/local.png" alt="The Most Useful Thing I Did for My Local Dev Environment">
+  </div>
+  
+  <div class="post-panel__body">
+    <p class="post-panel__date">21 Mar 2025</p>
+    <h2 class="post-panel__title">The Most Useful Thing I Did for My Local Dev Environment</h2>
+    
+    <p class="post-panel__excerpt">I stopped chasing the perfect setup and focused on reducing the small repeated frictions that wer...</p>
+    
+    
+    <div class="post-panel__tags">
+      
+      <span class="post-panel__tag">Tooling</span>
+      
+      <span class="post-panel__tag">Personal Tech</span>
+      
+    </div>
+    
+  </div>
+</a>
 
-            
-            
-                
-          </div>
+            </div>
+          
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="jekyll personal-tech ">
+              <a href="/rebuilding-this-jekyll-site-as-a-personal-tech-blog" class="post-panel">
+  
+  <div class="post-panel__image">
+    <img class="lazy" data-src="/images/jekyll.png" alt="Rebuilding This Jekyll Site as a Personal Tech Blog">
+  </div>
+  
+  <div class="post-panel__body">
+    <p class="post-panel__date">9 Mar 2025</p>
+    <h2 class="post-panel__title">Rebuilding This Jekyll Site as a Personal Tech Blog</h2>
+    
+    <p class="post-panel__excerpt">The theme looked polished, but its defaults told the wrong story. Turning it into a personal site...</p>
+    
+    
+    <div class="post-panel__tags">
+      
+      <span class="post-panel__tag">Jekyll</span>
+      
+      <span class="post-panel__tag">Personal Tech</span>
+      
+    </div>
+    
+  </div>
+</a>
 
-        </div>
+            </div>
+          
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="delivery personal-tech ">
+              <a href="/why-i-keep-a-deployment-journal" class="post-panel">
+  
+  <div class="post-panel__image">
+    <img class="lazy" data-src="/images/shipped.png" alt="Why I Keep a Deployment Journal">
+  </div>
+  
+  <div class="post-panel__body">
+    <p class="post-panel__date">24 Feb 2025</p>
+    <h2 class="post-panel__title">Why I Keep a Deployment Journal</h2>
+    
+    <p class="post-panel__excerpt">Small written notes after each release have saved me more time than several smart tools I was sur...</p>
+    
+    
+    <div class="post-panel__tags">
+      
+      <span class="post-panel__tag">Delivery</span>
+      
+      <span class="post-panel__tag">Personal Tech</span>
+      
+    </div>
+    
+  </div>
+</a>
+
+            </div>
+          
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="debugging personal-tech ">
+              <a href="/what-a-debugging-session-taught-me-about-noise" class="post-panel">
+  
+  <div class="post-panel__image">
+    <img class="lazy" data-src="/images/rootcause.png" alt="What a Debugging Session Taught Me About Noise">
+  </div>
+  
+  <div class="post-panel__body">
+    <p class="post-panel__date">11 Feb 2025</p>
+    <h2 class="post-panel__title">What a Debugging Session Taught Me About Noise</h2>
+    
+    <p class="post-panel__excerpt">I went hunting for a deep systems issue and found a simpler explanation hiding behind too much te...</p>
+    
+    
+    <div class="post-panel__tags">
+      
+      <span class="post-panel__tag">Debugging</span>
+      
+      <span class="post-panel__tag">Personal Tech</span>
+      
+    </div>
+    
+  </div>
+</a>
+
+            </div>
+          
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="engineering personal-tech ">
+              <a href="/running-a-side-project-with-production-habits" class="post-panel">
+  
+  <div class="post-panel__image">
+    <img class="lazy" data-src="/images/sideproject.png" alt="Running a Side Project With Production Habits">
+  </div>
+  
+  <div class="post-panel__body">
+    <p class="post-panel__date">26 Jan 2025</p>
+    <h2 class="post-panel__title">Running a Side Project With Production Habits</h2>
+    
+    <p class="post-panel__excerpt">A small project becomes much easier to operate when you borrow a few habits from serious systems ...</p>
+    
+    
+    <div class="post-panel__tags">
+      
+      <span class="post-panel__tag">Engineering</span>
+      
+      <span class="post-panel__tag">Personal Tech</span>
+      
+    </div>
+    
+  </div>
+</a>
+
+            </div>
+          
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="performance personal-tech ">
+              <a href="/the-week-i-finally-measured-where-my-site-was-slow" class="post-panel">
+  
+  <div class="post-panel__image">
+    <img class="lazy" data-src="/images/p95.png" alt="The Week I Finally Measured Where My Site Was Slow">
+  </div>
+  
+  <div class="post-panel__body">
+    <p class="post-panel__date">8 Jan 2025</p>
+    <h2 class="post-panel__title">The Week I Finally Measured Where My Site Was Slow</h2>
+    
+    <p class="post-panel__excerpt">I stopped guessing, profiled the obvious bottlenecks, and learned that most of my performance wor...</p>
+    
+    
+    <div class="post-panel__tags">
+      
+      <span class="post-panel__tag">Performance</span>
+      
+      <span class="post-panel__tag">Personal Tech</span>
+      
+    </div>
+    
+  </div>
+</a>
+
+            </div>
+          
+        
       </div>
     </div>
   </div>
 </section>
-<!-- end related posts -->
+<!-- end blog posts -->
 
     </main>
     <!-- end content -->
