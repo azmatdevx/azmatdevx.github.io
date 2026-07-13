@@ -1,41 +1,93 @@
-/* ── Post Header (stacked: title → meta → cover image) ── */
+/* ── Post Header ── */
 .post__header {
   position: relative;
+  padding: 56px 0 32px;
+  background: transparent;
+}
+
+.post__header-glow { display: none; }
+
+/* ── Centered hero ── */
+.post__hero {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ── Tags as blue pills (inline in meta bar) ── */
+.post__tags {
+  display: contents;
+}
+
+.post__tag {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--g-400);
+  background: rgba(43, 102, 255, 0.12);
+  border: 1px solid rgba(43, 102, 255, 0.25);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: rgba(43, 102, 255, 0.22);
+    border-color: rgba(43, 102, 255, 0.45);
+  }
+}
+
+/* ── Back to blog link ── */
+.post__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 24px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-alt-color);
+  text-decoration: none;
+  transition: color 0.15s;
+
+  i { font-size: 10px; }
+
+  &:hover { color: var(--g-400); }
+}
+
+/* ── Cover image below hero ── */
+.post__cover-wrap {
+  margin-top: 24px;
+}
+
+.post__cover {
+  border-radius: 14px;
   overflow: hidden;
-  padding: 60px 0 0;
-  background: var(--background-color);
+  height: 380px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: $tablet) { height: 200px; border-radius: 10px; }
 }
 
-.post__header-glow {
-  position: absolute;
-  top: -80px;
-  left: -80px;
-  width: 700px;
-  height: 500px;
-  background: radial-gradient(ellipse at 20% 30%, rgba(255, 200, 100, 0.15) 0%, transparent 65%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.post__title-block {
-  position: relative;
-  z-index: 1;
-  padding: 0 0 48px;
-  max-width: 840px;
-}
-
-/* ── Meta bar: DATE • AUTHOR • READ TIME ── */
+/* ── Meta bar ── */
 .post__meta-bar {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--sans);
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.06em;
   color: var(--text-alt-color);
-  margin-top: 24px;
+  margin-top: 28px;
 
   time,
   .post__meta-author,
@@ -44,7 +96,7 @@
   .post__meta-sep { color: var(--border-color); }
 }
 
-/* Share inline in meta bar */
+/* ── Share inline in meta bar ── */
 .post__share--inline {
   .share__list {
     display: flex;
@@ -75,30 +127,6 @@
   }
 }
 
-/* ── Cover image ── */
-.post__cover-wrap {
-  position: relative;
-  z-index: 1;
-  margin-top: 0;
-}
-
-.post__cover {
-  border-radius: 0;
-  overflow: hidden;
-  aspect-ratio: 16/9;
-  background: var(--background-alt-color-2);
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  @media (max-width: $tablet) { aspect-ratio: 4/3; }
-  @media (max-width: $mobile) { aspect-ratio: 1/1; }
-}
-
 /* ── Full-width hero image (legacy / video fallback) ── */
 .post__image-wrap {
   margin-top: 32px;
@@ -120,22 +148,26 @@
 }
 
 .post__tags {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
   flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
 
   .post__tag {
-    padding: 6px 16px;
-    margin: 3px 6px 3px 0;
-    font-size: 12px;
+    font-family: var(--sans);
+    font-size: 10px;
     font-weight: 500;
-    border-radius: 60px;
-    color: var(--heading-font-color);
-    transition: $global-transition;
-    background-color: var(--background-alt-color);
+    letter-spacing: 0.01em;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    color: var(--g-400);
+    background: rgba(43, 102, 255, 0.12);
+    border: 1px solid rgba(43, 102, 255, 0.25);
+    transition: background 0.15s, border-color 0.15s;
 
     &:hover {
-      background-color: var(--background-alt-color-2);
+      background: rgba(43, 102, 255, 0.22);
+      border-color: rgba(43, 102, 255, 0.45);
     }
 
     &:last-child {
@@ -166,29 +198,14 @@
 
 .post__title,
 .page__title {
-  margin: 8px 0 0;
-  font-size: 44px;
-  line-height: 1.15;
+  margin: 0 0 28px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 
-  @media (max-width: $tablet) {
-    font-size: 36px;
-  }
-
-  @media (max-width: $mobile) {
-    font-size: 28px;
-  }
-}
-
-.post__description,
-.page__description {
-  margin-top: 8px;
-  margin-bottom: 0;
-  font-family: $heading-font-family;
-  font-size: 24px;
-  line-height: 1.38;
-
-  @media (max-width: $desktop) {
-    font-size: 20px;
+  em {
+    font-style: italic;
+    color: var(--g-400);
   }
 }
 
@@ -257,7 +274,7 @@
 .page {
   max-width: 1200px;
   font-family: $heading-font-family;
-  font-size: 20px;
+  font-size: 15px;
   color: var(--text-color);
 
   h1,

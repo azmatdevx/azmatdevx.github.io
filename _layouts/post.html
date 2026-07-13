@@ -3,55 +3,46 @@ layout: default
 ---
 
 <div class="post__header">
-  <div class="post__header-glow" aria-hidden="true"></div>
-
   <div class="container">
-    <div class="post__title-block">
+    <div class="post__hero">
 
-      {% if page.tags.size >= 1 %}
-      <div class="post__tags">
-        {% for tag in page.tags %}
-        <a href="{{ site.baseurl }}/tags#{{ tag }}" class="post__tag">{{ tag }}</a>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      <h1 class="post__title">{{ page.title | escape }}</h1>
-
-      {% if page.description %}
-      <p class="post__description">{{ page.description }}</p>
-      {% endif %}
+      <h1 class="post__title">{{ page.title }}</h1>
 
       <div class="post__meta-bar">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" | upcase }}</time>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
         <span class="post__meta-sep" aria-hidden="true">•</span>
-        <span class="post__meta-read">{% assign words = page.content | number_of_words %}{% if words < 360 %}1 MIN READ{% else %}{{ words | divided_by:180 }} MIN READ{% endif %}</span>
-        <span class="post__meta-sep post__meta-share-sep" aria-hidden="true">•</span>
-        <div class="post__share post__share--inline">
-          {% include share-buttons.html %}
-        </div>
+        <span class="post__meta-read">{% assign words = page.content | number_of_words %}{% if words < 360 %}1 min read{% else %}{{ words | divided_by:180 }} min read{% endif %}</span>
+        {% if page.tags.size >= 1 %}
+        <span class="post__meta-sep" aria-hidden="true">•</span>
+        {% for tag in page.tags %}
+        <span class="post__tag">{{ tag }}</span>
+        {% endfor %}
+        {% endif %}
       </div>
+
+      <a href="{{ site.baseurl }}/blog" class="post__back">
+        <i class="fa-solid fa-arrow-left"></i> Field Notes
+      </a>
 
     </div>
   </div>
-
-  {% if page.image %}
-  <div class="post__cover-wrap">
-    <div class="container">
-      <div class="post__cover">
-        <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
-      </div>
-    </div>
-  </div>
-  {% endif %}
-
-  {% if page.image_caption %}
-  <div class="container">
-    <p class="post__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</p>
-  </div>
-  {% endif %}
-
 </div>
+
+{% if page.image %}
+<div class="post__cover-wrap">
+  <div class="container">
+    <div class="post__cover">
+      <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if page.image_caption %}
+<div class="container">
+  <p class="post__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</p>
+</div>
+{% endif %}
 
 {% if page.video_embed %}
 <div class="container">

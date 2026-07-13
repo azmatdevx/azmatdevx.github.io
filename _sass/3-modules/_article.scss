@@ -1,3 +1,109 @@
+/* ── Horizontal post panel (blog listing) ── */
+.post-panel {
+  display: flex;
+  height: 190px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 0;
+
+  &:hover {
+    background: rgba(43, 102, 255, 0.05);
+    border-color: rgba(43, 102, 255, 0.22);
+
+    .post-panel__image img { transform: scale(1.04); }
+  }
+}
+
+.post-panel__image {
+  flex: 0 0 34%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+}
+
+.post-panel__body {
+  flex: 1;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.post-panel__date {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-alt-color);
+  margin: 0;
+}
+
+.post-panel__title {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--heading-font-color);
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+  margin: 0;
+}
+
+.post-panel__excerpt {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-alt-color);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-panel__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.post-panel__tag {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--g-400);
+  background: rgba(43, 102, 255, 0.12);
+  border: 1px solid rgba(43, 102, 255, 0.25);
+  border-radius: 9999px;
+  padding: 2px 9px;
+}
+
+@media (max-width: $tablet) {
+  .post-panel {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .post-panel__image {
+    flex: 0 0 auto;
+    height: 180px;
+    width: 100%;
+  }
+}
+
 /* ── Tag filter pills ── */
 .posts__filter {
   display: flex;
@@ -75,7 +181,7 @@
 }
 
 .article__category {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -109,7 +215,7 @@
 }
 
 .article__date-stamp {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--text-alt-color);

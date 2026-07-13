@@ -21,20 +21,10 @@
   <meta property="og:image" content="{{ page.image | absolute_url }}">
 
 
-  <!-- Theme: default dark, restore from localStorage if user previously chose light -->
+  <!-- Theme: always dark -->
   <script>
-    (function() {
-      try {
-        var stored = localStorage.getItem("theme");
-        if (stored !== "light") {
-          document.documentElement.setAttribute("dark", "");
-          document.documentElement.classList.add("dark-mode");
-        }
-      } catch(e) {
-        document.documentElement.setAttribute("dark", "");
-        document.documentElement.classList.add("dark-mode");
-      }
-    })();
+    document.documentElement.setAttribute("dark", "");
+    document.documentElement.classList.add("dark-mode");
   </script>
 
   <style>
