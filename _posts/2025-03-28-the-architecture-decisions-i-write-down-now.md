@@ -4,7 +4,7 @@ title: The Architecture Decisions I Write Down Now
 description: I do not document every idea, but I have learned to capture the choices that become expensive once the context fades.
 date: 2025-03-28 20:00:00 +0400
 author: azmat
-image: '/images/03-4.jpg'
+image: '/images/architecture.png'
 tags: [Architecture, Personal Tech]
 featured: false
 toc: false
