@@ -13,7 +13,7 @@
       "content" : "The architecture decisions I regret most were rarely dramatic. They were the quiet choices that seemed obvious at the time and confusing six weeks later. Why did I split this service? Why did I avoid that dependency? Why is the queue configured this way?I now write down decisions when they have one of three properties:  the tradeoff was real  reversing it later would be annoying  someone, including future me, will absolutely ask whyWhat goes into the noteI keep the format simple:  the decision  the alternatives I considered  the reason I chose this path  what would cause me to revisit itThat is usually enough. The point is not documentation theater. The point is preserving judgment while the context is still fresh.Why this matters on personal projects tooIt is easy to assume lightweight projects do not need this kind of discipline. I have found the opposite. Personal projects often have the worst context retention because nobody else is asking for clarity, which means unclear decisions can survive unchallenged for months.Writing decisions down creates a small amount of accountability. More importantly, it shortens the time required to re-enter a project after a gap. That alone makes the habit worthwhile.",
       "url"     : "/the-architecture-decisions-i-write-down-now",
       "date"    : "28 Mar 2025",
-      "image"   : "/images/03-4.jpg"
+      "image"   : "/images/architecture.png"
     } ,
   
     {
@@ -21,7 +21,7 @@
       "content" : "For a long time I treated my local development setup like a future optimization project. I kept a mental list of improvements I wanted to make, but most of them were abstract: better automation, cleaner shell config, a more elegant workflow.The setup started improving only when I switched from “make it impressive” to “remove one repeated annoyance at a time.”What actually helpedThe highest-value changes were small:  faster project navigation  fewer manual steps to start common services  more predictable environment naming  defaults that failed loudly instead of silentlyNone of those changes would make for an exciting workstation screenshot. Together, they saved attention every day.The pattern I now followIf a task feels slightly irritating and I do it several times a week, it qualifies for improvement. That rule is much better than waiting for a mythical full-system refactor of my tooling.Local environments shape the emotional texture of engineering work more than we admit. When the setup is slightly chaotic, every task begins with drag. When the setup is calm, the work starts closer to the actual problem.That is the version of productivity advice I trust now: less optimization theater, more friction removal.",
       "url"     : "/the-most-useful-thing-i-did-for-my-local-dev-environment",
       "date"    : "21 Mar 2025",
-      "image"   : "/images/03-2.jpg"
+      "image"   : "/images/local.png"
     } ,
   
     {
@@ -29,7 +29,7 @@
       "content" : "When I first set this site up, the theme was visually solid but semantically wrong. It was built around teams, multiple authors, lifestyle categories, and generic editorial copy. None of that matched what I wanted the site to be.So the rewrite was less about redesign and more about removing false signals.What I changed firstI started with the homepage and site settings:  team language became first-person language  author showcases disappeared  the navigation narrowed down to posts, topics, and about  stock placeholder sections stopped competing with the main writingThat alone changed the feel of the site more than any CSS tweak would have.The bigger fixThe real problem was content. A personal tech blog cannot feel personal if the newest posts are generic placeholders. I ended up replacing the stock catalog with writing that reflected actual technical interests: performance work, debugging, delivery habits, and lessons from side projects.Why it was worth doingThemes often ship with opinions embedded in the structure, not just the styling. If you leave those defaults intact, the site keeps telling visitors what kind of publication it thinks it is. For a personal site, that mismatch matters.I would rather have a simpler site that is accurately voiced than a richer one that reads like it belongs to someone else.",
       "url"     : "/rebuilding-this-jekyll-site-as-a-personal-tech-blog",
       "date"    : "09 Mar 2025",
-      "image"   : "/images/14.jpg"
+      "image"   : "/images/jekyll.png"
     } ,
   
     {
@@ -37,7 +37,7 @@
       "content" : "After enough deployments, I learned that memory is not an operational strategy. Even for personal projects, I now keep a plain deployment journal with a timestamp, the change I shipped, the commands I ran if they were unusual, and anything I would want to know if I had to undo the release quickly.The journal is intentionally boring. It lives outside the application code and uses short sentences. I do not optimize it for readability or publication. I optimize it for the moment two weeks later when I need to answer a very practical question under mild stress.Some of the best entries are just reminders that a deploy involved hidden coordination:  a cache needed to be flushed manually  a migration was safe only after traffic fell off  one environment variable name still differed from the othersThose are not exciting discoveries, but they are exactly the kind that disappear from memory first.Keeping notes has also changed how I deploy. The moment I imagine writing down what I am doing, weak spots become more obvious. If the rollback path feels vague in my head, it will look worse on paper. That is useful pressure.I like tools, but I trust written operational notes more than I trust my ability to reconstruct intent from a terminal history.",
       "url"     : "/why-i-keep-a-deployment-journal",
       "date"    : "24 Feb 2025",
-      "image"   : "/images/12.jpg"
+      "image"   : "/images/shipped.png"
     } ,
   
     {
@@ -45,7 +45,7 @@
       "content" : "I recently spent too long investigating an issue because the system had plenty of data but very little signal. Metrics were available. Logs existed. Dashboards looked impressive. None of that helped until I forced myself to ask a narrower question.The actual problem was a burst of retries that amplified a dependency slowdown. That should have been straightforward to identify. Instead, I lost time bouncing between charts because every panel looked equally important.The trapWhen tooling gets better, it becomes easier to confuse visibility with clarity. A screen full of graphs can create the feeling of disciplined investigation while quietly pulling attention away from the most basic hypothesis.What helped was writing down the event in plain language:  Requests started taking longer than normal.  The application responded by retrying too aggressively.  The retry pattern increased pressure on the dependency.  Recovery took longer because the system kept re-injuring itself.That sequence did more for me than another fifteen minutes in the dashboard.What I changed afterwardsI reduced retry aggressiveness, tightened a few logs around the boundary where the slowdown first appears, and simplified the dashboards I use most often. Fewer charts, better defaults, less time admiring telemetry.The durable lesson was not about one incident. It was about investigation hygiene. The more noise I allow into the first ten minutes of debugging, the longer I spend feeling busy instead of becoming correct.",
       "url"     : "/what-a-debugging-session-taught-me-about-noise",
       "date"    : "11 Feb 2025",
-      "image"   : "/images/03.jpg"
+      "image"   : "/images/rootcause.png"
     } ,
   
     {
@@ -53,7 +53,7 @@
       "content" : "One of the most useful changes I made to my side projects was psychological: I stopped treating them like temporary prototypes just because they were small. That did not mean adding process for the sake of looking professional. It meant adopting a few habits that reduce future damage.The habits that paid off quicklyI started keeping deployment notes, maintaining a basic rollback path, and naming environment variables consistently across projects. None of that is glamorous. All of it becomes valuable the moment you revisit a project after a few weeks and realize you no longer remember which shortcuts were safe and which were reckless.I also got stricter about logging. Not enterprise logging. Just enough structure that when something failed I could answer three simple questions:  what changed  where it failed  whether the system recovered on its ownWhy this matters for personal workSide projects usually die from neglected maintenance long before they die from lack of ambition. The more friction there is in understanding the current state of a project, the more likely it is to remain in the “I should clean that up someday” category.Production habits are really maintenance habits. They protect momentum. They make it easier to restart. They lower the cost of caring about your own work.What I avoidI still try not to overbuild. I do not need a change advisory board for a tiny deploy. I do not need a monitoring platform that costs more than the project itself. The goal is not ceremony. The goal is to make future debugging less painful than it would otherwise be.That balance is where personal engineering work gets interesting. You learn how little structure is required before a project starts feeling durable.",
       "url"     : "/running-a-side-project-with-production-habits",
       "date"    : "26 Jan 2025",
-      "image"   : "/images/06.jpg"
+      "image"   : "/images/sideproject.png"
     } ,
   
     {
@@ -61,7 +61,7 @@
       "content" : "I had been describing one of my side projects as “mostly fast” for months, which really meant I had never measured it properly. Pages felt acceptable on my laptop, deploys were clean, and synthetic checks looked fine until I opened the site over a weaker connection and watched the delays stack up.The first useful change was embarrassingly small: I stopped treating the browser waterfall like an afterthought. Once I looked at the actual request sequence, the problem stopped being vague. The page was not slow because of one giant failure. It was slow because I had accumulated several medium-sized costs that all landed before the interface felt stable.What I measured firstI started with three things:  time to first byte on uncached requests  image weight on the home page  render-blocking CSS and font requestsThat short list was enough. I did not need a giant observability rollout to learn something useful. I needed a tight feedback loop and the discipline to compare before and after changes.What turned out to matterThe backend was not innocent, but it also was not the main villain. The bigger problem was that my front end was asking the browser to do too much work before showing anything convincing. A heavy hero image, blocking assets, and a few careless content decisions produced a page that felt slower than its raw server timing suggested.Once I compressed the largest images, removed a couple of non-essential assets from the critical path, and simplified the above-the-fold layout, the site felt different immediately. The best part was that these changes were easier to ship than the backend optimizations I had assumed would save me.The lesson I keptI now treat performance work as measurement first, optimization second. If I cannot show where time is being spent, I am probably optimizing for the story I want to tell myself rather than the system I actually have.That sounds obvious, but it is surprisingly easy to skip when a project is small and familiar. Personal projects are exactly where sloppy assumptions survive the longest.",
       "url"     : "/the-week-i-finally-measured-where-my-site-was-slow",
       "date"    : "08 Jan 2025",
-      "image"   : "/images/04.jpg"
+      "image"   : "/images/p95.png"
     } 
   
 ]

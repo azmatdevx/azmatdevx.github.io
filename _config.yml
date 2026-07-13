@@ -9,11 +9,7 @@ url: "https://nomod.netlify.app" # the base hostname & protocol for your site, e
 markdown: kramdown
 permalink: /:title
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
-
-paginate: 6
-paginate_path: "/page/:num"
 
 
 #-------------------------------

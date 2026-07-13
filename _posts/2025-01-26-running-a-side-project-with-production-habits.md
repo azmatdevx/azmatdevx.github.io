@@ -4,7 +4,7 @@ title: Running a Side Project With Production Habits
 description: A small project becomes much easier to operate when you borrow a few habits from serious systems work before things get messy.
 date: 2025-01-26 10:30:00 +0400
 author: azmat
-image: '/images/06.jpg'
+image: '/images/sideproject.png'
 tags: [Engineering, Personal Tech]
 featured: false
 toc: false
