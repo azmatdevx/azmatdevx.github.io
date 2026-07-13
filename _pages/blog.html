@@ -1,0 +1,32 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+body_class: has-hero
+---
+
+{% include section-hero.html %}
+
+<!-- begin blog posts -->
+<section class="section section-posts animate">
+  <div class="container">
+    <div class="section__inner">
+      <div class="section__info">
+        <div class="section__head">
+          <h2 class="section__title">{{ site.data.settings.blog.blog_title }}</h2>
+        </div>
+      </div>
+
+      <div class="row grid" id="posts-grid">
+        {% if site.posts.size > 0 %}
+          {% for post in site.posts %}
+            <div class="col col-6 col-t-12 animate grid__post" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
+              {% include article-panel.html %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end blog posts -->

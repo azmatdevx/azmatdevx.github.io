@@ -1,4 +1,4 @@
-{% assign maxRelated = 3 %}
+{% assign maxRelated = 2 %}
 {% assign minCommonTags = 1 %}
 {% assign maxRelatedCounter = 0 %}
 
@@ -28,13 +28,6 @@
           <div class="section__info">
             <div class="section__head">
               <h2 class="section__title">Related</h2>
-              {% if page.tags.size >= 1 %}
-              {% for tag in page.tags %}
-                {% if forloop.index == 1 %}
-                  <a href="{{ site.baseurl }}/tags#{{ tag }}" class="section__link">See all<span> {{ tag }}</span></a>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
             </div>
           </div>
 
@@ -55,8 +48,8 @@
 
             {% if sameTagCount >= minCommonTags %}
 
-            <div class="col col-4 col-d-6 col-t-12">
-              {% include article.html %}
+            <div class="col col-6 col-t-12">
+              {% include article-panel.html %}
             </div>
 
             {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}

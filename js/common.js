@@ -173,9 +173,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   /* =======================
-  // Hero Typewriter
+  // Hero Typewriter (replaced by GSAP phrase rotator in section-hero.html)
   ======================= */
-  const twEl = document.getElementById("hero-typewriter");
+  const twEl = null && document.getElementById("hero-typewriter");
   if (twEl) {
     const phrases = [
       "Performance Engineering",

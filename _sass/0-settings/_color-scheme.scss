@@ -31,16 +31,16 @@
   --a-50:  #FFF8EC;
 
   /* ── CHARCOAL SLATE (dark mode surfaces) ── */
-  --v-950: #0F1117;
-  --v-900: #14161E;
-  --v-800: #1B1E28;
-  --v-700: #252838;
-  --v-600: #32364A;
-  --v-500: #444A62;
-  --v-400: #606880;
-  --v-300: #8B96B0;
-  --v-200: #B4BDD0;
-  --v-100: #D8DDE8;
+  --v-950: #0d0d11;
+  --v-900: #121215;
+  --v-800: #191920;
+  --v-700: #222228;
+  --v-600: #2e2e38;
+  --v-500: #3d3d4a;
+  --v-400: #585868;
+  --v-300: #868696;
+  --v-200: #b0b0bc;
+  --v-100: #d4d4da;
 
   /* ── NEUTRAL GREY (light mode surfaces) ── */
   --p-950: #111318;
@@ -99,7 +99,7 @@
   --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --display: 'Everett', system-ui, sans-serif;
 
-  --nav-height: 80px;
+  --nav-height: 60px;
 
   /* Nav-specific tokens (light defaults) */
   --nav-bg:         rgba(247, 248, 250, 0.92);
@@ -169,17 +169,17 @@
   --syntax-highlighting-background: var(--v-900);
 
   /* Nav-specific tokens (dark) */
-  --nav-bg:         rgba(15, 17, 23, 0.92);
+  --nav-bg:         rgba(13, 13, 17, 0.92);
   --nav-border:     var(--v-700);
   --nav-text:       var(--v-300);
   --nav-text-hover: var(--g-400);
   --nav-active:     var(--g-400);
 
   /* Hero overlay (dark) */
-  --hero-overlay: rgba(15, 17, 23, 0.6);
+  --hero-overlay: rgba(13, 13, 17, 0.6);
 
   /* Hero section tokens (dark mode) */
-  --hero-bg:                 #22242A;
+  --hero-bg:                 #191920;
   --hero-border:             rgba(255, 255, 255, 0.06);
   --hero-shape-1:            rgba(255, 255, 255, 0.05);
   --hero-shape-2:            rgba(255, 255, 255, 0.03);
@@ -193,7 +193,7 @@
   --hero-search-text:        #ffffff;
   --hero-search-placeholder: rgba(255, 255, 255, 0.35);
   --hero-search-icon:        rgba(255, 255, 255, 0.4);
-  --hero-results-bg:         #2C2E35;
+  --hero-results-bg:         #1e1e26;
 
   /* Code/pre */
   --code-bg:     rgba(77, 132, 255, 0.07);

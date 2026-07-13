@@ -11,14 +11,8 @@ color_scheme: auto
 # Navigation Settings
 menu_settings:
   menu_items:
-    - title: "Home"
-      url: "/"
-    - title: "Topics"
-      url: "/tags/"
-    - title: "About"
-      url: "/about/"
-    - title: "Contact"
-      url: "/contact/"
+    - title: "Field Notes"
+      url: "/blog/"
 
 # Call to action button
 cta_button:

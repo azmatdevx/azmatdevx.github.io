@@ -2,141 +2,293 @@
 layout: default
 ---
 
-<div class="ap-wrap">
-  <div class="container">
-  <div class="ap">
+<!-- ── Full-page canvas: unified background + ambient layer ── -->
+<div class="ap__page-canvas">
 
-    <!-- ── Profile Hero (full width) ── -->
-    <section class="ap__profile">
-      {% if page.about_image %}
-      <div class="ap__photo-wrap">
-        <div class="ap__photo">
-          <img src="{{ page.about_image | relative_url }}" alt="{{ page.about_image_alt | default: page.about_name }}">
-        </div>
+  <!-- Page-wide ambient overlay: metric pills + blue glow -->
+  <div class="ap__page-geo" aria-hidden="true">
+
+    <!-- Hero zone (0–28%) -->
+    <span class="ap__metric" style="top:2%;left:3%;animation-delay:0s">p95 · 88ms</span>
+    <span class="ap__metric" style="top:1%;right:5%;animation-delay:-1.8s">tokens · 4.2k</span>
+    <span class="ap__metric" style="top:8%;left:9%;animation-delay:-3.2s">cpu · 36%</span>
+    <span class="ap__metric" style="top:6%;right:8%;animation-delay:-0.9s">inference · 340ms</span>
+    <span class="ap__metric" style="top:15%;left:1.5%;animation-delay:-2.5s">rps · 1.2k</span>
+    <span class="ap__metric" style="top:13%;right:2%;animation-delay:-4.1s">context · 8k</span>
+    <span class="ap__metric" style="top:21%;left:4%;animation-delay:-1.3s">uptime · 99.9%</span>
+    <span class="ap__metric" style="top:22%;right:5%;animation-delay:-3.6s">credits · 0.08¢</span>
+    <span class="ap__metric" style="top:26%;left:11%;animation-delay:-0.5s">gc · 8ms</span>
+    <span class="ap__metric" style="top:25%;right:9%;animation-delay:-2.9s">err · 0.02%</span>
+
+    <!-- Experience zone (28–55%) -->
+    <span class="ap__metric" style="top:31%;left:2%;animation-delay:-1.1s">ttfb · 120ms</span>
+    <span class="ap__metric" style="top:33%;right:3%;animation-delay:-3.9s">latency · 45ms</span>
+    <span class="ap__metric" style="top:41%;left:7%;animation-delay:-2.2s">throughput · 8k</span>
+    <span class="ap__metric" style="top:43%;right:6%;animation-delay:-0.7s">cache · 94%</span>
+    <span class="ap__metric" style="top:50%;left:2%;animation-delay:-4.3s">heap · 210mb</span>
+    <span class="ap__metric" style="top:52%;right:4%;animation-delay:-1.6s">p99 · 210ms</span>
+
+    <!-- Expertise + Certs zone (55–100%) -->
+    <span class="ap__metric" style="top:60%;left:3%;animation-delay:-3.1s">load · 0.8</span>
+    <span class="ap__metric" style="top:62%;right:7%;animation-delay:-0.3s">embeddings · 1.5k</span>
+    <span class="ap__metric" style="top:70%;left:8%;animation-delay:-2.7s">requests · 12k</span>
+    <span class="ap__metric" style="top:72%;right:3%;animation-delay:-4.8s">acc · 97.2%</span>
+    <span class="ap__metric" style="top:80%;left:2%;animation-delay:-1.9s">agents · 4</span>
+    <span class="ap__metric" style="top:82%;right:6%;animation-delay:-3.4s">eval · 91%</span>
+    <span class="ap__metric" style="top:90%;left:10%;animation-delay:-0.6s">calls · 3.2k</span>
+    <span class="ap__metric" style="top:91%;right:2%;animation-delay:-2.1s">mem · 0.3%</span>
+
+    <!-- Blue ambient glow anchored to top-right -->
+    <svg class="ap__hero-glow" viewBox="0 0 1526 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="ahg0" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+          <feGaussianBlur stdDeviation="107"/>
+        </filter>
+        <filter id="ahg1" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+          <feGaussianBlur stdDeviation="150"/>
+        </filter>
+        <linearGradient id="ahga" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#2B66FF"/>
+          <stop offset="100%" stop-color="#2B66FF" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ahgb" x1="100%" y1="100%" x2="40%" y2="0%">
+          <stop offset="0%" stop-color="#7BA8FF"/>
+          <stop offset="100%" stop-color="#2B66FF" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g opacity="0.18" filter="url(#ahg0)">
+        <path d="M800 80L1440 0V600L800 520V80Z" fill="url(#ahga)"/>
+      </g>
+      <g opacity="0.22" filter="url(#ahg1)">
+        <path d="M900 300L1526 200V900L900 780V300Z" fill="url(#ahgb)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ── Hero Band ── -->
+  <section class="ap__hero-band">
+    <div class="container">
+      <div class="ap">
+        <!-- ── Centered Hero ── -->
+        <section class="ap__hero-center">
+          <h1 class="ap__hero-name-display ap__hero-enter ap__hero-enter--name">{{ page.about_name }}</h1>
+          {% if page.about_headline %}
+          <p class="ap__hero-tagline ap__hero-enter" style="animation-delay:.35s">{{ page.about_headline }}</p>
+          {% endif %}
+          {% if page.about_bio %}
+          <p class="ap__hero-sub ap__hero-enter" style="animation-delay:.5s">{{ page.about_bio }}</p>
+          {% endif %}
+          <div class="ap__hero-actions ap__hero-enter" style="animation-delay:.65s">
+            <a href="#experience" class="ap__hero-btn ap__hero-btn--primary">Experience <i class="fa-solid fa-arrow-down"></i></a>
+            <a href="{{ site.baseurl }}/blog" class="ap__hero-btn ap__hero-btn--ghost">Field Notes</a>
+          </div>
+          {% if site.data.settings.social %}
+          <div class="ap__social ap__hero-enter" style="animation-delay:.8s">
+            {% for item in site.data.settings.social %}
+            <a href="{{ item.link }}" class="ap__social-link" aria-label="{{ item.name }}" {% unless item.link contains 'mailto' %}target="_blank" rel="noopener"{% endunless %}>
+              <i class="{{ item.icon }}"></i>
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </section>
       </div>
-      {% endif %}
+    </div>
+  </section>
 
-      <div class="ap__profile-info">
-        <h1 class="ap__name">{{ page.about_name }}</h1>
-        {% if page.about_role %}
-        <p class="ap__role">{{ page.about_role }}</p>
-        {% endif %}
-        {% if page.about_bio %}
-        <p class="ap__bio">{{ page.about_bio }}</p>
-        {% endif %}
+  <!-- ── About Content ── -->
+  <div class="ap-wrap">
+    <div class="container">
+    <div class="ap">
 
-        {% if site.data.settings.social %}
-        <div class="ap__social">
-          {% for item in site.data.settings.social %}
-          <a href="{{ item.link }}" class="ap__social-link" aria-label="{{ item.name }}" {% unless item.link contains 'mailto' %}target="_blank" rel="noopener"{% endunless %}>
-            <i class="{{ item.icon }}"></i>
-          </a>
+      <!-- ── Experience (alternating timeline) ── -->
+      {% if page.about_experience %}
+      <section id="experience" class="ap__section ap__experience-section">
+        <div class="ap__section-head">
+          <h2 class="ap__section-heading">Experience In The Making</h2>
+          <p class="ap__section-sub">A career built on measuring what matters — and iterating on what doesn't.</p>
+        </div>
+        <div class="ap__tl">
+          {% for item in page.about_experience %}
+          {% assign is_left = forloop.index | modulo: 2 %}
+          <div class="ap__tl-row ap__tl-row--hidden" style="transition-delay: {{ forloop.index0 | times: 120 }}ms">
+            {% if is_left == 1 %}
+            <div class="ap__tl-card ap__tl-card--left">
+              <span class="ap__tl-years">{{ item.years }}</span>
+              <h3 class="ap__tl-role">{{ item.role }}</h3>
+              <p class="ap__tl-company">{{ item.company }}</p>
+              {% if item.note %}<p class="ap__tl-note">{{ item.note }}</p>{% endif %}
+            </div>
+            {% else %}
+            <div class="ap__tl-empty"></div>
+            {% endif %}
+            <div class="ap__tl-dot-wrap">
+              <div class="ap__tl-dot"></div>
+            </div>
+            {% if is_left == 1 %}
+            <div class="ap__tl-empty"></div>
+            {% else %}
+            <div class="ap__tl-card ap__tl-card--right">
+              <span class="ap__tl-years">{{ item.years }}</span>
+              <h3 class="ap__tl-role">{{ item.role }}</h3>
+              <p class="ap__tl-company">{{ item.company }}</p>
+              {% if item.note %}<p class="ap__tl-note">{{ item.note }}</p>{% endif %}
+            </div>
+            {% endif %}
+          </div>
           {% endfor %}
         </div>
-        {% endif %}
-      </div>
-    </section>
+      </section>
+      {% endif %}
 
-    <!-- ── Two-column body ── -->
-    <div class="ap__body">
+      <!-- ── Expertise (full width strip) ── -->
+      {% if page.about_expertise %}
+      <section class="ap__section ap__expertise-strip">
+        <div class="ap__section-head ap__fade-in">
+          <h2 class="ap__section-heading">What I Work With</h2>
+          <p class="ap__section-sub">The tools and disciplines I reach for when systems need to be understood, improved, or rebuilt.</p>
+        </div>
+        <div class="ap__chips">
+          {% for chip in page.about_expertise %}
+          <span class="ap__chip ap__fade-in" style="transition-delay: {{ forloop.index0 | times: 60 }}ms">{{ chip }}</span>
+          {% endfor %}
+        </div>
 
-      <!-- LEFT: Approach + Currently -->
-      <div class="ap__col ap__col--left">
-
-        {% if page.about_philosophy %}
-        <section class="ap__section">
-          <p class="ap__section-label">Approach</p>
-          <blockquote class="ap__philosophy">{{ page.about_philosophy }}</blockquote>
-        </section>
-        {% endif %}
-
-        {% if page.about_currently %}
-        <section class="ap__section">
-          <p class="ap__section-label">Currently</p>
-          <div class="ap__currently-card">
-            <div class="ap__currently-dot"></div>
-            <p class="ap__currently-text">{{ page.about_currently }}</p>
+        <!-- Tool / language marquee -->
+        <div class="ap__marquee-wrap" aria-hidden="true">
+          <div class="ap__marquee-track">
+            <div class="ap__marquee-item"><i class="fa-brands fa-python"></i><span>Python</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-microsoft"></i><span>Azure</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">K8s</span><span>Kubernetes</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">GF</span><span>Grafana</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">JM</span><span>JMeter</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-golang"></i><span>Go</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">TS</span><span>TypeScript</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">.NET</span><span>.NET</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">C#</span><span>C Sharp</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">k6</span><span>k6</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-apple"></i><span>iOS Dev</span></div>
+            <!-- duplicate for seamless loop -->
+            <div class="ap__marquee-item"><i class="fa-brands fa-python"></i><span>Python</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-microsoft"></i><span>Azure</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">K8s</span><span>Kubernetes</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">GF</span><span>Grafana</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">JM</span><span>JMeter</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-golang"></i><span>Go</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">TS</span><span>TypeScript</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">.NET</span><span>.NET</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">C#</span><span>C Sharp</span></div>
+            <div class="ap__marquee-item"><span class="ap__marquee-txt">k6</span><span>k6</span></div>
+            <div class="ap__marquee-item"><i class="fa-brands fa-apple"></i><span>iOS Dev</span></div>
           </div>
-        </section>
-        {% endif %}
+        </div>
+      </section>
+      {% endif %}
 
-      </div>
-
-      <!-- RIGHT: Expertise + Experience -->
-      <div class="ap__col ap__col--right">
-
-        {% if page.about_expertise %}
-        <section class="ap__section">
-          <p class="ap__section-label">Expertise</p>
-          <div class="ap__chips">
-            {% for chip in page.about_expertise %}
-            <span class="ap__chip">{{ chip }}</span>
-            {% endfor %}
+      <!-- ── Certifications ── -->
+      {% if page.about_certifications %}
+      <section class="ap__section ap__certs">
+        <div class="ap__section-head ap__fade-in">
+          <h2 class="ap__section-heading">Certifications</h2>
+          <p class="ap__section-sub">Formal recognition of the depth built across cloud and infrastructure platforms.</p>
+        </div>
+        <div class="ap__badges">
+          {% for cert in page.about_certifications %}
+          <div class="ap__badge ap__fade-in" style="transition-delay: {{ forloop.index0 | times: 100 }}ms"
+               data-iframe-width="150"
+               data-iframe-height="270"
+               data-share-badge-id="{{ cert.badge_id }}"
+               data-share-badge-host="https://www.credly.com">
           </div>
-        </section>
-        {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
 
-        {% if page.about_experience %}
-        <section class="ap__section">
-          <p class="ap__section-label">Experience</p>
-          <div class="ap__timeline">
-            {% for item in page.about_experience %}
-            <div class="ap__timeline-item">
-              <div class="ap__timeline-marker"></div>
-              <div class="ap__timeline-body">
-                <div class="ap__timeline-head">
-                  <span class="ap__timeline-primary">
-                    <span class="ap__timeline-role">{{ item.role }}</span>
-                    <span class="ap__timeline-sep"> · </span>
-                    <span class="ap__timeline-company">{{ item.company }}</span>
-                  </span>
-                  <span class="ap__timeline-years">{{ item.years }}</span>
-                </div>
-                {% if item.note %}
-                <p class="ap__timeline-note">{{ item.note }}</p>
-                {% endif %}
+      <!-- ── About / Values ── -->
+      <section class="ap__section ap__values-section">
+        <div class="ap__section-head ap__fade-in">
+          <h2 class="ap__section-heading">Performance meets <em>AI engineering</em></h2>
+          <p class="ap__section-sub">I've spent the better part of a decade making systems measurable — profiling, tracing, and eliminating latency before it compounds. Now I'm applying that same discipline to AI: building agents and agentic workflows that extend what engineering teams can do, not replace the craft underneath.</p>
+        </div>
+
+        <div class="ap__values-cards">
+          <div class="ap__values-right">
+            <div class="ap__values-card ap__fade-in" style="transition-delay: 100ms">
+              <div class="ap__values-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,3 21,21 3,21" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3 class="ap__values-title">Measure first</h3>
+                <p class="ap__values-desc">I don't guess. I instrument, profile, and trace before touching the code.</p>
               </div>
             </div>
-            {% endfor %}
+            <div class="ap__values-card ap__fade-in" style="transition-delay: 220ms">
+              <div class="ap__values-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div>
+                <h3 class="ap__values-title">AI as amplifier</h3>
+                <p class="ap__values-desc">Agents and workflows that extend engineering capacity, not replace the discipline underneath it.</p>
+              </div>
+            </div>
+            <div class="ap__values-card ap__fade-in" style="transition-delay: 340ms">
+              <div class="ap__values-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <h3 class="ap__values-title">Ship with confidence</h3>
+                <p class="ap__values-desc">Every change lands with visibility. Observability isn't a feature — it's the foundation.</p>
+              </div>
+            </div>
+            <div class="ap__values-card ap__fade-in" style="transition-delay: 460ms">
+              <div class="ap__values-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div>
+                <h3 class="ap__values-title">Own the incident</h3>
+                <p class="ap__values-desc">When systems fail, I dig in. Root cause over band-aids — then make it structurally impossible to repeat.</p>
+              </div>
+            </div>
           </div>
-        </section>
-        {% endif %}
 
-      </div>
-
-    </div><!-- /.ap__body -->
-
-    <!-- ── Certifications ── -->
-    {% if page.about_certifications %}
-    <section class="ap__section ap__certs">
-      <p class="ap__section-label">Certifications</p>
-      <div class="ap__badges">
-        {% for cert in page.about_certifications %}
-        <div class="ap__badge"
-             data-iframe-width="150"
-             data-iframe-height="270"
-             data-share-badge-id="{{ cert.badge_id }}"
-             data-share-badge-host="https://www.credly.com">
         </div>
-        {% endfor %}
-      </div>
-    </section>
-    {% endif %}
+      </section>
 
-    <!-- ── Contact CTA (full width) ── -->
-    <section class="ap__cta">
-      <h2 class="ap__cta-heading">{{ page.about_cta_heading | default: "Let's talk." }}</h2>
-      <p class="ap__cta-text">{{ page.about_cta_text | default: "If any of this resonates, I'm always up for a good engineering conversation." }}</p>
-      <a href="{{ page.about_cta_link | default: '/contact/' | relative_url }}" class="ap__cta-btn">
-        {{ page.about_cta_button | default: "Get in touch" }}
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-    </section>
+    </div>
+    </div>
+  </div>
 
-  </div>
-  </div>
-</div>
+</div><!-- /.ap__page-canvas -->
 
 {% if page.about_certifications %}
 <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 {% endif %}
+
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('ap__tl-row--visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.ap__tl-row--hidden').forEach(function (el) { io.observe(el); });
+
+  var io2 = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('ap__fade-in--visible');
+        io2.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.ap__fade-in').forEach(function (el) { io2.observe(el); });
+})();
+</script>

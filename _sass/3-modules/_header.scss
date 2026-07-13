@@ -6,11 +6,19 @@
   right: 0;
   z-index: 200;
   height: var(--nav-height);
-  background: var(--nav-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--nav-border);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
   overflow: visible;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+
+  &.header--scrolled {
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--nav-border);
+  }
 }
 
 .header__inner {
@@ -32,35 +40,27 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  margin-right: 48px;
   text-decoration: none;
 
   &, &:hover, &:focus, &:active { opacity: 1 !important; }
-
-  svg {
-    display: block;
-    height: 40px;
-    width: auto;
-  }
-
-  @media (max-width: $desktop) {
-    margin-right: 0;
-    svg { height: 32px; }
-  }
 }
 
-/* ── Desktop nav ── */
+.header__logo-img {
+  display: block;
+  height: 28px;
+  width: auto;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+
+  @media (max-width: $desktop) { height: 24px; }
+}
+
+.header__logo:hover .header__logo-img {
+  filter: brightness(1.35) hue-rotate(15deg);
+  opacity: 0.9;
+}
+
+/* ── Desktop nav: pushed to right ── */
 .nav--desktop {
-  @media (max-width: $desktop) {
-    display: none;
-  }
-}
-
-/* ── Right actions: search + CTA ── */
-.header__actions {
-  display: flex;
-  align-items: center;
-  gap: 24px;
   margin-left: auto;
 
   @media (max-width: $desktop) {
@@ -72,20 +72,22 @@
 .header__cta {
   display: inline-flex;
   align-items: center;
-  padding: 9px 20px;
+  height: 40px;
+  padding: 0 20px;
   border-radius: 0;
-  border: 1px solid var(--nav-text);
+  border: none;
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 500;
-  color: var(--nav-text);
+  color: #ffffff;
+  background: #2B66FF;
   text-decoration: none;
-  transition: border-color .15s, color .15s, background .15s;
+  transition: background .15s;
   white-space: nowrap;
 
   &:hover {
-    border-color: var(--g-500);
-    color: var(--g-500);
+    color: #ffffff;
+    background: #1a55ee;
   }
 }
 
@@ -359,4 +361,9 @@ body.modal-open { overflow: hidden; }
 /* Offset page content below fixed nav */
 .global-wrap {
   padding-top: var(--nav-height);
+}
+
+/* Home page: hero extends behind transparent nav */
+.home-page .global-wrap {
+  padding-top: 0;
 }
