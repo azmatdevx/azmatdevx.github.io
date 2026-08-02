@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>OOM Is a Symptom, Not the Problem — azmat.devx</title>
-  <meta name='description' content='A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.'>
+  <meta name='description' content='Rerunning a failing performance test never fixes a memory leak. Here is the heap analysis framework I use to tell capacity limits apart from real retention i...'>
 
   <link rel="canonical" href="http://localhost:4000/oom-is-a-symptom-not-the-problem">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
@@ -15,12 +15,12 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OOM Is a Symptom, Not the Problem — azmat.devx">
-  <meta name="twitter:description" content="A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.">
+  <meta name="twitter:description" content="Rerunning a failing performance test never fixes a memory leak. Here is the heap analysis framework I use to tell capacity limits apart from real retention issues.">
   <meta name="twitter:image:src" content="http://localhost:4000/images/oom.png">
 
   <!-- Facebook OpenGraph -->
   <meta property="og:title" content="OOM Is a Symptom, Not the Problem — azmat.devx">
-  <meta property="og:description" content="A structured approach to heap analysis in performance testing, with a focus on distinguishing capacity limits from true memory retention issues.">
+  <meta property="og:description" content="Rerunning a failing performance test never fixes a memory leak. Here is the heap analysis framework I use to tell capacity limits apart from real retention issues.">
   <meta property="og:image" content="http://localhost:4000/images/oom.png">
 
 
@@ -180,7 +180,7 @@
       <div class="post__meta-bar">
         <time datetime="2026-03-30T20:00:00+04:00">30 March 2026</time>
         <span class="post__meta-sep" aria-hidden="true">•</span>
-        <span class="post__meta-read">4 min read</span>
+        <span class="post__meta-read">2 min read</span>
         
         <span class="post__meta-sep" aria-hidden="true">•</span>
         
@@ -222,218 +222,40 @@
 
       
 
-      <h2 id="session-outcomes">Session Outcomes</h2>
+      <p>A performance test fails with <code class="language-plaintext highlighter-rouge">OutOfMemoryError</code>, and the reaction is almost always the same: rerun it. If it fails again, add agents. That instinct makes sense under delivery pressure, but it treats capacity as the problem when the problem is usually retention — and no amount of scaling fixes a leak.</p>
 
-<p>By the end of this session, you should be able to:</p>
+<h2 id="the-reactive-loop">The reactive loop</h2>
 
-<ul>
-  <li>distinguish between capacity issues and memory retention issues</li>
-  <li>recognize memory retention patterns under load</li>
-  <li>analyze a heap dump using Eclipse MAT</li>
-  <li>identify dominant retained objects using the Dominator Tree</li>
-  <li>validate memory fixes through structured reproduction</li>
-</ul>
+<p>The pattern is familiar. OOM occurs, someone skims the logs, the test gets rerun, more agents get provisioned, and the failure comes back anyway. The loop repeats. It feels like progress because something is happening, but no diagnosis is taking place — just capacity being thrown at a problem capacity can’t solve.</p>
 
-<blockquote>
-  <p>OOM is not the problem. It is evidence.</p>
-</blockquote>
+<p>I have watched this loop cost far more than it looks like it should. Two failed executions, each rerun three times, four engineers pulled into the analysis: that is six reruns at roughly ninety minutes each, plus eight engineering-hours of discussion, plus the infrastructure cost of the extra agents. Easily seventeen hours spent without getting materially closer to the cause. The real cost was never compute — it was the insight the reruns kept deferring.</p>
 
-<h2 id="what-usually-happens-when-oom-hits">What Usually Happens When OOM Hits?</h2>
+<h2 id="symptom-vs-root-cause">Symptom vs. root cause</h2>
 
-<p>When performance tests fail with <code class="language-plaintext highlighter-rouge">OutOfMemoryError</code>, the reaction is usually predictable:</p>
+<p><code class="language-plaintext highlighter-rouge">OutOfMemoryError</code>, a JVM crash, slowness under load — these are what we see. What they actually mean is that objects are being retained, the garbage collector can’t reclaim enough memory, and the heap keeps growing across GC cycles. OOM is a JVM safety mechanism firing correctly, not a random failure mode. Scaling increases capacity; it does nothing to a retention problem.</p>
+
+<p>Under sustained load, retention shows up as heap usage that doesn’t drop after GC cycles, memory trending upward across iterations, and — once you look — a Dominator Tree with large retained subtrees. The distinction that matters here is between <strong>shallow heap</strong> (the memory an object consumes by itself) and <strong>retained heap</strong> (the total memory that would be freed if that object were collected). Shallow heap tells you what an object costs. Retained heap tells you what it’s actually holding hostage.</p>
+
+<h2 id="a-repeatable-investigation">A repeatable investigation</h2>
+
+<p>Instead of rerunning blind, the response I now follow is structured:</p>
 
 <ol>
-  <li>test execution fails</li>
-  <li>JMeter throws OOM</li>
-  <li>a heap dump is generated</li>
-  <li>the rerun starts immediately</li>
-  <li>more agents get added</li>
-  <li>the failure returns</li>
-</ol>
-
-<p>This is understandable under delivery pressure, but it treats capacity instead of cause.</p>
-
-<h3 id="the-reactive-loop">The Reactive Loop</h3>
-
-<p>The pattern usually looks like this:</p>
-
-<ol>
-  <li>OOM occurs</li>
-  <li>someone checks logs quickly</li>
-  <li>the test is rerun</li>
-  <li>more agents are provisioned</li>
-  <li>OOM happens again</li>
-  <li>the loop restarts</li>
-</ol>
-
-<p>The system feels active, but the diagnosis is still missing.</p>
-
-<h2 id="the-cost-of-reactive-reruns">The Cost of Reactive Reruns</h2>
-
-<p>Consider a simple scenario:</p>
-
-<ul>
-  <li>2 performance test executions</li>
-  <li>each rerun 3 times</li>
-  <li>additional test agents provisioned</li>
-  <li>4 engineers pulled into analysis discussions</li>
-</ul>
-
-<p>The impact adds up fast:</p>
-
-<ul>
-  <li>6 total reruns</li>
-  <li>roughly 1.5 hours per execution, or about 9 hours of execution time</li>
-  <li>4 engineers at about 2 hours each, or about 8 engineering hours</li>
-  <li>extra infrastructure cost from more agents and compute</li>
-</ul>
-
-<p>Operationally, that means:</p>
-
-<ul>
-  <li>a longer performance test cycle</li>
-  <li>delayed root cause identification</li>
-  <li>higher delivery risk</li>
-  <li>lower predictability when deadlines tighten</li>
-</ul>
-
-<p>That is easily 17 or more hours spent without getting materially closer to the root cause.</p>
-
-<blockquote>
-  <p>The real cost was not compute. It was delayed insight.</p>
-</blockquote>
-
-<h2 id="symptom-vs-root-cause">Symptom vs Root Cause</h2>
-
-<h3 id="what-we-see">What We See</h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">OutOfMemoryError</code></li>
-  <li>JVM crash</li>
-  <li>slowness under load</li>
-</ul>
-
-<h3 id="what-it-actually-means">What It Actually Means</h3>
-
-<ul>
-  <li>objects are being retained</li>
-  <li>the garbage collector cannot reclaim enough memory</li>
-  <li>the heap keeps growing across GC cycles</li>
-</ul>
-
-<p>OOM is a JVM safety mechanism, not a random failure mode.</p>
-
-<blockquote>
-  <p>Scaling increases capacity. It does not eliminate memory retention.</p>
-</blockquote>
-
-<h2 id="recognizing-a-retention-pattern">Recognizing a Retention Pattern</h2>
-
-<p>Under sustained load, retention often shows up as:</p>
-
-<ul>
-  <li>heap usage not dropping after GC cycles</li>
-  <li>memory trending upward across iterations</li>
-  <li>a Dominator Tree showing large retained subtrees</li>
-</ul>
-
-<p>One distinction matters here:</p>
-
-<ul>
-  <li><strong>Shallow heap</strong> is the memory consumed by the object itself</li>
-  <li><strong>Retained heap</strong> is the total memory that would be freed if that object were collected</li>
-</ul>
-
-<p>Retained heap is what exposes the real impact.</p>
-
-<h2 id="a-repeatable-oom-investigation-framework">A Repeatable OOM Investigation Framework</h2>
-
-<p>When OOM occurs, the response should be structured:</p>
-
-<ol>
-  <li>stop blind reruns</li>
-  <li>preserve logs and the heap dump</li>
+  <li>stop the rerun loop and preserve the logs and heap dump</li>
   <li>check the memory growth trend</li>
-  <li>analyze the heap in Eclipse MAT</li>
-  <li>identify the dominant retained objects</li>
-  <li>reproduce and validate in a controlled way</li>
+  <li>analyze the heap dump in Eclipse MAT — run the Leak Suspects report, inspect the Dominator Tree, sort by retained heap</li>
+  <li>identify the dominant retained object and the reference chain preventing GC</li>
+  <li>reproduce it in a controlled way — a single local run, a script, or manual execution against the app</li>
+  <li>if the fix holds, deploy and monitor; if not, go back to the memory trend and keep digging</li>
 </ol>
 
-<p>The decision flow is simple:</p>
+<p>The difference this makes is the size of the feedback loop. What used to take repeated blind reruns now takes one controlled run and a heap dump.</p>
 
-<ol>
-  <li>observe the OOM</li>
-  <li>stop the rerun loop</li>
-  <li>preserve the evidence</li>
-  <li>inspect the memory trend</li>
-  <li>analyze the dump in Eclipse MAT</li>
-  <li>identify what retains memory</li>
-  <li>reproduce and validate</li>
-  <li>if the fix is confirmed, deploy and monitor</li>
-  <li>if not, return to the memory trend and continue the investigation</li>
-</ol>
+<h2 id="the-new-standard">The new standard</h2>
 
-<p>This turns chaos into a repeatable investigation.</p>
+<p>Before I rerun a failed performance test now, I ask whether I’ve actually looked at the logs and the heap dump, whether this is capacity or retention, and whether I can reproduce it locally before touching infrastructure. Diagnose first, scale later.</p>
 
-<h2 id="applying-the-framework">Applying the Framework</h2>
-
-<h3 id="step-1-inspect-logs">Step 1: Inspect Logs</h3>
-
-<ul>
-  <li>confirm the memory exhaustion pattern</li>
-  <li>identify repeated allocation behavior</li>
-</ul>
-
-<h3 id="step-2-analyze-the-heap-dump-in-eclipse-mat">Step 2: Analyze the Heap Dump in Eclipse MAT</h3>
-
-<ul>
-  <li>run the Leak Suspects Report</li>
-  <li>inspect the Dominator Tree</li>
-  <li>sort by Retained Heap</li>
-</ul>
-
-<h3 id="step-3-identify-the-root-cause">Step 3: Identify the Root Cause</h3>
-
-<p>Look for:</p>
-
-<ul>
-  <li>the dominant retained object</li>
-  <li>the reference chain preventing GC</li>
-  <li>accumulation that only becomes obvious under load</li>
-</ul>
-
-<h3 id="step-4-reproduce-in-a-controlled-way">Step 4: Reproduce in a Controlled Way</h3>
-
-<ul>
-  <li>single local execution</li>
-  <li>script-based validation</li>
-  <li>manual execution in the application</li>
-  <li>browser DevTools inspection where relevant</li>
-</ul>
-
-<p>The result is a much smaller feedback loop. In the original flow, diagnosis was reduced to a single controlled run instead of repeated blind reruns.</p>
-
-<h2 id="the-new-standard">The New Standard</h2>
-
-<p>Before rerunning a failed performance test, ask:</p>
-
-<ul>
-  <li>have we reviewed the logs?</li>
-  <li>have we analyzed the heap dump?</li>
-  <li>is this capacity or retention?</li>
-  <li>can we reproduce it locally?</li>
-  <li>have we validated the fix?</li>
-</ul>
-
-<blockquote>
-  <p>Diagnose first. Scale later.</p>
-</blockquote>
-
-<h2 id="final-thought">Final Thought</h2>
-
-<p><code class="language-plaintext highlighter-rouge">OutOfMemoryError</code> is not random. It is a signal that something is retaining memory incorrectly.</p>
-
-<p>We do not react our way out of failures. We diagnose our way to clarity.</p>
+<p><code class="language-plaintext highlighter-rouge">OutOfMemoryError</code> isn’t random. It’s a signal that something is retaining memory incorrectly — and the fastest way through it has never been another rerun.</p>
 
     </div>
   </article>
