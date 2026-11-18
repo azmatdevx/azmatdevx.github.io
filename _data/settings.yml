@@ -86,18 +86,16 @@ social:
       name: "GitHub",
       link: "https://github.com/azmatdevx",
     }
-  # TODO(azmat): add LinkedIn profile URL, then uncomment
-  # - {
-  #     icon: "fa-brands fa-linkedin-in",
-  #     name: "LinkedIn",
-  #     link: "https://www.linkedin.com/in/TODO",
-  #   }
-  # TODO(azmat): add real contact email, then uncomment
-  # - {
-  #     icon: "fa-solid fa-envelope",
-  #     name: "Email",
-  #     link: "mailto:TODO",
-  #   }
+  - {
+      icon: "fa-brands fa-linkedin-in",
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/in/azmatmungur/",
+    }
+  - {
+      icon: "fa-solid fa-envelope",
+      name: "Email",
+      link: "mailto:mungur.azmat@gmail.com",
+    }
 
 # Other icons can be found at https://fontawesome.com/icons
 
