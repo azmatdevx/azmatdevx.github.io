@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Running a Side Project With Production Habits
-description: A small project becomes much easier to operate when you borrow a few habits from serious systems work before things get messy.
+description: "Deployment notes, a rollback path, consistent environment variable names and just-enough logging: the habits that made my side projects easier to operate."
 date: 2025-01-26 10:30:00 +0400
 author: azmat
 image: '/images/sideproject.jpg'

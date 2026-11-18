@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Most Useful Thing I Did for My Local Dev Environment
-description: I stopped chasing the perfect setup and focused on reducing the small repeated frictions that were slowing me down every day.
+title: Fixing My Local Dev Environment One Annoyance at a Time
+description: "I stopped chasing an impressive setup and removed one repeated annoyance at a time: faster navigation, fewer manual steps, predictable environment names."
 date: 2025-03-21 07:20:00 +0400
 author: azmat
 image: '/images/local.jpg'

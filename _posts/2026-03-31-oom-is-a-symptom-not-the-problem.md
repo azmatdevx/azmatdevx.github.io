@@ -1,7 +1,7 @@
 ---
 layout: post
 title: OOM Is a Symptom, Not the Problem
-description: Rerunning a failing performance test never fixes a memory leak. Here is the heap analysis framework I use to tell capacity limits apart from real retention issues.
+description: Rerunning a failed performance test or adding agents will not fix a memory leak. A heap-analysis approach for telling capacity limits from object retention.
 date: 2026-03-30 20:00:00 +0400
 author: azmat
 image: '/images/oom.jpg'
