@@ -5,7 +5,7 @@
   </div>
   {% endif %}
   <div class="post-panel__body">
-    <p class="post-panel__date">{{ post.date | date: "%-d %b %Y" }}</p>
+    <p class="post-panel__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time> <span aria-hidden="true">·</span> {% include reading-time.html content=post.content %}</p>
     <h2 class="post-panel__title">{{ post.title }}</h2>
     {% if post.description %}
     <p class="post-panel__excerpt">{{ post.description | truncate: 100 }}</p>
