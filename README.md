@@ -1,72 +1,52 @@
-# Nomod is a multipurpose Jekyll blog theme
+# azmat.devx — Field Notes
 
-Nomod is a multipurpose Jekyll blog theme designed for creatives, writers, and developers who value both aesthetics and functionality. It’s the perfect choice for anyone looking to host their blog effortlessly on GitHub Pages, enjoying the benefits of a fast and secure site with zero hosting costs. It supports various post formats, including video posts and multiple authors, making it ideal for collaborative projects or multi-contributor blogs. This versatility allows you to create and manage content seamlessly, providing an engaging experience for your audience, regardless of the type of content you wish to share.
+Personal engineering blog by Azmat Mungur: short engineering posts and monthly deep dives on performance, AI-augmented systems and production lessons. Live at https://azmatdevx.github.io.
 
-* * *
+Built with [Jekyll](https://jekyllrb.com/) on the Nomod theme (by Anvod Studio), customised with a custom brand layer, and hosted on GitHub Pages.
 
-### Demo
+## Run locally
 
-Check the theme in action [Live Demo](https://nomod.netlify.app/) |
-[Artem Sheludko](https://jekyllthemes.io/developers/artem-sheludko)
+Requires Ruby and Bundler ([Jekyll install guide](https://jekyllrb.com/docs/installation/)).
 
-* * *
+```bash
+bundle install                # first time, or after Gemfile changes
+bundle exec jekyll serve      # http://localhost:4000, rebuilds on change
+bundle exec jekyll build      # production build into _site/ (not committed)
+```
 
-### Theme features
+## Write a post
 
-- Works with GitHub Pages (host it for free)
-- Dark and light mode
-- No jQuery, only vanilla JS
-- 100% responsive design
-- Clean and modern code
-- Optimized for mobile devices
-- Compatible with modern browsers
-- Section featured posts
-- Page latest posts
-- Page videos
-- Section tag
-- Super fast performance ⚡⚡⚡
-- Social sharing buttons
-- Scroll to top button
-- Syntax highlighting
-- Medium style image zoom
-- Image gallery
-- Tag page
-- Author page
-- Custom logo support
-- Support for multiple authors
-- Supports video posts
-- Supports contact form (Formspree)
-- Supports MailChimp newsletter
-- Supports Disqus comments
-- Supports Google Analytics
-- Font Awesome icons
-- Free Google Fonts
-- Free Updates & Support
+Create `_posts/YYYY-MM-DD-slug.md`. The URL becomes `/slug`.
 
-* * *
+```yaml
+---
+layout: post
+title: Post title
+description: One sentence used on cards and in search results.
+date: YYYY-MM-DD HH:MM:SS +0400
+author: azmat          # must match `username` in _authors/
+image: '/images/cover.png'
+tags: [Performance, Personal Tech]
+featured: false
+toc: false             # true renders a table of contents
+---
 
-### Installation
+Post body in Markdown.
+```
 
-#### Installing Ruby & Jekyll
+Put cover images in `images/` and reference them with a root-relative path. Tags are free-form; there is no tag registry to update.
 
-If this is your first time using Jekyll, please follow the [Jekyll docs](https://jekyllrb.com/docs/installation/) and make sure your local environment (including Ruby) is setup correctly.
+## Where things live
 
-* * *
+| Path | Purpose |
+| --- | --- |
+| `_data/settings.yml` | Nav, hero copy, section toggles, social links, integrations |
+| `_config.yml` | Site URL, collections, plugins |
+| `_posts/`, `_pages/`, `_authors/` | Content |
+| `_layouts/`, `_includes/` | Templates and partials |
+| `_sass/` | Styles; `5-brand/_overrides.scss` is the custom skin |
+| `js/` | Vanilla JS (lazy loading, tag filtering, search) |
 
-### Deployment
+## Deployment
 
-To run the theme locally, navigate to the theme directory and run `bundle install` to install the dependencies, then run `jekyll serve` or `bundle exec jekyll serve` to start the Jekyll server.
-
-I would recommend checking the [Deployment Methods](https://jekyllrb.com/docs/deployment-methods/) page on Jekyll website.
-
-* * *
-
-### Documentation
-
-Before using the Nomod theme, please read the attached documentation.
-
-* * *
-
-### Support
-
-<p>If you have any questions or feedback about the theme, please feel free to contact me by mail <a href="mailto:hi.artemsheludko@gmail.com">Contact</a><p>
+GitHub Pages builds the site from `main`. Only GitHub Pages-supported plugins are used (`jekyll-sitemap`).
