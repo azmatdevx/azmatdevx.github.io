@@ -101,6 +101,31 @@ layout: default
     <div class="container">
     <div class="ap">
 
+      <!-- ── Start here ── -->
+      {% if page.start_here %}
+      <section id="start-here" class="ap__section start-here">
+        <div class="container">
+          <h2 class="ap__section-heading">Start here</h2>
+          <p class="start-here__intro">New to Field Notes? These three posts are a good way in.</p>
+          <ul class="start-here__list">
+            {% for path in page.start_here %}
+            {% assign sh_post = site.posts | where: "url", path | first %}
+            {% if sh_post %}
+            <li>
+              <a class="start-here__card" href="{{ sh_post.url | relative_url }}">
+                <span class="start-here__meta"><time datetime="{{ sh_post.date | date_to_xmlschema }}">{{ sh_post.date | date: "%-d %b %Y" }}</time> · {% include reading-time.html content=sh_post.content %}</span>
+                <h3 class="start-here__title">{{ sh_post.title }}</h3>
+                <span class="start-here__desc">{{ sh_post.description }}</span>
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+          <a class="start-here__all" href="{{ '/blog/' | relative_url }}">All Field Notes <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      {% endif %}
+
       <!-- ── Experience (alternating timeline) ── -->
       {% if page.about_experience %}
       <section id="experience" class="ap__section ap__experience-section">

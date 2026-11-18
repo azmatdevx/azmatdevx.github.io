@@ -11,7 +11,7 @@ layout: default
       <div class="post__meta-bar">
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
         <span class="post__meta-sep" aria-hidden="true">•</span>
-        <span class="post__meta-read">{% assign words = page.content | number_of_words %}{% if words < 360 %}1 min read{% else %}{{ words | divided_by:180 }} min read{% endif %}</span>
+        <span class="post__meta-read">{% include reading-time.html content=page.content %}</span>
         {% if page.tags.size >= 1 %}
         <span class="post__meta-sep" aria-hidden="true">•</span>
         {% for tag in page.tags %}
@@ -59,11 +59,13 @@ layout: default
   <article class="post">
     <div class="post__content">
 
-      {% if page.toc == true %}
-      <div class="post__toc">
+      {% assign post_words = page.content | number_of_words %}
+      {% assign post_h2s = content | split: '<h2' | size | minus: 1 %}
+      {% if page.toc == true or page.toc == nil and post_words >= 500 and post_h2s >= 3 %}
+      <nav class="post__toc" aria-label="Table of contents">
         <h2 class="post__toc__title">Table of Contents</h2>
         {% include toc.html html=content ordered=true class="post__toc__list" h_min=2 %}
-      </div>
+      </nav>
       {% endif %}
 
       {{ content }}
@@ -77,3 +79,5 @@ layout: default
 {% endif %}
 
 {% include related-posts.html %}
+
+<script src="{{ '/js/code-copy.js' | relative_url }}" defer></script>
