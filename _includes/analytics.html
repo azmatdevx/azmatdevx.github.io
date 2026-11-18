@@ -1,0 +1,9 @@
+{%- comment -%}
+  Privacy-friendly analytics (GoatCounter: no cookies, no personal data).
+  Disabled until `analytics.goatcounter_code` is set in _data/settings.yml,
+  and only rendered in production builds (GitHub Pages), never in `jekyll serve`.
+{%- endcomment -%}
+{%- assign gc_code = site.data.settings.analytics.goatcounter_code -%}
+{%- if gc_code and gc_code != '' and jekyll.environment == 'production' -%}
+<script data-goatcounter="https://{{ gc_code }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+{%- endif -%}

@@ -116,5 +116,6 @@ contact:
 disqus_identifier:
 
 #-------------------------------
-# Google Analytics
-google_analytics: # Add your GA Tracking Id
+# Analytics (GoatCounter, privacy-friendly)
+analytics:
+  goatcounter_code: # TODO(azmat): your GoatCounter site code, e.g. "azmatdevx" for azmatdevx.goatcounter.com. Empty = analytics off.
