@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://nomod.netlify.app" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # user site (azmatdevx.github.io) is served from the root, so no subpath
+url: "https://azmatdevx.github.io" # base hostname & protocol, no trailing slash
 
 
 #-------------------------------
