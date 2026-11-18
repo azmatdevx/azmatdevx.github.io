@@ -3,23 +3,51 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title }} — {{ site.data.settings.title }}{% else %}{{ site.data.settings.title }}{% endif %}</title>
-  <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.settings.description }}{% endif %}'>
+  {%- assign seo_title = site.data.settings.title -%}
+  {%- unless page.url == '/' or page.url == '/404.html' -%}
+    {%- assign seo_title = page.title | append: ' — ' | append: site.data.settings.title -%}
+  {%- endunless -%}
+  {%- if page.url == '/404.html' -%}
+    {%- assign seo_title = 'Page not found — ' | append: site.data.settings.title -%}
+  {%- endif -%}
+  {%- if page.description -%}
+    {%- assign seo_desc = page.description | strip_html | strip_newlines | truncate: 160 -%}
+  {%- elsif page.layout == 'post' -%}
+    {%- assign seo_desc = page.excerpt | strip_html | strip_newlines | truncate: 160 -%}
+  {%- else -%}
+    {%- assign seo_desc = site.data.settings.description | strip_html | strip_newlines | truncate: 160 -%}
+  {%- endif -%}
+  {%- assign seo_image = page.image | default: site.data.settings.social_image | absolute_url -%}
+  {%- assign seo_url = page.url | replace: 'index.html', '' | absolute_url -%}
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  <title>{{ seo_title | escape }}</title>
+  <meta name="description" content="{{ seo_desc | escape }}">
+  <meta name="author" content="{{ site.data.settings.author_name | default: 'Azmat Mungur' }}">
+  {% if page.url == '/404.html' %}<meta name="robots" content="noindex">{% endif %}
+
+  <link rel="canonical" href="{{ seo_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.data.settings.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="{{ site.data.settings.title | escape }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ seo_title | escape }}">
+  <meta property="og:description" content="{{ seo_desc | escape }}">
+  <meta property="og:url" content="{{ seo_url }}">
+  <meta property="og:image" content="{{ seo_image }}">
+  {% if page.layout == 'post' %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% for tag in page.tags %}<meta property="article:tag" content="{{ tag | escape }}">
+  {% endfor %}
+  {% endif %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.url == "/" %}{{ site.data.settings.title }}{% else %}{{ page.title }} — {{ site.data.settings.title }}{% endif %}">
-  <meta name="twitter:description" content="{% if page.url == "/" %}{{ site.data.settings.description | strip_html | xml_escape }}{% elsif page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}">
-  <meta name="twitter:image:src" content="{{ page.image | absolute_url }}">
+  <meta name="twitter:title" content="{{ seo_title | escape }}">
+  <meta name="twitter:description" content="{{ seo_desc | escape }}">
+  <meta name="twitter:image" content="{{ seo_image }}">
 
-  <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="{% if page.url == "/" %}{{ site.data.settings.title }}{% else %}{{ page.title }} — {{ site.data.settings.title }}{% endif %}">
-  <meta property="og:description" content="{% if page.url == "/" %}{{ site.data.settings.description | strip_html | xml_escape }}{% elsif page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}">
-  <meta property="og:image" content="{{ page.image | absolute_url }}">
-
+  {% include structured-data.html %}
 
   <!-- Theme: always dark -->
   <script>
