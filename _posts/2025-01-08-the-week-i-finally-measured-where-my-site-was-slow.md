@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Week I Finally Measured Where My Site Was Slow
-description: I stopped guessing, profiled the obvious bottlenecks, and learned that most of my performance work had been aimed at the wrong layer.
+title: "Where My Site Was Actually Slow: Measuring Before Optimizing"
+description: I stopped guessing and profiled time to first byte, image weight and render-blocking CSS and fonts. Most of my performance work had targeted the wrong layer.
 date: 2025-01-08 09:00:00 +0400
 author: azmat
 image: '/images/p95.png'

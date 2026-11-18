@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What a Debugging Session Taught Me About Noise
-description: I went hunting for a deep systems issue and found a simpler explanation hiding behind too much telemetry and not enough judgment.
+description: A burst of retries amplified a dependency slowdown, but dashboards full of equal-looking graphs hid it. Writing the event in plain language found it.
 date: 2025-02-11 08:15:00 +0400
 author: azmat
 image: '/images/rootcause.png'

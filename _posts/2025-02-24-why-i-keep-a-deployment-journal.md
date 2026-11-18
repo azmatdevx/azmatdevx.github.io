@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I Keep a Deployment Journal
-description: Small written notes after each release have saved me more time than several smart tools I was sure would solve the same problem.
+description: A plain, timestamped note after every release, covering the change, unusual commands and hidden coordination, has saved me more time than smart tooling.
 date: 2025-02-24 18:10:00 +0400
 author: azmat
 image: '/images/shipped.png'

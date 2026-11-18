@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rebuilding This Jekyll Site as a Personal Tech Blog
-description: The theme looked polished, but its defaults told the wrong story. Turning it into a personal site meant changing content strategy more than design.
+description: "The theme looked polished but told the wrong story: team language, author showcases, lifestyle categories. Rebuilding it was a content job more than design."
 date: 2025-03-09 11:45:00 +0400
 author: azmat
 image: '/images/jekyll.png'
