@@ -13,6 +13,8 @@ menu_settings:
   menu_items:
     - title: "Field Notes"
       url: "/blog/"
+    - title: "About"
+      url: "/about/"
 
 # Call to action button
 cta_button:
