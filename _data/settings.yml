@@ -58,7 +58,7 @@ about:
     This site is my working notebook for the technical side of life: performance investigations, architecture tradeoffs, deployment lessons, and the odd side project that teaches me something useful.
 
     I’m less interested in polished thought leadership than in honest field notes. If a post lives here, it usually came from a real incident, a stubborn bottleneck, or a build that finally started making sense after enough iteration.
-  about_image: "/images/profile.png"
+  about_image: "/images/profile.jpg"
   about_image_alt: Azmat Mungur
   about_button_text: Read more about me
   about_button_link: "/about/"
