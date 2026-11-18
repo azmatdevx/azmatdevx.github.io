@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /* =======================================================
   // Menu + Theme Switcher
   ======================================================= */
-  menuToggle.addEventListener("click", () => {
+  if (menuToggle) menuToggle.addEventListener("click", () => {
     menu();
   });
 
@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /* =======================
   // Scroll Top Button
   ======================= */
-  btnScrollToTop.addEventListener("click", function () {
+  if (btnScrollToTop) btnScrollToTop.addEventListener("click", function () {
     if (window.scrollY != 0) {
       window.scrollTo({
         top: 0,
