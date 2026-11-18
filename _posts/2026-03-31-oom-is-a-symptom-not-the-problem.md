@@ -14,7 +14,7 @@ image: '/images/oom.png'
 #   - '/images/13.jpg'
 tags: [Performance Testing, JVM, Debugging]
 featured: false
-toc: false
+toc: true
 ---
 
 A performance test fails with `OutOfMemoryError`, and the reaction is almost always the same: rerun it. If it fails again, add agents. That instinct makes sense under delivery pressure, but it treats capacity as the problem when the problem is usually retention — and no amount of scaling fixes a leak.
