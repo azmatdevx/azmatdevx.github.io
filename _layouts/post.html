@@ -32,7 +32,7 @@ layout: default
 <div class="post__cover-wrap">
   <div class="container">
     <div class="post__cover">
-      <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
+      <img src="{{ page.image | relative_url }}" width="1200" height="675" fetchpriority="high" decoding="async" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
     </div>
   </div>
 </div>
