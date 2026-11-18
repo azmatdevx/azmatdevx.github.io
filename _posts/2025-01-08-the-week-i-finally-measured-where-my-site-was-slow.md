@@ -4,7 +4,7 @@ title: The Week I Finally Measured Where My Site Was Slow
 description: I stopped guessing, profiled the obvious bottlenecks, and learned that most of my performance work had been aimed at the wrong layer.
 date: 2025-01-08 09:00:00 +0400
 author: azmat
-image: '/images/p95.png'
+image: '/images/p95.jpg'
 tags: [Performance, Personal Tech]
 featured: true
 toc: false
