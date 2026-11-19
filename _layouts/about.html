@@ -47,6 +47,9 @@ layout: default
       <div class="ap">
         <!-- ── Centered Hero ── -->
         <section class="ap__hero-center">
+          {% if page.about_role %}
+          <p class="ap__hero-role ap__hero-enter">{{ page.about_role }}</p>
+          {% endif %}
           <h1 class="ap__hero-name-display ap__hero-enter ap__hero-enter--name">{{ page.about_name }}</h1>
           {% if page.about_headline %}
           <p class="ap__hero-tagline ap__hero-enter" style="animation-delay:.35s">{{ page.about_headline }}</p>
@@ -55,8 +58,8 @@ layout: default
           <p class="ap__hero-sub ap__hero-enter" style="animation-delay:.5s">{{ page.about_bio }}</p>
           {% endif %}
           <div class="ap__hero-actions ap__hero-enter" style="animation-delay:.65s">
-            <a href="#experience" class="ap__hero-btn ap__hero-btn--primary">Experience <i class="fa-solid fa-arrow-down"></i></a>
-            <a href="{{ site.baseurl }}/blog" class="ap__hero-btn ap__hero-btn--ghost">Field Notes</a>
+            <a href="{{ site.baseurl }}/blog" class="ap__hero-btn ap__hero-btn--primary">Read the posts <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#experience" class="ap__hero-btn ap__hero-btn--ghost">Experience</a>
           </div>
           {% if site.data.settings.social %}
           <div class="ap__social ap__hero-enter" style="animation-delay:.8s">
@@ -81,8 +84,10 @@ layout: default
       {% if page.start_here %}
       <section id="start-here" class="ap__section start-here">
         <div class="container">
-          <h2 class="ap__section-heading">Start here</h2>
-          <p class="start-here__intro">New to Field Notes? These three posts are a good way in.</p>
+          <div class="ap__section-head">
+            <h2 class="ap__section-heading">Start here</h2>
+            <p class="ap__section-sub">New to Field Notes? These three posts are a good way in.</p>
+          </div>
           <ul class="start-here__list">
             {% for path in page.start_here %}
             {% assign sh_post = site.posts | where: "url", path | first %}
@@ -102,41 +107,30 @@ layout: default
       </section>
       {% endif %}
 
-      <!-- ── Experience (alternating timeline) ── -->
+      <!-- ── Experience (compact list, grouped by company) ── -->
       {% if page.about_experience %}
       <section id="experience" class="ap__section ap__experience-section">
         <div class="ap__section-head">
-          <h2 class="ap__section-heading">Experience In The Making</h2>
+          <h2 class="ap__section-heading">Experience in the making</h2>
           <p class="ap__section-sub">A career built on measuring what matters — and iterating on what doesn't.</p>
         </div>
-        <div class="ap__tl">
+        {% assign last_company = "" %}
+        <div class="ap__exp">
           {% for item in page.about_experience %}
-          {% assign is_left = forloop.index | modulo: 2 %}
-          <div class="ap__tl-row ap__tl-row--hidden" style="transition-delay: {{ forloop.index0 | times: 120 }}ms">
-            {% if is_left == 1 %}
-            <div class="ap__tl-card ap__tl-card--left">
-              <span class="ap__tl-years">{{ item.years }}</span>
-              <h3 class="ap__tl-role">{{ item.role }}</h3>
-              <p class="ap__tl-company">{{ item.company }}</p>
-              {% if item.note %}<p class="ap__tl-note">{{ item.note }}</p>{% endif %}
-            </div>
-            {% else %}
-            <div class="ap__tl-empty"></div>
-            {% endif %}
-            <div class="ap__tl-dot-wrap">
-              <div class="ap__tl-dot"></div>
-            </div>
-            {% if is_left == 1 %}
-            <div class="ap__tl-empty"></div>
-            {% else %}
-            <div class="ap__tl-card ap__tl-card--right">
-              <span class="ap__tl-years">{{ item.years }}</span>
-              <h3 class="ap__tl-role">{{ item.role }}</h3>
-              <p class="ap__tl-company">{{ item.company }}</p>
-              {% if item.note %}<p class="ap__tl-note">{{ item.note }}</p>{% endif %}
-            </div>
-            {% endif %}
-          </div>
+          {% if item.company != last_company %}
+          {% unless forloop.first %}</ul>{% endunless %}
+          <h3 class="ap__exp-company">{{ item.company }}</h3>
+          <ul class="ap__exp-list">
+          {% assign last_company = item.company %}
+          {% endif %}
+            <li>
+              <span class="ap__exp-years">{{ item.years }}</span>
+              <div>
+                <p class="ap__exp-role">{{ item.role }}</p>
+                {% if item.note %}<p class="ap__exp-note">{{ item.note }}</p>{% endif %}
+              </div>
+            </li>
+          {% if forloop.last %}</ul>{% endif %}
           {% endfor %}
         </div>
       </section>
@@ -172,16 +166,11 @@ layout: default
           <h2 class="ap__section-heading">Certifications</h2>
           <p class="ap__section-sub">Formal recognition of the depth built across cloud and infrastructure platforms.</p>
         </div>
-        <div class="ap__badges">
+        <ul class="ap__cert-list">
           {% for cert in page.about_certifications %}
-          <div class="ap__badge ap__fade-in" style="transition-delay: {{ forloop.index0 | times: 100 }}ms"
-               data-iframe-width="150"
-               data-iframe-height="270"
-               data-share-badge-id="{{ cert.badge_id }}"
-               data-share-badge-host="https://www.credly.com">
-          </div>
+          <li><a href="https://www.credly.com/badges/{{ cert.badge_id }}" rel="noopener">{{ cert.title }}</a></li>
           {% endfor %}
-        </div>
+        </ul>
       </section>
       {% endif %}
 
@@ -241,23 +230,8 @@ layout: default
 
 </div><!-- /.ap__page-canvas -->
 
-{% if page.about_certifications %}
-<script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
-{% endif %}
-
 <script>
 (function () {
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('ap__tl-row--visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.ap__tl-row--hidden').forEach(function (el) { io.observe(el); });
-
   var io2 = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
