@@ -306,25 +306,6 @@ pre {
   line-height: 1.65;
 }
 
-/* Post tags */
-.post__tag {
-  font-family: var(--sans) !important;
-  font-size: 10px !important;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--g-400) !important;
-  background: rgba(43, 102, 255, 0.12) !important;
-  border: 1px solid rgba(43, 102, 255, 0.25) !important;
-  border-radius: 9999px !important;
-  padding: 3px 10px !important;
-  text-transform: none;
-
-  &:hover {
-    background: rgba(43, 102, 255, 0.22) !important;
-    border-color: rgba(43, 102, 255, 0.45) !important;
-  }
-}
-
 /* Share links */
 .share__link {
   width: 36px !important;

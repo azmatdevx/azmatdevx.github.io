@@ -72,23 +72,11 @@
 }
 
 .post-panel__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
   margin-top: auto;
   padding-top: 4px;
-}
-
-.post-panel__tag {
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--g-400);
-  background: rgba(43, 102, 255, 0.12);
-  border: 1px solid rgba(43, 102, 255, 0.25);
-  border-radius: 9999px;
-  padding: 2px 9px;
+  font-size: 12px;
+  color: var(--text-alt-color);
 }
 
 @media (max-width: $tablet) {
