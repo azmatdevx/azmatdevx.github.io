@@ -18,18 +18,15 @@ permalink: /tags/
         <p class="lp__desc">Everything organised by subject. Pick a topic to jump straight to those posts.</p>
       </div>
 
-      <!-- Topic pills navigation -->
-      <div class="tp__pills">
+      <!-- Topic navigation (plain list) -->
+      <ul class="tp__list">
         {% for item in (0..site.tags.size) %}
           {% unless forloop.last %}
             {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-            <a href="#{{ this_word | cgi_escape | url_decode }}" class="tp__pill">
-              {{ this_word }}
-              <span class="tp__pill-count">{{ site.tags[this_word].size }}</span>
-            </a>
+            <li><a href="#{{ this_word | cgi_escape | url_decode }}">{{ this_word }}</a> <span class="tp__count">({{ site.tags[this_word].size }})</span></li>
           {% endunless %}
         {% endfor %}
-      </div>
+      </ul>
     </div>
   </div>
 
