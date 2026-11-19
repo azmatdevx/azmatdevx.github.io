@@ -16,25 +16,60 @@ bundle exec jekyll build      # production build into _site/ (not committed)
 
 ## Write a post
 
-Create `_posts/YYYY-MM-DD-slug.md`. The URL becomes `/slug`.
+1. Create a draft from the template:
+
+   ```bash
+   scripts/new-post.sh "My post title"
+   ```
+
+   This writes `_posts/YYYY-MM-DD-my-post-title.md` from [`_templates/post.md`](_templates/post.md). The URL becomes `/my-post-title`. (You can also copy the template by hand.)
+
+2. Fill in the front matter:
+
+   ```yaml
+   ---
+   layout: post
+   title: Post title
+   description: One sentence (under 160 characters) for cards, search and social previews.
+   date: YYYY-MM-DD HH:MM:SS +0400
+   author: azmat          # must match `username` in _authors/
+   image: '/images/slug.jpg'
+   tags: [Performance, Personal Tech]
+   featured: false
+   toc: true              # optional: true/false forces the table of contents; omit for auto (500+ words and 3+ H2s)
+   ---
+   ```
+
+3. Add the cover image as two files in `images/`: `slug.jpg` (1200×675) and `slug-thumb.jpg` (640×360), both 16:9 JPEGs. Cards use the thumbnail, the post page uses the large one. On macOS:
+
+   ```bash
+   sips -s format jpeg -s formatOptions 70 -Z 1200 cover.png --out images/slug.jpg
+   sips -s format jpeg -s formatOptions 72 -Z 640  cover.png --out images/slug-thumb.jpg
+   ```
+
+4. Write the body in Markdown. Use `##` for sections (the post title is the H1). Fenced code blocks get a Copy button automatically.
+
+5. Preview with `bundle exec jekyll serve`, then open a pull request. Merging to `main` publishes.
+
+Tags are free-form; there is no tag registry to update.
+
+### Checklist before publishing
+
+- Title and description read well on their own (they become the search and social preview).
+- Cover image has both sizes and is under about 350 KB.
+- Tags are consistent with existing ones (see `/tags/`).
+- No secrets, internal URLs or employer details.
+
+## Analytics
+
+Analytics use [GoatCounter](https://www.goatcounter.com/) (no cookies, no personal data) and are **off until you set an ID**. Create a free site, then put its code in `_data/settings.yml`:
 
 ```yaml
----
-layout: post
-title: Post title
-description: One sentence used on cards and in search results.
-date: YYYY-MM-DD HH:MM:SS +0400
-author: azmat          # must match `username` in _authors/
-image: '/images/cover.png'
-tags: [Performance, Personal Tech]
-featured: false
-toc: false             # true renders a table of contents
----
-
-Post body in Markdown.
+analytics:
+  goatcounter_code: yourcode   # yourcode.goatcounter.com
 ```
 
-Put cover images in `images/` and reference them with a root-relative path. Tags are free-form; there is no tag registry to update.
+The script only renders in production builds, so `jekyll serve` never reports visits.
 
 ## Where things live
 
@@ -43,6 +78,7 @@ Put cover images in `images/` and reference them with a root-relative path. Tags
 | `_data/settings.yml` | Nav, hero copy, section toggles, social links, integrations |
 | `_config.yml` | Site URL, collections, plugins |
 | `_posts/`, `_pages/`, `_authors/` | Content |
+| `_templates/`, `scripts/` | Post template and the `new-post.sh` helper |
 | `_layouts/`, `_includes/` | Templates and partials |
 | `_sass/` | Styles; `5-brand/_overrides.scss` is the custom skin |
 | `js/` | Vanilla JS (lazy loading, tag filtering, search) |
