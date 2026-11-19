@@ -32,8 +32,10 @@ social:
       link: "mailto:mungur.azmat@gmail.com",
     }
 
-  # TODO(azmat): add YouTube channel URL, then uncomment (the design system footer lists GitHub, LinkedIn, YouTube)
-  # - { name: "YouTube", link: "https://www.youtube.com/@TODO" }
+  - {
+      name: "YouTube",
+      link: "https://www.youtube.com/@azmatmungur",
+    }
 
 #-------------------------------
 # Analytics (GoatCounter, privacy-friendly)
