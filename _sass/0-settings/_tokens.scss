@@ -1,0 +1,76 @@
+// Engineering Design System tokens (see the "Azmat Engineering Design System" artifact).
+// Light is the default theme; dark is chosen with data-theme="dark" on <html>.
+
+@font-face { font-family: "Everett"; font-weight: 300; font-display: swap; src: url("/fonts/Everett-Light.woff2") format("woff2"); }
+@font-face { font-family: "Everett"; font-weight: 400; font-display: swap; src: url("/fonts/Everett-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Everett"; font-weight: 500; font-display: swap; src: url("/fonts/Everett-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 400 600; font-display: swap; src: url("/fonts/Inter-latin.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; font-display: swap; src: url("/fonts/JetBrainsMono-latin.woff2") format("woff2"); }
+
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f9fc;
+  --bg-raised: #ffffff;
+  --ink: #0b1220;
+  --muted: #475569;
+  --accent: #1d4ed8;
+  --accent-ink: #ffffff;
+  --line: #d5ddea;
+  --link: #1d4ed8;
+  --link-hover: #1e3a8a;
+
+  // code token colours (all 4.5:1 or better on bg-raised)
+  --tok-comment: #475569;
+  --tok-keyword: #1d4ed8;
+  --tok-string: #0f766e;
+  --tok-number: #b45309;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --bg-raised: #121b30;
+  --ink: #eef3fb;
+  --muted: #9fb0c8;
+  --accent: #2b66ff;
+  --accent-ink: #ffffff;
+  --line: #24324f;
+  --link: #7aa7ff;
+  --link-hover: #b3cdff;
+
+  --tok-comment: #9fb0c8;
+  --tok-keyword: #7aa7ff;
+  --tok-string: #5eead4;
+  --tok-number: #fbbf24;
+}
+
+:root {
+  --font-display: "Everett", "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --reading-width: 720px;
+  --wide-width: 960px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 32px;
+  --space-4: 48px;
+  --space-5: 80px;
+
+  --radius-sm: 8px;
+  --radius-md: 20px;
+  --radius-lg: 40px;
+
+  // aliases used by the contact module
+  --background-color: var(--bg);
+  --background-alt-color: var(--bg-raised);
+  --text-color: var(--ink);
+  --text-alt-color: var(--muted);
+  --heading-font-color: var(--ink);
+  --primary-color: var(--accent);
+  --border-color: var(--line);
+  --white: #ffffff;
+  --sans: var(--font-sans);
+}

@@ -1,153 +1,32 @@
-/* ── Shared page header elements ── */
-.lp__count {
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-alt-color);
-  align-self: center;
+// Topics page: a plain list of topics, then posts grouped by topic.
+
+.page-head {
+  padding: var(--space-4) 0 0;
+
+  &__desc { margin-top: var(--space-2); color: var(--muted); }
 }
 
-.lp__desc {
-  font-size: 15px;
-  color: var(--text-alt-color);
-  line-height: 1.65;
-  margin: 8px 0 12px;
-  // max-width: 560px;
-}
-
-/* ── Topics page pill navigation ── */
-.tp__pills {
+.topic-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
+  gap: var(--space-1) var(--space-3);
+  margin-top: var(--space-3);
+  list-style: none;
+
+  a { color: var(--ink); font-weight: 500; }
+  .count { color: var(--muted); font-family: var(--font-mono); font-size: 14px; }
 }
 
-.tp__pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-alt-color);
-  background: var(--background-alt-color);
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 6px 14px;
-  text-decoration: none;
-  transition: color .15s, background .15s, border-color .15s;
+.topic {
+  margin-top: var(--space-4);
 
-  &:hover {
-    color: var(--g-500);
-    border-color: rgba(43, 102, 255, 0.35);
-    background: rgba(43, 102, 255, 0.06);
-  }
-}
-
-:root[dark] .tp__pill, .dark-mode .tp__pill {
-  &:hover {
-    color: var(--g-400);
-    border-color: rgba(77, 132, 255, 0.3);
-    background: rgba(77, 132, 255, 0.07);
-  }
-}
-
-.tp__pill-count {
-  font-size: 9px;
-  color: var(--g-500);
-  background: rgba(43, 102, 255, 0.08);
-  border-radius: 3px;
-  padding: 1px 5px;
-}
-
-:root[dark] .tp__pill-count, .dark-mode .tp__pill-count {
-  color: var(--g-400);
-  background: rgba(77, 132, 255, 0.1);
-}
-
-/* ── Topic section title ── */
-.tp__section-title {
-  font-size: 22px !important;
-  font-weight: 600;
-}
-
-/* ── Legacy tag head (kept for safety, hidden) ── */
-.tag__head {
-  margin-bottom: 60px;
-
-  .row {
-    row-gap: 32px;
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
   }
 
-  .tag__link {
-    display: block;
-    padding: 24px;
-    font-size: 18px;
-    line-height: 1.35;
-    font-weight: 500;
-    text-align: center;
-    border-radius: 22px;
-    color: var(--heading-font-color);
-    background: var(--background-alt-color);
-    transition: $global-transition;
-
-    &:hover {
-      background: var(--background-alt-color-2);
-    }
-  }
-
-  @media (max-width: $desktop) {
-    margin-bottom: 44px;
-
-    .col {
-      flex-grow: 1;
-    }
-  }
-
-  @media (max-width: $tablet) {
-    .row {
-      row-gap: 12px;
-    }
-
-    .tag__link {
-      padding: 20px;
-      font-size: inherit;
-    }
-  }
-
-  @media (max-width: $mobile) {
-    margin-bottom: 28px;
-  }
-}
-
-.tags__inner {
-  margin-bottom: 60px;
-
-  .section__title,
-  .section__link {
-    padding-top: 20px;
-  }
-
-  .section__inner {
-    margin-bottom: -32px;
-  }
-
-  @media (max-width: $mobile) {
-    margin-bottom: 60px;
-  }
-}
-
-.tag__title {
-  margin-bottom: 32px;
-  font-size: 46px;
-  font-weight: 900;
-
-  @media (max-width: $mobile) {
-    font-size: 32px;
-  }
+  &__top { font-size: 14px; color: var(--muted); }
 }

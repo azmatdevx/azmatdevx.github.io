@@ -1,65 +1,31 @@
 ---
 layout: default
 title: Topics
+description: Posts grouped by topic.
 permalink: /tags/
 ---
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-{% assign tag_words = site_tags | split:',' | sort %}
+{% assign tag_names = site.tags | map: 'first' | sort_natural %}
 
-<section class="section tags-page animate">
-
-  <!-- Page header -->
-  <div class="container">
-    <div class="section__inner">
-      <div class="section__info">
-        <div class="section__head">
-          <h1 class="section__title">Topics</h1>
-        </div>
-        <p class="lp__desc">Everything organised by subject. Pick a topic to jump straight to those posts.</p>
-      </div>
-
-      <!-- Topic pills navigation -->
-      <div class="tp__pills">
-        {% for item in (0..site.tags.size) %}
-          {% unless forloop.last %}
-            {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-            <a href="#{{ this_word | cgi_escape | url_decode }}" class="tp__pill">
-              {{ this_word }}
-              <span class="tp__pill-count">{{ site.tags[this_word].size }}</span>
-            </a>
-          {% endunless %}
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-
+<section class="wrap page-head">
+  <h1>Topics</h1>
+  <p class="page-head__desc">Everything organised by subject. Pick a topic to jump straight to those posts.</p>
+  <ul class="topic-list">
+    {% for tag in tag_names %}
+    <li><a href="#{{ tag | cgi_escape }}">{{ tag }}</a> <span class="count">{{ site.tags[tag].size }}</span></li>
+    {% endfor %}
+  </ul>
 </section>
 
-<!-- Per-tag sections -->
-{% for item in (0..site.tags.size) %}{% unless forloop.last %}
-{% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-<div class="tags__inner">
-
-  <div class="container-big">
-    <div class="section__info">
-      <div class="section__head">
-        <h2 class="section__title tp__section-title" id="{{ this_word | cgi_escape | url_decode }}">{{ this_word }}</h2>
-        <a class="section__link top__link" href="#top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
-      </div>
-    </div>
-    <div class="section__inner">
-      <div class="row">
-        {% for post in site.tags[this_word] %}
-          {% if post.title != null %}
-          <div class="col col-4 col-d-6 col-t-12">
-            {% include article.html %}
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
+{% for tag in tag_names %}
+<section class="wrap topic" aria-labelledby="{{ tag | cgi_escape }}">
+  <div class="topic__head">
+    <h2 id="{{ tag | cgi_escape }}">{{ tag }}</h2>
+    <a class="topic__top" href="#content">Back to top &uarr;</a>
   </div>
-
-</div>
-{% endunless %}
+  <div class="post-list">
+    {% for post in site.tags[tag] %}
+    {% include post-row.html level=3 %}
+    {% endfor %}
+  </div>
+</section>
 {% endfor %}

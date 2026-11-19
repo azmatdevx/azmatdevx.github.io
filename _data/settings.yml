@@ -5,6 +5,7 @@ title: azmat.devx
 description: Personal notes on software, performance, infrastructure, and the messy reality of building things.
 author_name: Azmat Mungur
 social_image: "/images/profile.png" # fallback Open Graph / Twitter image when a page has none
+handle: "@azmat.devx"
 logo: # You can add own logo. For example "/images/logo.png".
 logo_dark:
 color_scheme: auto
@@ -13,7 +14,7 @@ color_scheme: auto
 # Navigation Settings
 menu_settings:
   menu_items:
-    - title: "Field Notes"
+    - title: "Posts"
       url: "/blog/"
     - title: "About"
       url: "/about/"
@@ -101,7 +102,8 @@ social:
       link: "mailto:mungur.azmat@gmail.com",
     }
 
-# Other icons can be found at https://fontawesome.com/icons
+  # TODO(azmat): add YouTube channel URL, then uncomment (the design system footer lists GitHub, LinkedIn, YouTube)
+  # - { name: "YouTube", link: "https://www.youtube.com/@TODO" }
 
 #-------------------------------
 # Contact Settings

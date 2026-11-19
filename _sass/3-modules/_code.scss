@@ -1,0 +1,65 @@
+// Code: blocks on bg-raised with a 1px line border, scroll inside the block; inline code on bg-raised.
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+pre {
+  position: relative;
+  margin: var(--space-3) 0;
+  padding: var(--space-2);
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg-raised);
+  color: var(--ink);
+  tab-size: 2;
+
+  code { padding: 0; border: 0; background: none; font-size: inherit; }
+}
+
+:not(pre) > code {
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-raised);
+  word-break: break-word;
+}
+
+// Rouge (Jekyll) wraps blocks in .highlight; the border lives on the pre.
+.highlight {
+  margin: var(--space-3) 0;
+  position: relative;
+  pre { margin: 0; }
+
+  .c, .cm, .c1, .cs, .cp { color: var(--tok-comment); font-style: italic; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .o, .ow { color: var(--tok-keyword); }
+  .s, .sa, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss { color: var(--tok-string); }
+  .m, .mb, .mf, .mh, .mi, .il, .mo { color: var(--tok-number); }
+}
+
+.code-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--muted);
+  font: 500 12px/18px var(--font-sans);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .15s ease;
+
+  .has-copy:hover > &,
+  &:focus-visible,
+  &.is-copied { opacity: 1; }
+
+  &:hover { color: var(--ink); }
+
+  @media (hover: none) { opacity: 1; }
+}

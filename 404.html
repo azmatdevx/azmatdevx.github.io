@@ -6,24 +6,18 @@ permalink: /404.html
 sitemap: false
 ---
 
-<div class="container">
-  <div class="row">
-    <div class="col col-12">
-      <div class="error">
-        <h1 class="error__title">404</h1>
-        <p class="error__text">That page doesn't exist, or it moved. Try one of these instead:</p>
-        <p>
-          <a class="button button--big" href="{{ '/' | relative_url }}">Back home</a>
-          <a class="button button--big" href="{{ '/blog/' | relative_url }}">All Field Notes</a>
-          <a class="button button--big" href="{{ '/tags/' | relative_url }}">Browse topics</a>
-        </p>
-        <h2 class="error__text">Latest posts</h2>
-        <ul>
-          {% for post in site.posts limit: 5 %}
-          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="wrap error">
+  <h1>Page not found</h1>
+  <p>That page doesn't exist, or it moved. Try one of these instead:</p>
+  <ul class="error__links">
+    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+    <li><a href="{{ '/blog/' | relative_url }}">All posts</a></li>
+    <li><a href="{{ '/tags/' | relative_url }}">Topics</a></li>
+  </ul>
+  <h2>Latest posts</h2>
+  <ul class="error__posts">
+    {% for post in site.posts limit: 5 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+</section>

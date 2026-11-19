@@ -1,0 +1,37 @@
+// Post list rows (blog index, topics, related posts, start here).
+// Borders instead of shadows; the whole row is one link target via the title.
+
+.post-list { list-style: none; }
+
+.post-row {
+  display: grid;
+  grid-template-columns: 208px 1fr;
+  gap: var(--space-3);
+  align-items: start;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+
+  &:first-child { border-top: 1px solid var(--line); }
+
+  &__img {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  }
+
+  &__title {
+    margin: 4px 0 var(--space-1);
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 4px; }
+  }
+
+  &__desc { color: var(--muted); font-size: 16px; line-height: 26px; }
+
+  &:not(:has(.post-row__img)) { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .post-row { grid-template-columns: 1fr; gap: var(--space-2); }
+}

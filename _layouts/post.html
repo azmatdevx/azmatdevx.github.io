@@ -2,81 +2,36 @@
 layout: default
 ---
 
-<div class="post__header">
-  <div class="container">
-    <div class="post__hero">
+<article class="wrap post">
+  <header>
+    <a class="post__back" href="{{ '/blog/' | relative_url }}">&larr; Posts</a>
+    <p class="meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time> · {% include reading-time.html content=page.content %}
+      {%- if page.tags.size > 0 %} · <span class="post__tags">{% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | cgi_escape }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif -%}
+    </p>
+    <h1 class="post__title">{{ page.title }}</h1>
+  </header>
 
-      <h1 class="post__title">{{ page.title }}</h1>
+  {% if page.image %}
+  <figure class="post__cover">
+    <img src="{{ page.image | relative_url }}" width="1200" height="675" fetchpriority="high" decoding="async" alt="{{ page.title }}">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
 
-      <div class="post__meta-bar">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
-        <span class="post__meta-sep" aria-hidden="true">•</span>
-        <span class="post__meta-read">{% include reading-time.html content=page.content %}</span>
-        {% if page.tags.size >= 1 %}
-        <span class="post__meta-sep" aria-hidden="true">•</span>
-        {% for tag in page.tags %}
-        <span class="post__tag">{{ tag }}</span>
-        {% endfor %}
-        {% endif %}
-      </div>
+  {% assign post_words = page.content | number_of_words %}
+  {% assign post_h2s = content | split: '<h2' | size | minus: 1 %}
+  {% if page.toc == true or page.toc == nil and post_words >= 500 and post_h2s >= 3 %}
+  <nav class="toc" aria-labelledby="toc-title">
+    <p class="toc__title" id="toc-title">Contents</p>
+    {% include toc.html html=content ordered=true h_min=2 %}
+  </nav>
+  {% endif %}
 
-      <a href="{{ site.baseurl }}/blog" class="post__back">
-        <i class="fa-solid fa-arrow-left"></i> Field Notes
-      </a>
-
-    </div>
+  <div class="prose">
+    {{ content }}
   </div>
-</div>
-
-{% if page.image %}
-<div class="post__cover-wrap">
-  <div class="container">
-    <div class="post__cover">
-      <img src="{{ page.image | relative_url }}" width="1200" height="675" fetchpriority="high" decoding="async" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
-    </div>
-  </div>
-</div>
-{% endif %}
-
-{% if page.image_caption %}
-<div class="container">
-  <p class="post__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</p>
-</div>
-{% endif %}
-
-{% if page.video_embed %}
-<div class="container">
-  <div class="post__video">
-    <div class="post__video__wrap">
-      <iframe src="{{ page.video_embed }}" loading="lazy" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-  </div>
-</div>
-{% endif %}
-
-<!-- begin post -->
-<div class="container">
-  <article class="post">
-    <div class="post__content">
-
-      {% assign post_words = page.content | number_of_words %}
-      {% assign post_h2s = content | split: '<h2' | size | minus: 1 %}
-      {% if page.toc == true or page.toc == nil and post_words >= 500 and post_h2s >= 3 %}
-      <nav class="post__toc" aria-label="Table of contents">
-        <h2 class="post__toc__title">Table of Contents</h2>
-        {% include toc.html html=content ordered=true class="post__toc__list" h_min=2 %}
-      </nav>
-      {% endif %}
-
-      {{ content }}
-    </div>
-  </article>
-</div>
-<!-- end post -->
-
-{% if site.data.settings.disqus_identifier %}
-  {% include disqus-comments.html %}
-{% endif %}
+</article>
 
 {% include related-posts.html %}
 

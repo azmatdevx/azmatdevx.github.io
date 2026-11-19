@@ -1,33 +1,11 @@
-<!-- begin footer -->
-<footer class="footer">
-
-  <!-- ambient pills (homepage only — other pages have site-geo) -->
-  {% if page.url == '/' %}
-  <div class="footer__geo" aria-hidden="true">
-    <span class="ap__metric" style="top:18%;left:4%;animation-delay:-1.2s">p95 · 88ms</span>
-    <span class="ap__metric" style="top:14%;right:5%;animation-delay:-3.1s">tokens · 4.2k</span>
-    <span class="ap__metric" style="top:55%;left:3%;animation-delay:-2.4s">uptime · 99.9%</span>
-    <span class="ap__metric" style="top:60%;right:4%;animation-delay:-0.8s">acc · 97.2%</span>
-    <span class="ap__metric" style="top:82%;left:8%;animation-delay:-4.0s">gc · 8ms</span>
-    <span class="ap__metric" style="top:78%;right:7%;animation-delay:-1.7s">err · 0.02%</span>
-  </div>
-  {% endif %}
-
-  <div class="footer__inner">
-    <h2 class="footer__heading">Let's <em>connect</em></h2>
-    <p class="footer__sub">Find me across the web — I'm always open to interesting conversations.</p>
-
-    {% if site.data.settings.social %}
-    <div class="footer__socials">
+<footer class="site-footer">
+  <div class="wrap wrap--wide">
+    <p>
+      <span>&copy; {{ site.time | date: '%Y' }} Azmat Mungur</span>
       {% for item in site.data.settings.social %}
-      <a href="{{ item.link }}" class="ap__hero-btn ap__hero-btn--ghost" aria-label="{{ item.name }}" {% unless item.link contains 'mailto' %}target="_blank" rel="noopener"{% endunless %}>
-        <i class="{{ item.icon }}"></i>{{ item.name }}
-      </a>
+      <a href="{{ item.link }}"{% unless item.link contains 'mailto' %} rel="noopener"{% endunless %}>{{ item.name }}</a>
       {% endfor %}
-    </div>
-    {% endif %}
-
-    <p class="footer__copy">&copy; {{ site.time | date: '%Y' }} Azmat Mungur <span class="footer__tagline">· Built with intent</span></p>
+      <span class="handle">{{ site.data.settings.handle }}</span>
+    </p>
   </div>
 </footer>
-<!-- end footer -->

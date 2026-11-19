@@ -1,0 +1,16 @@
+{%- comment -%}
+  A post in a list. Pass `post` (via assign) and optionally `level` (heading level, default 2).
+{%- endcomment -%}
+{%- assign row_level = include.level | default: 2 -%}
+<article class="post-row">
+  {% if post.image %}
+  <a class="post-row__img" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | relative_url }}" width="640" height="360" loading="lazy" decoding="async" alt="">
+  </a>
+  {% endif %}
+  <div class="post-row__body">
+    <p class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time> · {% include reading-time.html content=post.content %}{% if post.tags.size > 0 %} · {{ post.tags | join: ', ' }}{% endif %}</p>
+    <h{{ row_level }} class="post-row__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h{{ row_level }}>
+    <p class="post-row__desc">{{ post.description }}</p>
+  </div>
+</article>

@@ -1,0 +1,99 @@
+// Home / profile page: single reading column, no motion, no decoration.
+
+.intro {
+  padding-top: var(--space-5);
+
+  &__role { margin-bottom: var(--space-2); color: var(--muted); font-size: 14px; line-height: 20px; font-weight: 500; }
+
+  &__headline {
+    margin-top: var(--space-2);
+    font: 500 28px/36px var(--font-display);
+
+    em { font-style: normal; }
+    em:first-of-type { color: var(--accent); } // the one accent on this screen
+  }
+
+  &__bio { margin-top: var(--space-2); color: var(--muted); }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-3);
+    list-style: none;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro { padding-top: var(--space-4); }
+  .intro__headline { font-size: 24px; line-height: 32px; }
+}
+
+.section {
+  margin-top: var(--space-5);
+
+  > h2 { margin-bottom: var(--space-1); }
+  &__sub { color: var(--muted); }
+  .post-list, .timeline, .plain-list, .tools, .badges, .values { margin-top: var(--space-3); }
+}
+
+.timeline {
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 176px 1fr;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--line);
+  }
+  li:last-child { border-bottom: 1px solid var(--line); }
+
+  &__years { color: var(--muted); font: 500 14px/29px var(--font-mono); }
+  &__role { font-size: 18px; line-height: 29px; }
+  &__co, &__note { color: var(--muted); font-size: 16px; line-height: 26px; }
+}
+
+@media (max-width: 640px) {
+  .timeline li { grid-template-columns: 1fr; gap: 0; }
+}
+
+.plain-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-1) var(--space-3);
+  list-style: none;
+}
+
+@media (max-width: 640px) {
+  .plain-list { grid-template-columns: 1fr; }
+}
+
+.tools {
+  display: grid;
+  gap: var(--space-1);
+
+  div { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-2); }
+  dt { color: var(--muted); font-size: 16px; }
+  dd { margin: 0; font-weight: 500; }
+}
+
+@media (max-width: 640px) {
+  .tools div { grid-template-columns: 1fr; gap: 0; }
+}
+
+.badges { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+
+  h3 { margin-bottom: 4px; }
+  p { color: var(--muted); font-size: 16px; line-height: 26px; }
+}
+
+@media (max-width: 640px) {
+  .values { grid-template-columns: 1fr; }
+}

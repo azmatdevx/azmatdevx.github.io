@@ -2,7 +2,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" href="{{ '/fonts/Everett-Medium.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/fonts/Inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
   {%- assign seo_title = site.data.settings.title -%}
   {%- unless page.url == '/' or page.url == '/404.html' -%}
@@ -50,10 +51,13 @@
 
   {% include structured-data.html %}
 
-  <!-- Theme: always dark -->
+  <!-- Theme: light by default, dark when chosen; set before first paint to avoid a flash -->
   <script>
-    document.documentElement.setAttribute("dark", "");
-    document.documentElement.classList.add("dark-mode");
+    (function () {
+      var theme = 'light';
+      try { if (localStorage.getItem('theme') === 'dark') theme = 'dark'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
   </script>
 
   <style>

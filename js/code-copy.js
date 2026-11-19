@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var blocks = document.querySelectorAll('.post__content pre');
+  var blocks = document.querySelectorAll('.prose pre');
   if (!blocks.length) return;
 
   function copyText(text) {
