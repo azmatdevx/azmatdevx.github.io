@@ -14,10 +14,7 @@
 :: Design tokens come from the Engineering Design System (see 0-settings/tokens).
 <<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-@import '0-settings/variables';
 @import '0-settings/tokens';
-@import '0-settings/mixins';
-@import '0-settings/helpers';
 
 @import '1-tools/normalize';
 @import '1-tools/reset';
@@ -29,8 +26,6 @@
 @import '3-modules/post-row';
 @import '3-modules/search';
 @import '3-modules/code';
-@import '3-modules/buttons';
-@import '3-modules/contact';
 
 @import '4-layouts/home';
 @import '4-layouts/post';

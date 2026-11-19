@@ -4,7 +4,9 @@ title: Topics
 description: Posts grouped by topic.
 permalink: /tags/
 ---
-{% assign tag_names = site.tags | map: 'first' | sort_natural %}
+{% assign tag_names = '' | split: '' %}
+{% for t in site.tags %}{% assign tag_names = tag_names | push: t[0] %}{% endfor %}
+{% assign tag_names = tag_names | sort_natural %}
 
 <section class="wrap page-head">
   <h1>Topics</h1>

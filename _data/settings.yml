@@ -4,11 +4,8 @@
 title: azmat.devx
 description: Personal notes on software, performance, infrastructure, and the messy reality of building things.
 author_name: Azmat Mungur
-social_image: "/images/profile.png" # fallback Open Graph / Twitter image when a page has none
+social_image: "/images/profile.jpg" # fallback Open Graph / Twitter image when a page has none
 handle: "@azmat.devx"
-logo: # You can add own logo. For example "/images/logo.png".
-logo_dark:
-color_scheme: auto
 
 #-------------------------------
 # Navigation Settings
@@ -19,105 +16,24 @@ menu_settings:
     - title: "About"
       url: "/about/"
 
-# Call to action button
-cta_button:
-  enable: false
-  cta_button_link: "/contact/"
-  cta_button_text: Say hello
-
 #-------------------------------
-# Hero Settings
-hero:
-  enable: true
-  hero_title: Field notes from the engineering bench
-  hero_description: I write about performance tuning, shipping side projects, debugging production issues, and the practical lessons that only show up after real work hits real systems.
-
-hero_authors:
-  enable: false
-  hero_authors_description:
-
-#-------------------------------
-# Blog Section Settings
-blog:
-  enable: true
-  blog_title: Latest Posts
-
-#-------------------------------
-# Recommended Section Settings
-recommended:
-  enable: false
-  recommended_title: More from the journal
-  recommended_tag: "Personal Tech"
-
-#-------------------------------
-# About Section Settings
-about:
-  enable: true
-  about_title: Hello, I’m Azmat
-  about_subtitle: I’m a software engineer writing in public about what I build, break, measure, and learn.
-  about_description: |
-    This site is my working notebook for the technical side of life: performance investigations, architecture tradeoffs, deployment lessons, and the odd side project that teaches me something useful.
-
-    I’m less interested in polished thought leadership than in honest field notes. If a post lives here, it usually came from a real incident, a stubborn bottleneck, or a build that finally started making sense after enough iteration.
-  about_image: "/images/profile.jpg"
-  about_image_alt: Azmat Mungur
-  about_button_text: Read more about me
-  about_button_link: "/about/"
-
-#-------------------------------
-# Authors Section Settings
-authors:
-  enable: false
-  authors_title:
-
-#-------------------------------
-# Newsletter Settings
-mailchimp:
-  enable: false
-  mailchimp_title: Get new posts in your inbox
-  mailchimp_description: Occasional notes when I publish something worth sharing.
-  mailchimp_identifier: # Add your MailChimp form identifier (demo value removed)
-  mailchimp_input_text: Your email address
-  mailchimp_button_text: Subscribe
-
-#-------------------------------
-# Footer Settings
-footer_description: Personal writing about engineering work, systems thinking, and the technical details behind projects that survive contact with reality.
-
-# Social Links
+# Footer and profile links (shown in the footer and on the home page)
 social:
   - {
-      icon: "fa-brands fa-github",
       name: "GitHub",
       link: "https://github.com/azmatdevx",
     }
   - {
-      icon: "fa-brands fa-linkedin-in",
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/azmatmungur/",
     }
   - {
-      icon: "fa-solid fa-envelope",
       name: "Email",
       link: "mailto:mungur.azmat@gmail.com",
     }
 
   # TODO(azmat): add YouTube channel URL, then uncomment (the design system footer lists GitHub, LinkedIn, YouTube)
   # - { name: "YouTube", link: "https://www.youtube.com/@TODO" }
-
-#-------------------------------
-# Contact Settings
-contact:
-  form_id: # TODO(azmat): add Formspree form id (contact form is inert until set)
-  title: Get in touch
-  description: Reach out for engineering conversations, collaboration, or just to compare notes on something you are building.
-  button_text: Send message
-
-# Contact form uses Formspree (https://formspree.io/); set form_id above.
-
-#-------------------------------
-# Comment Section (Disqus)
-disqus_identifier:
 
 #-------------------------------
 # Analytics (GoatCounter, privacy-friendly)

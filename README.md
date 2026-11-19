@@ -80,8 +80,14 @@ The script only renders in production builds, so `jekyll serve` never reports vi
 | `_posts/`, `_pages/`, `_authors/` | Content |
 | `_templates/`, `scripts/` | Post template and the `new-post.sh` helper |
 | `_layouts/`, `_includes/` | Templates and partials |
-| `_sass/` | Styles; `5-brand/_overrides.scss` is the custom skin |
+| `_sass/` | Styles. `0-settings/_tokens.scss` holds the design tokens (light and dark) |
 | `js/` | Vanilla JS (lazy loading, tag filtering, search) |
+
+## Design system
+
+The look follows the **Azmat Engineering Design System** (see its Blog page): light theme by default with a dark toggle (remembered in `localStorage`, set on `<html data-theme>` before first paint), Everett Medium for headings, Inter for text, JetBrains Mono for code (all self-hosted in `fonts/`), a 720px reading column, underlined links in articles, borders instead of shadows, and one accent per screen. To change colours or type, edit `_sass/0-settings/_tokens.scss` and keep it in step with the design system's `tokens.json`.
+
+There are no decorative animations, pills or gradients. Keep it that way: tags are plain text, and motion is limited to colour and opacity transitions that switch off under `prefers-reduced-motion`.
 
 ## Deployment
 

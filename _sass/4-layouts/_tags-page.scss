@@ -1,7 +1,9 @@
 // Topics page: a plain list of topics, then posts grouped by topic.
 
 .page-head {
-  padding: var(--space-4) 0 0;
+  padding-top: var(--space-4);
+
+  h1 em { color: var(--accent); } // the one accent on this screen
 
   &__desc { margin-top: var(--space-2); color: var(--muted); }
 }
