@@ -37,11 +37,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 78svh;
-  padding: 96px 0 56px;
+  min-height: 100svh;
+  padding: 96px 0 72px;
 
   @media (max-width: $tablet)  { min-height: 0; padding: 72px 0 40px; }
   @media (max-width: $mobile)  { padding: 52px 0; }
+}
+
+.ap__scroll-cue {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  text-decoration: none;
+  opacity: 0.7;
+
+  i { margin-left: 6px; }
+  &:hover { opacity: 1; }
+
+  @media (max-width: $tablet) { display: none; }
 }
 
 .ap__hero-glow {
