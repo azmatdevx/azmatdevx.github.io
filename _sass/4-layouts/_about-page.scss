@@ -37,9 +37,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100svh;
+  min-height: 78svh;
+  padding: 96px 0 56px;
 
-  @media (max-width: $tablet)  { min-height: 100svh; padding: 64px 0; }
+  @media (max-width: $tablet)  { min-height: 0; padding: 72px 0 40px; }
   @media (max-width: $mobile)  { padding: 52px 0; }
 }
 
@@ -195,7 +196,7 @@
   line-height: 1.65;
   margin: 0 0 28px;
   max-width: 52ch;
-  opacity: 0.7;
+  color: var(--text-color);
 }
 
 /* Hero action buttons */
@@ -370,153 +371,7 @@
 /* ════════════════════════════════════════
    Experience — Alternating Card Timeline
 ════════════════════════════════════════ */
-.ap__tl {
-  position: relative;
-
-  /* center vertical line */
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--border-color);
-    transform: translateX(-50%);
-  }
-}
-
-.ap__tl-row {
-  display: grid;
-  grid-template-columns: 1fr 48px 1fr;
-  align-items: center;
-  margin-bottom: 48px;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-
-  &:last-child { margin-bottom: 0; }
-}
-
-.ap__tl-row--hidden {
-  opacity: 0;
-  transform: translateY(28px);
-}
-
-.ap__tl-row--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.ap__tl-dot-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.ap__tl-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--g-500);
-  border: 2px solid var(--background-color);
-  box-shadow: 0 0 0 1px var(--border-color);
-  flex-shrink: 0;
-}
-
-:root[dark] .ap__tl-dot, .dark-mode .ap__tl-dot {
-  background: var(--g-400);
-}
-
-.ap__tl-empty {
-  /* placeholder to hold the opposite-side column */
-}
-
-.ap__tl-card {
-  background: var(--v-800);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  padding: 24px 28px;
-  max-width: 340px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
-  &--left {
-    text-align: right;
-    justify-self: end;
-    width: 100%;
-  }
-  &--right {
-    text-align: left;
-    justify-self: start;
-    width: 100%;
-  }
-}
-
-.ap__tl-years {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-alt-color);
-  margin-bottom: 10px;
-}
-
-.ap__tl-role {
-  font-family: var(--display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--heading-font-color);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin: 0 0 6px;
-}
-
-.ap__tl-company {
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--g-500);
-  margin: 0 0 12px;
-}
-
-:root[dark] .ap__tl-company, .dark-mode .ap__tl-company {
-  color: var(--g-400);
-}
-
-.ap__tl-note {
-  font-size: 14px;
-  color: var(--text-alt-color);
-  line-height: 1.65;
-  margin: 0;
-}
-
 @media (max-width: $tablet) {
-  .ap__tl::before { left: 8px; }
-
-  .ap__tl-row {
-    grid-template-columns: 24px 1fr;
-    grid-template-rows: auto;
-    margin-bottom: 32px;
-  }
-
-  .ap__tl-dot-wrap {
-    grid-column: 1;
-    grid-row: 1;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 4px;
-  }
-
-  .ap__tl-card--left,
-  .ap__tl-card--right {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: left;
-  }
-
-  .ap__tl-empty { display: none; }
 }
 
 
@@ -610,20 +465,7 @@
   text-align: center;
 }
 
-.ap__badges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 16px;
-  justify-content: center;
-}
-
 /* The Credly script replaces .ap__badge divs with iframes — keep the wrapper neutral */
-.ap__badge {
-  flex-shrink: 0;
-}
-
-
 /* ════════════════════════════════════════
    About / Values
 ════════════════════════════════════════ */
@@ -833,4 +675,83 @@
 
   dt { color: var(--text-alt-color); font-size: 14px; }
   dd { margin: 0; color: var(--heading-font-color); font-size: 15px; font-weight: 500; }
+}
+
+
+/* ── Hero role line ── */
+.ap__hero-role {
+  margin: 0 0 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+/* ════════════════════════════════════════
+   Experience (compact, grouped by company)
+════════════════════════════════════════ */
+.ap__exp {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ap__exp-company {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--heading-font-color);
+}
+
+.ap__exp-list {
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border-color);
+
+    @media (max-width: $mobile) { grid-template-columns: 1fr; gap: 2px; }
+  }
+}
+
+.ap__exp-years {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--text-alt-color);
+}
+
+.ap__exp-role {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-font-color);
+}
+
+.ap__exp-note {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-alt-color);
+}
+
+/* ── Certifications (plain list) ── */
+.ap__cert-list {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+
+  li { padding: 12px 0; border-top: 1px solid var(--border-color); }
+  li:last-child { border-bottom: 1px solid var(--border-color); }
+  a { color: var(--heading-font-color); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--link-color-hover); }
 }
