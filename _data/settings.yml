@@ -4,7 +4,7 @@
 title: azmat.devx
 description: Personal notes on software, performance, infrastructure, and the messy reality of building things.
 author_name: Azmat Mungur
-social_image: "/images/profile.png" # fallback Open Graph / Twitter image when a page has none
+social_image: "/images/profile.jpg" # fallback Open Graph / Twitter image when a page has none
 logo: # You can add own logo. For example "/images/logo.png".
 logo_dark:
 color_scheme: auto
