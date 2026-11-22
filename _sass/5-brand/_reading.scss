@@ -169,7 +169,7 @@
   .start-here__card:hover { transform: none; }
 }
 
-/* ── Reading column for posts and pages: 720px, 17px body text ── */
+/* ── Body text 17px; pages use a 720px column, posts keep the full 1200px ── */
 .page__description {
   max-width: 640px;
   margin: 0 auto;
@@ -197,4 +197,4 @@
 [data-theme="dark"] .post,
 [data-theme="dark"] .page { color: var(--text-color); }
 
-.post { margin-top: 48px; }
+.post { max-width: 1200px; margin-top: 48px; }
