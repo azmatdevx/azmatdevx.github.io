@@ -79,17 +79,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   };
 
-  function darkMode() {
-    if (html.classList.contains('dark-mode')) {
-      html.classList.remove('dark-mode');
-      localStorage.setItem("theme", "light");
-      document.documentElement.removeAttribute("dark");
-    } else {
-      html.classList.add('dark-mode');
-      localStorage.removeItem("theme");
-      document.documentElement.setAttribute("dark", "");
+  function applyTheme(theme) {
+    const dark = theme === 'dark';
+    html.setAttribute('data-theme', theme);
+    html.classList.toggle('dark-mode', dark);
+    if (dark) html.setAttribute('dark', ''); else html.removeAttribute('dark');
+    if (toggleTheme) {
+      toggleTheme.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
     }
+  }
+
+  function darkMode() {
+    const next = html.classList.contains('dark-mode') ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
   };
+
+  // Keep the label in sync with the theme set before first paint, and follow
+  // the OS setting while the visitor has not chosen one.
+  applyTheme(html.classList.contains('dark-mode') ? 'dark' : 'light');
+  if (window.matchMedia) {
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (err) {}
+      if (saved !== 'light' && saved !== 'dark') applyTheme(e.matches ? 'dark' : 'light');
+    });
+  }
 
 
   /* ================================================================

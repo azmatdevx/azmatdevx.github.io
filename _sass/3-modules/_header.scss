@@ -59,6 +59,34 @@
   opacity: 0.9;
 }
 
+/* ── Theme toggle ── */
+.toggle-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 12px;
+  padding: 0;
+  border: 1px solid var(--nav-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:hover { color: var(--heading-font-color); }
+  &:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
+
+  /* shows the theme you would switch to */
+  .toggle-theme__sun { display: none; }
+  .toggle-theme__moon { display: block; }
+  .dark-mode & .toggle-theme__sun { display: block; }
+  .dark-mode & .toggle-theme__moon { display: none; }
+
+  @media (max-width: $desktop) { margin-left: auto; margin-right: 8px; }
+}
+
 /* ── Desktop nav: pushed to right ── */
 .nav--desktop {
   margin-left: auto;

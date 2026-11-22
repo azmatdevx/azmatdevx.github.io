@@ -50,10 +50,18 @@
 
   {% include structured-data.html %}
 
-  <!-- Theme: always dark -->
+  <!-- Theme: saved choice, else the OS preference, else light. Runs before CSS to avoid a flash. -->
   <script>
-    document.documentElement.setAttribute("dark", "");
-    document.documentElement.classList.add("dark-mode");
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      var d = document.documentElement;
+      d.setAttribute("data-theme", t);
+      if (t === "dark") { d.setAttribute("dark", ""); d.classList.add("dark-mode"); }
+    })();
   </script>
 
   <style>
