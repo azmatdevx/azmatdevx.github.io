@@ -169,7 +169,7 @@
   .start-here__card:hover { transform: none; }
 }
 
-/* ── Page layout (About): same header and reading column as posts ── */
+/* ── Reading column for posts and pages: 720px, 17px body text ── */
 .page__description {
   max-width: 640px;
   margin: 0 auto;
@@ -180,6 +180,7 @@
   @media (max-width: $mobile) { font-size: 17px; }
 }
 
+.post,
 .page {
   max-width: 720px;
   margin: 0 auto 96px;
@@ -193,4 +194,7 @@
   li { margin-bottom: 0.4em; }
 }
 
+[data-theme="dark"] .post,
 [data-theme="dark"] .page { color: var(--text-color); }
+
+.post { margin-top: 48px; }
