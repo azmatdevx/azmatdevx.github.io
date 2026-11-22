@@ -2,13 +2,16 @@
 layout: default
 ---
 
-<div class="container">
-  <div class="page__head">
-    <div class="page__info">
-      <h1 class="page__title">{{ page.title | escape }}</h1>
+<div class="post__header">
+  <div class="container">
+    <div class="post__hero">
+      <h1 class="post__title">{{ page.title | escape }}</h1>
       {% if page.description %}
-      <div class="page__description">{{ page.description }}</div>
+      <p class="page__description">{{ page.description }}</p>
       {% endif %}
+      <a href="{{ site.baseurl }}/" class="post__back">
+        <i class="fa-solid fa-arrow-left"></i> Home
+      </a>
     </div>
 
     {% if page.video_embed %}
@@ -17,20 +20,19 @@ layout: default
         <iframe src="{{ page.video_embed }}" loading="lazy" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
     </div>
-    {% else %}
-
-    {% if page.image %}
+    {% elsif page.image %}
     <div class="page__image">
       <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}">
     </div>
-    {% endif %}
     {% endif %}
 
     {% if page.image_caption %}
     <div class="page__image__caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</div>
     {% endif %}
   </div>
+</div>
 
+<div class="container">
   <!-- begin page -->
   <article class="page">
     <div class="page__content">

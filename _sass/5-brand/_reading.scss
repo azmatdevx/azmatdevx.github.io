@@ -168,3 +168,29 @@
   .code-copy { transition: none; }
   .start-here__card:hover { transform: none; }
 }
+
+/* ── Page layout (About): same header and reading column as posts ── */
+.page__description {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--text-alt-color);
+
+  @media (max-width: $mobile) { font-size: 17px; }
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto 96px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-color);
+
+  h2 { margin-top: 2.2em; }
+  h2:first-child { margin-top: 0; }
+  p, ul, ol { margin: 0 0 1.25em; }
+  li { margin-bottom: 0.4em; }
+}
+
+[data-theme="dark"] .page { color: var(--text-color); }
