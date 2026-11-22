@@ -11,8 +11,8 @@
   margin-bottom: 0;
 
   &:hover {
-    background: rgba(43, 102, 255, 0.05);
-    border-color: rgba(43, 102, 255, 0.22);
+    background: var(--bg-raised);
+    border-color: var(--line);
 
     .post-panel__image img { transform: scale(1.04); }
   }
@@ -115,13 +115,13 @@
 
   &:hover {
     color: var(--heading-font-color);
-    border-color: var(--p-500);
+    border-color: var(--muted);
   }
 
   &--active {
     color: var(--heading-font-color);
     background: var(--background-alt-color);
-    border-color: var(--p-400);
+    border-color: var(--line);
     font-weight: 600;
   }
 }
@@ -182,7 +182,7 @@
 .article__sep {
   display: inline-block;
   margin: 0 5px;
-  color: var(--p-400);
+  color: var(--muted);
 }
 
 .article__title {

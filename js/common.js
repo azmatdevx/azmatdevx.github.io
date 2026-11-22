@@ -80,24 +80,19 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   function applyTheme(theme) {
-    const dark = theme === 'dark';
     html.setAttribute('data-theme', theme);
-    html.classList.toggle('dark-mode', dark);
-    if (dark) html.setAttribute('dark', ''); else html.removeAttribute('dark');
-    if (toggleTheme) {
-      toggleTheme.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-    }
+    if (toggleTheme) toggleTheme.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
   }
 
   function darkMode() {
-    const next = html.classList.contains('dark-mode') ? 'light' : 'dark';
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     try { localStorage.setItem('theme', next); } catch (e) {}
   };
 
   // Keep the label in sync with the theme set before first paint, and follow
   // the OS setting while the visitor has not chosen one.
-  applyTheme(html.classList.contains('dark-mode') ? 'dark' : 'light');
+  applyTheme(html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
   if (window.matchMedia) {
     matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       let saved = null;

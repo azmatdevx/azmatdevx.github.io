@@ -50,8 +50,8 @@ html { scroll-behavior: smooth; }
   }
 }
 
-:root[dark] .article__title a,
-.dark-mode  .article__title a {
+[data-theme="dark"] .article__title a,
+[data-theme="dark"]  .article__title a {
   &:hover {
     color: var(--heading-font-color) !important;
     text-decoration: underline !important;
@@ -59,13 +59,13 @@ html { scroll-behavior: smooth; }
 }
 
 .article__excerpt {
-  color: var(--p-800) !important;
+  color: var(--ink) !important;
   font-weight: 700 !important;
 }
 
-:root[dark] .article__excerpt,
-.dark-mode .article__excerpt {
-  color: var(--v-100) !important;
+[data-theme="dark"] .article__excerpt,
+[data-theme="dark"] .article__excerpt {
+  color: var(--ink) !important;
 }
 
 .article__date time {
@@ -86,10 +86,10 @@ html { scroll-behavior: smooth; }
   }
 }
 
-:root[dark] .article__info__bottom .article__author__name,
-.dark-mode  .article__info__bottom .article__author__name {
-  color: var(--v-200) !important;
-  &:hover { color: var(--v-300) !important; }
+[data-theme="dark"] .article__info__bottom .article__author__name,
+[data-theme="dark"]  .article__info__bottom .article__author__name {
+  color: var(--muted) !important;
+  &:hover { color: var(--muted) !important; }
 }
 
 /* ── Section headers ── */
@@ -102,7 +102,7 @@ html { scroll-behavior: smooth; }
   font-weight: 700 !important;
   color: var(--heading-font-color) !important;
 
-  em { color: var(--g-600); }
+  em { color: var(--link); }
 
   a {
     color: inherit !important;
@@ -110,13 +110,13 @@ html { scroll-behavior: smooth; }
   }
 }
 
-:root[dark] .section__title,
-.dark-mode  .section__title {
+[data-theme="dark"] .section__title,
+[data-theme="dark"]  .section__title {
   color: var(--heading-font-color) !important;
 
-  em { color: var(--g-400); }
+  em { color: var(--link); }
 
-  a:hover { color: var(--v-300) !important; }
+  a:hover { color: var(--muted) !important; }
 }
 
 /* ── Blog listing hero ── */
@@ -133,7 +133,6 @@ html { scroll-behavior: smooth; }
     left: -8%;
     width: 44%;
     height: 160%;
-    background: radial-gradient(ellipse, rgba(255, 206, 133, 0.16) 0%, transparent 65%);
     pointer-events: none;
   }
 
@@ -154,7 +153,7 @@ html { scroll-behavior: smooth; }
 }
 
 .blog-hero__arrow {
-  color: var(--p-400);
+  color: var(--muted);
   margin: 0 4px;
 }
 
@@ -199,34 +198,33 @@ html { scroll-behavior: smooth; }
 
 /* Selection */
 ::selection {
-  background: rgba(43, 102, 255, 0.18);
+  background: var(--bg-raised);
   color: var(--heading-font-color);
 }
 
 /* Links in prose */
 .post__content a:not([class]),
 .page__content a:not([class]) {
-  color: var(--g-600);
+  color: var(--link);
   text-decoration: underline;
-  text-decoration-color: rgba(43, 102, 255, 0.3);
   text-underline-offset: 2px;
   transition: color .15s;
 
-  &:hover { color: var(--g-500); }
+  &:hover { color: var(--link-hover); }
 }
 
-:root[dark] .post__content a:not([class]),
-:root[dark] .page__content a:not([class]),
-.dark-mode  .post__content a:not([class]),
-.dark-mode  .page__content a:not([class]) {
-  color: var(--g-400);
-  &:hover { color: var(--g-300); }
+[data-theme="dark"] .post__content a:not([class]),
+[data-theme="dark"] .page__content a:not([class]),
+[data-theme="dark"]  .post__content a:not([class]),
+[data-theme="dark"]  .page__content a:not([class]) {
+  color: var(--link);
+  &:hover { color: var(--link-hover); }
 }
 
 /* Blockquote brand treatment */
 blockquote {
-  border-left: 3px solid var(--g-500);
-  background: rgba(43, 102, 255, 0.05);
+  border-left: 3px solid var(--accent);
+  background: var(--bg-raised);
   border-radius: 0 8px 8px 0;
   padding: 20px 24px;
   margin: 32px 0;
@@ -319,8 +317,8 @@ pre {
 
   &:hover {
     background: var(--background-alt-color) !important;
-    border-color: var(--g-500) !important;
-    color: var(--g-600) !important;
+    border-color: var(--accent) !important;
+    color: var(--link) !important;
   }
 }
 
@@ -332,10 +330,10 @@ pre {
   &:hover { color: var(--text-alt-color) !important; }
 }
 
-:root[dark] .post__author__name,
-.dark-mode  .post__author__name {
+[data-theme="dark"] .post__author__name,
+[data-theme="dark"]  .post__author__name {
   color: var(--heading-font-color) !important;
-  &:hover { color: var(--v-300) !important; }
+  &:hover { color: var(--muted) !important; }
 }
 
 /* Pagination */
@@ -399,9 +397,9 @@ table tr:nth-child(even) {
   background: var(--background-alt-color-2);
 }
 
-:root[dark] table th,
-.dark-mode  table th {
-  color: var(--v-300);
+[data-theme="dark"] table th,
+[data-theme="dark"]  table th {
+  color: var(--muted);
 }
 
 /* Section subscribe */
@@ -439,10 +437,10 @@ table tr:nth-child(even) {
   }
 }
 
-:root[dark] .post,
-:root[dark] .page,
-.dark-mode .post,
-.dark-mode .page {
+[data-theme="dark"] .post,
+[data-theme="dark"] .page,
+[data-theme="dark"] .post,
+[data-theme="dark"] .page {
   color: rgb(200, 199, 195);
 }
 
@@ -452,7 +450,7 @@ table tr:nth-child(even) {
 .page__toc {
   background: var(--background-alt-color) !important;
   border: 1px solid var(--border-color);
-  border-left: 3px solid var(--g-500);
+  border-left: 3px solid var(--accent);
   border-radius: 0 8px 8px 0 !important;
 
   .post__toc__title,
@@ -480,23 +478,23 @@ table tr:nth-child(even) {
       color: var(--text-alt-color);
       text-decoration: none;
       transition: color .15s;
-      &:hover { color: var(--g-600); }
+      &:hover { color: var(--link-hover); }
     }
   }
 }
 
-:root[dark] .post__toc__title,
-:root[dark] .page__toc__title,
-.dark-mode  .post__toc__title,
-.dark-mode  .page__toc__title {
-  color: var(--v-300) !important;
+[data-theme="dark"] .post__toc__title,
+[data-theme="dark"] .page__toc__title,
+[data-theme="dark"]  .post__toc__title,
+[data-theme="dark"]  .page__toc__title {
+  color: var(--muted) !important;
 }
 
-:root[dark] .post__toc__list a:hover,
-:root[dark] .page__toc__list a:hover,
-.dark-mode  .post__toc__list a:hover,
-.dark-mode  .page__toc__list a:hover {
-  color: var(--g-400);
+[data-theme="dark"] .post__toc__list a:hover,
+[data-theme="dark"] .page__toc__list a:hover,
+[data-theme="dark"]  .post__toc__list a:hover,
+[data-theme="dark"]  .page__toc__list a:hover {
+  color: var(--link-hover);
 }
 
 /* ── Author card ── */
@@ -544,7 +542,7 @@ table tr:nth-child(even) {
   }
 }
 
-:root[dark] .card-author__role,
-.dark-mode  .card-author__role {
-  color: var(--v-300) !important;
+[data-theme="dark"] .card-author__role,
+[data-theme="dark"]  .card-author__role {
+  color: var(--muted) !important;
 }
