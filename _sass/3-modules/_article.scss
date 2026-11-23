@@ -26,7 +26,7 @@
 .post-panel__image {
   flex: 0 0 auto;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--bg);
 
@@ -94,6 +94,23 @@
   transition: transform 0.2s ease, color 0.2s;
 }
 
+/* Newest post: wide card, image left, larger title */
+.post-panel--featured {
+  flex-direction: row;
+
+  .post-panel__image { flex: 0 0 42%; }
+
+  .post-panel__body {
+    justify-content: center;
+    padding: 32px 36px;
+    gap: 12px;
+  }
+
+  .post-panel__tags { font-size: 13px; }
+  .post-panel__title { font-size: 32px; line-height: 1.18; -webkit-line-clamp: 4; }
+  .post-panel__date { margin-top: 12px; font-size: 14px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .post-panel__image img,
   .post-panel__arrow { transition: none; }
@@ -104,6 +121,10 @@
 @media (max-width: $tablet) {
   .post-panel { height: auto; }
   .post-panel__image { aspect-ratio: 16 / 9; }
+  .post-panel--featured { flex-direction: column; }
+  .post-panel--featured .post-panel__image { flex: 0 0 auto; }
+  .post-panel--featured .post-panel__body { padding: 20px; }
+  .post-panel--featured .post-panel__title { font-size: 24px; }
 }
 
 /* ── Tag filter pills ── */

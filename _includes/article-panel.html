@@ -1,4 +1,4 @@
-<a href="{{ post.url | relative_url }}" class="post-panel">
+<a href="{{ post.url | relative_url }}" class="post-panel{% if include.featured %} post-panel--featured{% endif %}">
   {% if post.image %}
   <div class="post-panel__image">
     <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | replace: '.webp', '-thumb.webp' | relative_url }}" width="{% if post.image contains '.webp' %}800" height="600{% else %}640" height="360{% endif %}" {% if forloop.index <= 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async" alt="">
