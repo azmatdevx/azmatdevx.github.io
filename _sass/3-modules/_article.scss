@@ -22,7 +22,7 @@
 .post-panel__image {
   flex: 0 0 auto;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 
   img {
@@ -36,10 +36,10 @@
 
 .post-panel__body {
   flex: 1;
-  padding: 20px 22px 22px;
+  padding: 16px 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   min-width: 0;
 }
 
