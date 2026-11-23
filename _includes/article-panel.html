@@ -1,14 +1,14 @@
 <a href="{{ post.url | relative_url }}" class="post-panel">
   {% if post.image %}
   <div class="post-panel__image">
-    <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | replace: '.webp', '-thumb.webp' | relative_url }}" width="{% if post.image contains '.webp' %}800" height="600{% else %}640" height="360{% endif %}" loading="lazy" decoding="async" alt="{{ post.title }}">
+    <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | replace: '.webp', '-thumb.webp' | relative_url }}" width="{% if post.image contains '.webp' %}800" height="600{% else %}640" height="360{% endif %}" {% if forloop.index <= 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async" alt="">
   </div>
   {% endif %}
   <div class="post-panel__body">
-    <p class="post-panel__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time> <span aria-hidden="true">·</span> {% include reading-time.html content=post.content %}</p>
-    <h2 class="post-panel__title">{{ post.title }}</h2>
     {% if post.tags.size >= 1 %}
     <p class="post-panel__tags">{{ post.tags | join: " · " }}</p>
     {% endif %}
+    <h2 class="post-panel__title">{{ post.title }}</h2>
+    <p class="post-panel__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time> <span aria-hidden="true">·</span> {% include reading-time.html content=post.content %}<span class="post-panel__arrow" aria-hidden="true">→</span></p>
   </div>
 </a>

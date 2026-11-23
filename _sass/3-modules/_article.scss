@@ -1,4 +1,5 @@
-/* ── Post card (blog listing, related posts): image on top, text below ── */
+/* ── Post card (blog listing, related posts): image on top, text below ──
+   Reading order: tags (eyebrow) → title → date · read time, pinned to the bottom. */
 .post-panel {
   display: flex;
   flex-direction: column;
@@ -8,15 +9,18 @@
   background: var(--bg-raised);
   overflow: hidden;
   text-decoration: none;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s;
   margin-bottom: 0;
 
   &:hover {
     border-color: var(--muted);
 
-    .post-panel__title { color: var(--link-hover); text-decoration: underline; }
-    .post-panel__image img { transform: scale(1.04); }
+    .post-panel__title { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+    .post-panel__image img { transform: scale(1.03); }
+    .post-panel__arrow { transform: translateX(3px); color: var(--link-hover); }
   }
+
+  &:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 }
 
 .post-panel__image {
@@ -24,6 +28,7 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
+  background: var(--bg);
 
   img {
     width: 100%;
@@ -36,23 +41,25 @@
 
 .post-panel__body {
   flex: 1;
-  padding: 16px 20px 18px;
+  padding: 16px 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   min-width: 0;
 }
 
-.post-panel__date {
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--text-alt-color);
+.post-panel__tags {
+  order: 0;
   margin: 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-alt-color);
 }
 
 .post-panel__title {
+  order: 1;
   font-family: var(--display);
   font-size: 20px;
   font-weight: 700;
@@ -60,14 +67,38 @@
   letter-spacing: -0.02em;
   line-height: 1.28;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.post-panel__tags {
+.post-panel__date {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: auto 0 0;
-  padding-top: 6px;
+  padding-top: 8px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-alt-color);
+}
+
+.post-panel__arrow {
+  margin-left: auto;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--link);
+  transition: transform 0.2s ease, color 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-panel__image img,
+  .post-panel__arrow { transition: none; }
+  .post-panel:hover .post-panel__image img,
+  .post-panel:hover .post-panel__arrow { transform: none; }
 }
 
 @media (max-width: $tablet) {
