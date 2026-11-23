@@ -2,7 +2,7 @@
   {% if post.image %}
   <a href="{{ post.url | relative_url }}" class="article__image-link">
     <div class="article__image">
-      <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | relative_url }}" width="640" height="360" loading="lazy" decoding="async" alt="{{ post.title }}">
+      <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | replace: '.webp', '-thumb.webp' | relative_url }}" width="640" height="360" loading="lazy" decoding="async" alt="{{ post.title }}">
     </div>
   </a>
   {% endif %}
