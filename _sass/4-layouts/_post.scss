@@ -45,7 +45,7 @@
 .post__cover {
   border-radius: 14px;
   overflow: hidden;
-  height: 380px;
+  aspect-ratio: 1600 / 380;
 
   img {
     display: block;
@@ -54,7 +54,7 @@
     object-fit: cover;
   }
 
-  @media (max-width: $tablet) { height: 200px; border-radius: 10px; }
+  @media (max-width: $tablet) { border-radius: 10px; }
 }
 
 /* ── Meta bar ── */

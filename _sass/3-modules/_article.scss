@@ -1,7 +1,7 @@
 /* ── Horizontal post panel (blog listing) ── */
 .post-panel {
   display: flex;
-  height: 190px;
+  flex-direction: column;
   border-radius: 12px;
   border: 1px solid var(--line);
   background: var(--bg-raised);
@@ -19,7 +19,9 @@
 }
 
 .post-panel__image {
-  flex: 0 0 34%;
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 1600 / 380;
   overflow: hidden;
 
   img {
@@ -79,19 +81,6 @@
   color: var(--text-alt-color);
 }
 
-@media (max-width: $tablet) {
-  .post-panel {
-    height: auto;
-    flex-direction: column;
-  }
-
-  .post-panel__image {
-    flex: 0 0 auto;
-    height: 180px;
-    width: 100%;
-  }
-}
-
 /* ── Tag filter pills ── */
 .posts__filter {
   display: flex;
@@ -143,7 +132,7 @@
 
   .article__image {
     position: relative;
-    aspect-ratio: 16/9;
+    aspect-ratio: 1600 / 380;
     overflow: hidden;
 
     img {

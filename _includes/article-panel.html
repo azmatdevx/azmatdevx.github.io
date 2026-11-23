@@ -1,7 +1,7 @@
 <a href="{{ post.url | relative_url }}" class="post-panel">
   {% if post.image %}
   <div class="post-panel__image">
-    <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | replace: '.webp', '-thumb.webp' | relative_url }}" width="640" height="360" loading="lazy" decoding="async" alt="{{ post.title }}">
+    <img src="{{ post.image | replace: '.jpg', '-thumb.jpg' | relative_url }}" width="{% if post.image contains '.webp' %}1600" height="380{% else %}640" height="360{% endif %}" loading="lazy" decoding="async" alt="{{ post.title }}">
   </div>
   {% endif %}
   <div class="post-panel__body">
