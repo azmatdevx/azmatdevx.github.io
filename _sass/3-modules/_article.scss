@@ -19,7 +19,8 @@
 }
 
 .post-panel__image {
-  flex: 0 0 34%;
+  flex: 0 0 auto;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 
   img {
@@ -87,7 +88,7 @@
 
   .post-panel__image {
     flex: 0 0 auto;
-    height: 180px;
+    aspect-ratio: 16 / 9;
     width: 100%;
   }
 }
@@ -143,7 +144,7 @@
 
   .article__image {
     position: relative;
-    aspect-ratio: 1600 / 380;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
 
     img {
