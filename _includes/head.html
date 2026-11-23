@@ -27,6 +27,8 @@
   {% if page.url == '/404.html' %}<meta name="robots" content="noindex">{% endif %}
 
   <link rel="canonical" href="{{ seo_url }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.data.settings.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
   <!-- Open Graph -->
