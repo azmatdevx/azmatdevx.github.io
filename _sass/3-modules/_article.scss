@@ -1,8 +1,9 @@
-/* ── Post card (blog listing, related posts): thumb left, text right; stacks on tablet ──
+/* ── Post card (blog listing, related posts): image on top, text below ──
    Reading order: tags (eyebrow) → title → date · read time, pinned to the bottom. */
 .post-panel {
   display: flex;
-  height: 190px;
+  flex-direction: column;
+  height: 100%;
   border-radius: 12px;
   border: 1px solid var(--line);
   background: var(--bg-raised);
@@ -24,8 +25,8 @@
 
 .post-panel__image {
   flex: 0 0 auto;
-  height: 100%;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  aspect-ratio: 2 / 1;
   overflow: hidden;
   background: var(--bg);
 
@@ -93,21 +94,6 @@
   transition: transform 0.2s ease, color 0.2s;
 }
 
-/* Newest post: full-width card, a little taller, larger title */
-.post-panel--featured {
-  height: 240px;
-
-  .post-panel__body {
-    justify-content: center;
-    padding: 32px 36px;
-    gap: 12px;
-  }
-
-  .post-panel__tags { font-size: 13px; }
-  .post-panel__title { font-size: 32px; line-height: 1.18; -webkit-line-clamp: 4; }
-  .post-panel__date { margin-top: 12px; font-size: 14px; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .post-panel__image img,
   .post-panel__arrow { transition: none; }
@@ -116,11 +102,7 @@
 }
 
 @media (max-width: $tablet) {
-  .post-panel,
-  .post-panel--featured { height: auto; flex-direction: column; }
-  .post-panel__image { width: 100%; height: auto; aspect-ratio: 16 / 9; }
-  .post-panel--featured .post-panel__body { padding: 20px; }
-  .post-panel--featured .post-panel__title { font-size: 24px; }
+  .post-panel { height: auto; }
 }
 
 /* ── Tag filter pills ── */

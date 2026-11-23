@@ -20,8 +20,8 @@ body_class: has-hero
       <div class="row grid" id="posts-grid">
         {% if site.posts.size > 0 %}
           {% for post in site.posts %}
-            <div class="col {% if forloop.first %}col-12{% else %}col-6 col-t-12{% endif %} animate grid__post" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
-              {% include article-panel.html featured=forloop.first %}
+            <div class="col col-4 col-d-6 col-t-12 animate grid__post" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
+              {% include article-panel.html %}
             </div>
           {% endfor %}
         {% endif %}
