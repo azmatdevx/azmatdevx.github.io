@@ -79,17 +79,27 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   };
 
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    if (toggleTheme) toggleTheme.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+  }
+
   function darkMode() {
-    if (html.classList.contains('dark-mode')) {
-      html.classList.remove('dark-mode');
-      localStorage.setItem("theme", "light");
-      document.documentElement.removeAttribute("dark");
-    } else {
-      html.classList.add('dark-mode');
-      localStorage.removeItem("theme");
-      document.documentElement.setAttribute("dark", "");
-    }
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
   };
+
+  // Keep the label in sync with the theme set before first paint, and follow
+  // the OS setting while the visitor has not chosen one.
+  applyTheme(html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  if (window.matchMedia) {
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (err) {}
+      if (saved !== 'light' && saved !== 'dark') applyTheme(e.matches ? 'dark' : 'light');
+    });
+  }
 
 
   /* ================================================================

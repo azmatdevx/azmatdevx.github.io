@@ -14,26 +14,27 @@
   border-radius: 9999px;
   border: none;
   outline: none;
-  color: #ffffff;
-  background: #2B66FF;
+  color: var(--accent-ink);
+  background: var(--accent);
   transition: background .15s;
   will-change: transform;
   cursor: pointer;
 
   &:hover {
-    color: #ffffff;
-    background: #1a55ee;
+    color: var(--accent-ink);
+    background: var(--accent);
+    opacity: 0.88;
   }
 
   &--outline {
-    color: #2B66FF;
+    color: var(--link);
     background: transparent;
-    border: 1px solid #2B66FF;
+    border: 1px solid var(--accent);
 
     &:hover {
-      color: #1a55ee;
+      color: var(--link-hover);
       background: transparent;
-      border-color: #1a55ee;
+      border-color: var(--link-hover);
     }
   }
 

@@ -30,7 +30,7 @@ layout: default
 <div class="post__cover-wrap">
   <div class="container">
     <div class="post__cover">
-      <img src="{{ page.image | relative_url }}" width="1200" height="675" fetchpriority="high" decoding="async" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
+      <img src="{{ page.image | relative_url }}" width="{% if page.image contains '.webp' %}1600" height="380{% else %}1200" height="675{% endif %}" fetchpriority="high" decoding="async" alt="{{ page.title }}"{% if page.random_images %} data-random-images='{{ page.random_images | jsonify | escape }}'{% endif %}>
     </div>
   </div>
 </div>

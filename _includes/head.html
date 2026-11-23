@@ -18,7 +18,7 @@
   {%- else -%}
     {%- assign seo_desc = site.data.settings.description | strip_html | strip_newlines | truncate: 160 -%}
   {%- endif -%}
-  {%- assign seo_image = page.image | default: site.data.settings.social_image | absolute_url -%}
+  {%- assign seo_image = page.social_image | default: page.image | default: site.data.settings.social_image | absolute_url -%}
   {%- assign seo_url = page.url | replace: 'index.html', '' | absolute_url -%}
 
   <title>{{ seo_title | escape }}</title>
@@ -27,6 +27,8 @@
   {% if page.url == '/404.html' %}<meta name="robots" content="noindex">{% endif %}
 
   <link rel="canonical" href="{{ seo_url }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.data.settings.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
   <!-- Open Graph -->
@@ -50,10 +52,16 @@
 
   {% include structured-data.html %}
 
-  <!-- Theme: always dark -->
+  <!-- Theme: saved choice, else the OS preference, else light. Runs before CSS to avoid a flash. -->
   <script>
-    document.documentElement.setAttribute("dark", "");
-    document.documentElement.classList.add("dark-mode");
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", t);
+    })();
   </script>
 
   <style>

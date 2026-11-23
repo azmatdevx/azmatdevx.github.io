@@ -4,7 +4,7 @@ title: Why I Keep a Deployment Journal
 description: A plain, timestamped note after every release, covering the change, unusual commands and hidden coordination, has saved me more time than smart tooling.
 date: 2025-02-24 18:10:00 +0400
 author: azmat
-image: '/images/shipped.jpg'
+image: '/images/shipped.webp'
 tags: [Delivery, Personal Tech]
 featured: false
 toc: false

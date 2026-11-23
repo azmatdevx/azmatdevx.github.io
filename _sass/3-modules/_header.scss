@@ -47,16 +47,65 @@
 
 .header__logo-img {
   display: block;
-  height: 28px;
+  height: 40px;
   width: auto;
-  transition: filter 0.25s ease, opacity 0.25s ease;
 
-  @media (max-width: $desktop) { height: 24px; }
+  @media (max-width: $desktop) { height: 36px; }
 }
 
-.header__logo:hover .header__logo-img {
-  filter: brightness(1.35) hue-rotate(15deg);
-  opacity: 0.9;
+/* coral on sage in light, brighter coral on graphite in dark */
+.header__logo-img--dark { display: none; }
+[data-theme="dark"] {
+  .header__logo-img--light { display: none; }
+  .header__logo-img--dark { display: block; }
+}
+
+/* ── Theme switch ── */
+.theme-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 52px;
+  height: 28px;
+  margin-left: 16px;
+  padding: 0 7px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: var(--bg-raised);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+
+  &:hover { border-color: var(--muted); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .theme-switch__icon { position: relative; z-index: 1; display: block; }
+
+  /* the thumb sits over the icon of the active theme */
+  .theme-switch__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform .2s ease;
+  }
+
+  .theme-switch__icon--sun  { color: var(--accent-ink); }
+  .theme-switch__icon--moon { color: var(--muted); }
+
+  &[aria-checked="true"] {
+    .theme-switch__thumb { transform: translateX(24px); }
+    .theme-switch__icon--sun  { color: var(--muted); }
+    .theme-switch__icon--moon { color: var(--accent-ink); }
+  }
+
+  @media (max-width: $desktop) { margin-left: auto; margin-right: 8px; }
+  @media (prefers-reduced-motion: reduce) { .theme-switch__thumb { transition: none; } }
 }
 
 /* ── Desktop nav: pushed to right ── */
@@ -79,15 +128,16 @@
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 500;
-  color: #ffffff;
-  background: #2B66FF;
+  color: var(--accent-ink);
+  background: var(--accent);
   text-decoration: none;
   transition: background .15s;
   white-space: nowrap;
 
   &:hover {
-    color: #ffffff;
-    background: #1a55ee;
+    color: var(--accent-ink);
+    background: var(--accent);
+    opacity: 0.88;
   }
 }
 
@@ -163,7 +213,6 @@
   border: 1px solid var(--border-color);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
 
   @media (max-width: $tablet) {
     margin-top: 0;
@@ -185,7 +234,7 @@
 
 .search-modal__icon {
   font-size: 16px;
-  color: var(--g-500);
+  color: var(--link);
   flex-shrink: 0;
 }
 
@@ -238,7 +287,7 @@
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--g-500);
+    color: var(--link);
     margin-bottom: 4px;
   }
 
@@ -285,7 +334,7 @@ body.modal-open { overflow: hidden; }
 
   @media (max-width: $desktop) { display: flex; }
 
-  &:hover { background: rgba(43, 102, 255, 0.08); }
+  &:hover { background: var(--bg-raised); }
 
   div,
   div::before,
