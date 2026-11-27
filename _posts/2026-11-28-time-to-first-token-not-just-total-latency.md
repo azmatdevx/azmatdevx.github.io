@@ -64,5 +64,3 @@ For an exact number, you need a client that reads the stream and timestamps the 
 ### The old skill still applies
 
 The core of performance engineering has not changed: measure what the user experiences. What changed is the experience itself. With streaming, the first token is the new "page loaded".
-
-*Next Field Note: load testing an agent, where one user request can trigger ten model calls.*
