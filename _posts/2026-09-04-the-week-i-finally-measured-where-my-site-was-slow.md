@@ -2,7 +2,7 @@
 layout: post
 title: "Where My Site Was Actually Slow: Measuring Before Optimizing"
 description: I stopped guessing and profiled time to first byte, image weight and render-blocking CSS and fonts. Most of my performance work had targeted the wrong layer.
-date: 2025-01-08 09:00:00 +0400
+date: 2026-09-04 13:45:00 +0400
 author: azmat
 image: '/images/p95.webp'
 tags: [Performance, Personal Tech]

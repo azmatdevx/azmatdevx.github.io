@@ -2,7 +2,7 @@
 layout: post
 title: What a Debugging Session Taught Me About Noise
 description: A burst of retries amplified a dependency slowdown, but dashboards full of equal-looking graphs hid it. Writing the event in plain language found it.
-date: 2025-02-11 08:15:00 +0400
+date: 2026-10-20 21:15:00 +0400
 author: azmat
 image: '/images/rootcause.webp'
 tags: [Debugging, Personal Tech]

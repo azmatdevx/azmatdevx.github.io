@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "For AI apps, track time to first token, not just total latency"
-date: 2026-11-28 00:30:00 +0400
+date: 2026-11-23 20:30:00 +0400
 author: azmat
 image: '/images/first-token.webp'
 description: "With streaming AI answers, users feel the wait before the first word, not the total response time. Track time to first token next to your p95 response time."
