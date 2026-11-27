@@ -2,7 +2,7 @@
 layout: post
 title: The Architecture Decisions I Write Down Now
 description: I write a decision down when the tradeoff was real, reversing it would be annoying, or someone will ask why. Here is the simple note format I use.
-date: 2025-03-28 20:00:00 +0400
+date: 2026-11-08 08:10:00 +0400
 author: azmat
 image: '/images/architecture.webp'
 tags: [Architecture, Personal Tech]
