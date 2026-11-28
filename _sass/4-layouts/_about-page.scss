@@ -676,6 +676,24 @@
   color: var(--text-color);
 }
 
+.ap__typed {
+  display: inline-block;
+  min-width: 23ch;
+  text-align: left;
+  color: var(--accent, currentColor);
+}
+.ap__caret {
+  display: inline-block;
+  width: 1px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: ap-caret 1s steps(1) infinite;
+}
+@keyframes ap-caret { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ap__caret { animation: none; } }
+
 /* ════════════════════════════════════════
    Experience (compact, grouped by company)
 ════════════════════════════════════════ */

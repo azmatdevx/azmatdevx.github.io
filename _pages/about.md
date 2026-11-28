@@ -5,9 +5,9 @@ description: Who writes Field Notes, what it covers, and how to get in touch.
 permalink: /about/
 ---
 
-I'm Azmat Mungur, a performance engineer moving into AI-augmented performance engineering. I'm based in Mauritius.
+I'm Azmat Mungur, a performance engineer moving deeper into AI engineering and system design. I'm based in Mauritius.
 
-This site is my working notebook for the technical side of life: performance investigations, architecture tradeoffs, deployment lessons, and the odd side project that teaches me something useful. I use AI agents and agentic workflows to augment the discipline of performance engineering, and I write about what works and what doesn't.
+This site is my working notebook for the technical side of life: performance investigations, architecture tradeoffs, deployment lessons, and the odd side project that teaches me something useful. I'm learning how AI engineering and performance engineering fit together, and I write about what works and what doesn't.
 
 ## What you'll find here
 
