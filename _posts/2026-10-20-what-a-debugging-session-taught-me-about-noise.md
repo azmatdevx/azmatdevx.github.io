@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What a Debugging Session Taught Me About Noise
+title: What a debugging session taught me about noise
 description: A burst of retries amplified a dependency slowdown, but dashboards full of equal-looking graphs hid it. Writing the event in plain language found it.
 date: 2026-10-20 21:15:00 +0400
 author: azmat

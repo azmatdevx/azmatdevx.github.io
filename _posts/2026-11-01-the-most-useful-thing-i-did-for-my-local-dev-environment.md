@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fixing My Local Dev Environment One Annoyance at a Time
+title: Fixing my local dev environment one annoyance at a time
 description: "I stopped chasing an impressive setup and removed one repeated annoyance at a time: faster navigation, fewer manual steps, predictable environment names."
 date: 2026-11-01 13:40:00 +0400
 author: azmat

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Running a Side Project With Production Habits
+title: Running a side project with production habits
 description: "Deployment notes, a rollback path, consistent environment variable names and just-enough logging: the habits that made my side projects easier to operate."
 date: 2026-09-13 21:30:00 +0400
 author: azmat

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rebuilding This Jekyll Site as a Personal Tech Blog
+title: Rebuilding this Jekyll site as a personal tech blog
 description: "The theme looked polished but told the wrong story: team language, author showcases, lifestyle categories. Rebuilding it was a content job more than design."
 date: 2026-10-26 17:40:00 +0400
 author: azmat

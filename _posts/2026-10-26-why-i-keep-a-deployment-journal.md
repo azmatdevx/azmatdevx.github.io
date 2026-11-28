@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why I Keep a Deployment Journal
+title: Why I keep a deployment journal
 description: A plain, timestamped note after every release, covering the change, unusual commands and hidden coordination, has saved me more time than smart tooling.
 date: 2026-10-26 14:20:00 +0400
 author: azmat
