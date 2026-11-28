@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Jekyll static site (personal engineering blog at azmat.devx / azmatdevx.github.io), built on the **Nomod** Jekyll theme and customized with a "performance engineering / AI-augmented systems" brand. Deployed via GitHub Pages. There is no JS build step, no package.json, no test suite — content is Markdown, styling is Sass, and interactivity is a couple of hand-written vanilla-JS files.
+A Jekyll static site (personal engineering blog at azmat.devx / azmatdevx.github.io), built on the **Nomod** Jekyll theme and customized with a "performance engineering and AI engineering" brand. Deployed via GitHub Pages. There is no JS build step, no package.json, no test suite — content is Markdown, styling is Sass, and interactivity is a couple of hand-written vanilla-JS files.
 
 ## Commands
 

@@ -1,6 +1,6 @@
 # azmat.devx — Field Notes
 
-Personal engineering blog by Azmat Mungur: short engineering posts and monthly deep dives on performance, AI-augmented systems and production lessons. Live at https://azmatdevx.github.io.
+Personal engineering blog by Azmat Mungur: short engineering posts and monthly deep dives on performance, AI engineering and production lessons. Live at https://azmatdevx.github.io.
 
 Built with [Jekyll](https://jekyllrb.com/) on the Nomod theme (by Anvod Studio), customised with a custom brand layer, and hosted on GitHub Pages.
 

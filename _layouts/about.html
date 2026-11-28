@@ -22,8 +22,8 @@ layout: default
       <div class="ap">
         <!-- ── Centered Hero ── -->
         <section class="ap__hero-center">
-          {% if page.about_role %}
-          <p class="ap__hero-role ap__hero-enter">{{ page.about_role }}</p>
+          {% if page.about_role or page.about_typed %}
+          <p class="ap__hero-role ap__hero-enter">{{ page.about_role }}{% if page.about_typed %}{% if page.about_role %} {% endif %}<span class="ap__typed" data-phrases='{{ page.about_typed | jsonify }}'>{{ page.about_typed[0] }}</span><span class="ap__caret" aria-hidden="true"></span>{% endif %}</p>
           {% endif %}
           <h1 class="ap__hero-name-display ap__hero-enter ap__hero-enter--name">{{ page.about_name }}</h1>
           {% if page.about_headline %}
@@ -207,6 +207,27 @@ layout: default
 </div><!-- /.ap__page-canvas -->
 
 <script>
+(function () {
+  var el = document.querySelector('.ap__typed');
+  if (!el) return;
+  var caret = el.nextElementSibling;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { if (caret) caret.style.display = 'none'; return; }
+  var phrases;
+  try { phrases = JSON.parse(el.getAttribute('data-phrases')); } catch (e) { return; }
+  if (!phrases || !phrases.length) return;
+  var i = 0, n = phrases[0].length, deleting = true;
+  function step() {
+    var word = phrases[i];
+    el.textContent = word.slice(0, n);
+    var delay = deleting ? 45 : 85;
+    if (!deleting && n === word.length) { deleting = true; delay = 1800; }
+    else if (deleting && n === 0) { deleting = false; i = (i + 1) % phrases.length; delay = 350; }
+    else { n += deleting ? -1 : 1; }
+    setTimeout(step, delay);
+  }
+  setTimeout(step, 1800);
+})();
+
 (function () {
   var io2 = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
