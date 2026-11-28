@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Architecture Decisions I Write Down Now
+title: The architecture decisions I write down now
 description: I write a decision down when the tradeoff was real, reversing it would be annoying, or someone will ask why. Here is the simple note format I use.
 date: 2026-11-08 08:10:00 +0400
 author: azmat
